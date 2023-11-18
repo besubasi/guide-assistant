@@ -7,4 +7,22 @@ spring:
   jpa:
     properties:
       hibernate:
+        hbm2ddl:
+          auto: create-drop
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: guide
+        show_sql: true
+        format_sql: true
+        connection:
+          url: jdbc:postgresql://localhost:5432/guide
+          password: 123456
+          username: subasi
+          driver_class: org.postgresql.Driver
+#  liquibase:
+#    enabled: true
+#    default-schema: guide
+#    drop-first: false
+#    url: jdbc:postgresql://localhost:5432/guide
+#    user: subasi
+#    password: 123456
+#    driver-class-name: org.postgresql.Driver
