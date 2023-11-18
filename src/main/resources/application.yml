@@ -1,4 +1,8 @@
 spring:
+  security:
+    user:
+      name: subasi
+      password: 123456
   datasource:
     url: jdbc:postgresql://localhost:5432/guide
     username: subasi
@@ -8,7 +12,7 @@ spring:
     properties:
       hibernate:
         hbm2ddl:
-          auto: create-drop
+          auto: update
         dialect: org.hibernate.dialect.PostgreSQLDialect
         default_schema: guide
         show_sql: true
@@ -18,6 +22,8 @@ spring:
           password: 123456
           username: subasi
           driver_class: org.postgresql.Driver
+
+
 #  liquibase:
 #    enabled: true
 #    default-schema: guide

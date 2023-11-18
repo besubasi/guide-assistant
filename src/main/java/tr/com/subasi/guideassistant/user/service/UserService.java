@@ -13,7 +13,7 @@ public interface UserService {
 
     UserModel getById(long id);
 
-    List<UserModel> getList();
+    List<UserModel> getList(UserSearchModel userSearchModel);
 
     List<UserModel> getPage(UserSearchModel userSearchModel);
 

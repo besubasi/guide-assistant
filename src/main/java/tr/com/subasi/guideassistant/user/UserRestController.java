@@ -32,8 +32,8 @@ public class UserRestController {
     }
 
     @PostMapping("/getList")
-    List<UserModel> getList() {
-        return userService.getList();
+    List<UserModel> getList(@RequestBody UserSearchModel userSearchModel) {
+        return userService.getList(userSearchModel);
     }
 
     @PostMapping("/getPage")
