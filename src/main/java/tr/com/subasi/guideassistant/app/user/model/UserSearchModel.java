@@ -1,4 +1,4 @@
-package tr.com.subasi.guideassistant.user.model;
+package tr.com.subasi.guideassistant.app.user.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,9 +10,6 @@ import lombok.NoArgsConstructor;
 public class UserSearchModel {
 
     private Long id;
-    private String userName;
-    private String phoneNumber;
-    private String name;
-    private String surname;
-    private String email;
+    private String userName, name, surname, phoneNumber, email;
+
 }

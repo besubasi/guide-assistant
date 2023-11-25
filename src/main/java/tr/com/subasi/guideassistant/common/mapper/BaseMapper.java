@@ -1,4 +1,7 @@
-package tr.com.subasi.guideassistant.common;
+package tr.com.subasi.guideassistant.common.mapper;
+
+import tr.com.subasi.guideassistant.common.model.BaseModel;
+import tr.com.subasi.guideassistant.common.entity.BaseEntity;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package tr.com.subasi.guideassistant.common;
+package tr.com.subasi.guideassistant.common.model;
 
 import jakarta.persistence.MappedSuperclass;
 import lombok.Data;
