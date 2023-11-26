@@ -1,19 +1,23 @@
 package tr.com.subasi.guideassistant.common.service;
 
+import jakarta.validation.constraints.NotNull;
+import org.springframework.validation.annotation.Validated;
 import tr.com.subasi.guideassistant.common.model.BaseModel;
+import tr.com.subasi.guideassistant.common.model.BaseSearchModel;
 
 import java.util.List;
 
-public interface GenericService<M extends BaseModel, SM> {
+@Validated
+public interface GenericService<M extends BaseModel, SM extends BaseSearchModel> {
 
-    M save(M model);
+    M save(@NotNull M model);
 
-    void deleteById(long id);
+    void deleteById(@NotNull Long id);
 
-    M getById(long id);
+    M getById(@NotNull Long id);
 
-    List<M> getList(SM searchModel);
+    List<M> getList(@NotNull SM searchModel);
 
-    List<M> getPage(SM searchModel);
+    List<M> getPage(@NotNull SM searchModel);
 
 }

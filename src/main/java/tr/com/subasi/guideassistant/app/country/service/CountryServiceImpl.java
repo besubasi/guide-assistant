@@ -9,7 +9,7 @@ import tr.com.subasi.guideassistant.app.country.repository.CountryRepository;
 import tr.com.subasi.guideassistant.common.service.GenericServiceImpl;
 
 @Service
-public class CountryServiceImpl extends GenericServiceImpl<CountryModel, CountrySearchModel, CountryEntity> implements CountryService {
+public class CountryServiceImpl extends GenericServiceImpl<CountryModel, CountrySearchModel, CountryEntity> implements tr.com.subasi.guideassistant.app.country.service.CountryService {
     public CountryServiceImpl(CountryRepository repository, CountryMapper mapper) {
         super(repository, mapper);
     }

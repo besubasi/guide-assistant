@@ -6,18 +6,19 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import tr.com.subasi.guideassistant.common.entity.BaseEntity;
 import tr.com.subasi.guideassistant.common.mapper.BaseMapper;
 import tr.com.subasi.guideassistant.common.model.BaseModel;
+import tr.com.subasi.guideassistant.common.model.BaseSearchModel;
 
 import java.util.Collections;
 import java.util.List;
 
-public abstract class GenericServiceImpl<M extends BaseModel, SM, E extends BaseEntity> implements GenericService<M, SM> {
+public abstract class GenericServiceImpl<M extends BaseModel, SM extends BaseSearchModel, E extends BaseEntity> implements GenericService<M, SM> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GenericServiceImpl.class);
 
     protected final JpaRepository<E, Long> repository;
     protected final BaseMapper<M, E> mapper;
 
-    public GenericServiceImpl(JpaRepository repository, BaseMapper mapper) {
+    public GenericServiceImpl(JpaRepository<E, Long> repository, BaseMapper<M, E> mapper) {
         this.repository = repository;
         this.mapper = mapper;
     }
@@ -29,12 +30,12 @@ public abstract class GenericServiceImpl<M extends BaseModel, SM, E extends Base
     }
 
     @Override
-    public void deleteById(long id) {
+    public void deleteById(Long id) {
         repository.deleteById(id);
     }
 
     @Override
-    public M getById(long id) {
+    public M getById(Long id) {
         return this.mapper.convertToModel(repository.getReferenceById(id));
     }
 
