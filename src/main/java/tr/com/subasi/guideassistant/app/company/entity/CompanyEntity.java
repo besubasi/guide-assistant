@@ -54,6 +54,6 @@ public class CompanyEntity extends BaseEntity {
 
     @NotNull
     @Column(name = COLUMN_IS_ACTIVE)
-    private boolean isActive = true;
+    private Boolean active = Boolean.TRUE;
 
 }

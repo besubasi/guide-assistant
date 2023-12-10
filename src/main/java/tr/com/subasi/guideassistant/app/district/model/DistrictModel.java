@@ -15,8 +15,6 @@ import tr.com.subasi.guideassistant.common.model.BaseModel;
 public class DistrictModel extends BaseModel {
 
     @NotNull
-    private Long countryId;
-    @NotNull
     private Long cityId;
     @NotBlank
     private String name;

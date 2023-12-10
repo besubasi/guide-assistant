@@ -12,7 +12,7 @@ import tr.com.subasi.guideassistant.common.model.BaseSearchModel;
 @EqualsAndHashCode(callSuper = true)
 public class DistrictSearchModel extends BaseSearchModel {
 
-    private Long countryId, cityId;
+    private Long cityId;
     private String name;
     private Boolean active;
 

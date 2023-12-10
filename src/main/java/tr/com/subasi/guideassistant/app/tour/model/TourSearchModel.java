@@ -13,7 +13,7 @@ import tr.com.subasi.guideassistant.common.model.BaseSearchModel;
 public class TourSearchModel extends BaseSearchModel {
 
     private Long companyId, tourTypeId;
-    private String name, description;
+    private String name;
     private Integer day;
     private Boolean active;
 

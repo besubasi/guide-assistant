@@ -22,8 +22,9 @@ import static tr.com.subasi.guideassistant.app.tourtype.constant.TourTypeConstan
 @EqualsAndHashCode(callSuper = true)
 public class TourTypeEntity extends BaseEntity {
 
-    @Column(name = COLUMN_COMPANY_ID)
-    private Long companyId;
+    @NotNull
+    @Column(name = COLUMN_TOUR_CATEGORY_ID)
+    private Long tourCategoryId;
 
     @NotNull
     @Column(name = COLUMN_NAME)
@@ -31,6 +32,6 @@ public class TourTypeEntity extends BaseEntity {
 
     @NotNull
     @Column(name = COLUMN_IS_ACTIVE)
-    private boolean isActive = true;
+    private Boolean active = Boolean.TRUE;
 
 }

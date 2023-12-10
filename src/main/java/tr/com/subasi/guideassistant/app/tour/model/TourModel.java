@@ -21,8 +21,6 @@ public class TourModel extends BaseModel {
     @NotBlank
     private String name;
     @NotNull
-    private String description;
-    @NotNull
     private Integer day;
 
     private Boolean active = Boolean.TRUE;

@@ -9,6 +9,4 @@ public interface CountryConstant extends CommonConstant {
     String TABLE_NAME = "COUNTRY";
     String TABLE_SEQ_NAME = TABLE_NAME + SEQUENCE_SUFFIX;
 
-    String COLUMN_CODE = "CODE";
-    String COLUMN_NAME = "NAME";
 }

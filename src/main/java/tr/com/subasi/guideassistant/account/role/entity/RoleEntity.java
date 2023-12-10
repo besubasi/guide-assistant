@@ -26,8 +26,8 @@ public class RoleEntity extends BaseEntity {
     private String code;
 
     @NotNull
-    @Column(name = COLUMN_DESCRIPTION)
-    private String description;
+    @Column(name = COLUMN_NAME)
+    private String name;
 
     @NotNull
     @Column(name = COLUMN_IS_ACTIVE)

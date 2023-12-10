@@ -13,4 +13,6 @@ public interface UserConstant extends CommonConstant {
     String COLUMN_PASSWORD = "PASSWORD";
     String COLUMN_PHONE_NUMBER = "PHONE_NUMBER";
     String COLUMN_EMAIL = "EMAIL";
+    String COLUMN_LANGUAGE_ID = "LANGUAGE_ID";
+    String COLUMN_REFERENCE_USER_ID = "REFERENCE_USER_ID";
 }

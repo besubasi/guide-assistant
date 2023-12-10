@@ -14,6 +14,20 @@ import tr.com.subasi.guideassistant.common.model.BaseModel;
 public class UserModel extends BaseModel {
 
     @NotNull
-    private String userName, name, surname, password, phoneNumber, email;
+    private String userName;
+    @NotNull
+    private String name;
+    @NotNull
+    private String surname;
+    @NotNull
+    private String password;
+    @NotNull
+    private String phoneNumber;
+    @NotNull
+    private String email;
+    @NotNull
+    private Long languageId;
+    private Long referenceUserId;
+    private Boolean active;
 
 }

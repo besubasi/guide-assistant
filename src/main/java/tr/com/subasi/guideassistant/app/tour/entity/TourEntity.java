@@ -35,16 +35,12 @@ public class TourEntity extends BaseEntity {
     @Column(name = COLUMN_NAME)
     private String name;
 
-    @NotBlank
-    @Column(name = COLUMN_DESCRIPTION)
-    private String description;
-
     @NotNull
     @Column(name = COLUMN_DAY)
     private Integer day;
 
     @NotNull
     @Column(name = COLUMN_IS_ACTIVE)
-    private boolean isActive = true;
+    private Boolean active = Boolean.TRUE;
 
 }

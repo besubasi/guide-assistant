@@ -9,6 +9,5 @@ public interface DistrictConstant extends CommonConstant {
     String TABLE_NAME = "DISTRICT";
     String TABLE_SEQ_NAME = TABLE_NAME + SEQUENCE_SUFFIX;
 
-    String COLUMN_COUNTRY_ID = "COUNTRY_ID";
     String COLUMN_CITY_ID = "CITY_ID";
 }

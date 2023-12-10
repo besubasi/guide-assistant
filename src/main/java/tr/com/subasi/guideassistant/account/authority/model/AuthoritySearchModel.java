@@ -13,7 +13,7 @@ import tr.com.subasi.guideassistant.common.model.BaseSearchModel;
 @EqualsAndHashCode(callSuper = true)
 public class AuthoritySearchModel extends BaseSearchModel {
 
-    private String code, description;
+    private String code, name;
     private Boolean active;
 
 }

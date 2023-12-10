@@ -16,7 +16,7 @@ public class RoleModel extends BaseModel {
     @NotBlank
     private String code;
     @NotBlank
-    private String description;
+    private String name;
     private Boolean active = Boolean.TRUE;
 
 }

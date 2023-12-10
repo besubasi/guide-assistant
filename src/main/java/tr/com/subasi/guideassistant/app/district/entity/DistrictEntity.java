@@ -23,10 +23,6 @@ import static tr.com.subasi.guideassistant.app.district.constant.DistrictConstan
 public class DistrictEntity extends BaseEntity {
 
     @NotNull
-    @Column(name = COLUMN_COUNTRY_ID)
-    private Long countryId;
-
-    @NotNull
     @Column(name = COLUMN_CITY_ID)
     private Long cityId;
 
@@ -36,6 +32,6 @@ public class DistrictEntity extends BaseEntity {
 
     @NotNull
     @Column(name = COLUMN_IS_ACTIVE)
-    private boolean isActive = true;
+    private Boolean active = Boolean.TRUE;
 
 }

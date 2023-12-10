@@ -12,6 +12,14 @@ import tr.com.subasi.guideassistant.common.model.BaseSearchModel;
 @EqualsAndHashCode(callSuper = true)
 public class UserSearchModel extends BaseSearchModel {
 
-    private String name, surname, userName, phoneNumber, email;
+    private String userName;
+    private String name;
+    private String surname;
+    private String password;
+    private String phoneNumber;
+    private String email;
+    private Long languageId;
+    private Long referenceUserId;
+    private Boolean active;
 
 }

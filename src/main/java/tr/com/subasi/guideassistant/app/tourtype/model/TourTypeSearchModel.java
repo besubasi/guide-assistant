@@ -12,7 +12,7 @@ import tr.com.subasi.guideassistant.common.model.BaseSearchModel;
 @EqualsAndHashCode(callSuper = true)
 public class TourTypeSearchModel extends BaseSearchModel {
 
-    private Long companyId;
+    private Long tourCategoryId;
     private String name;
     private Boolean active;
 

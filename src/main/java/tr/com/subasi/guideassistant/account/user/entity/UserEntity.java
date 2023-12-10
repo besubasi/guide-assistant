@@ -47,6 +47,13 @@ public class UserEntity extends BaseEntity {
     private String email;
 
     @NotNull
+    @Column(name = COLUMN_LANGUAGE_ID)
+    private Long languageId;
+
+    @Column(name = COLUMN_REFERENCE_USER_ID)
+    private Long referenceUserId;
+
+    @NotNull
     @Column(name = COLUMN_IS_ACTIVE)
     private Boolean active = Boolean.TRUE;
 
