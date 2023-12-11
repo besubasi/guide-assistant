@@ -14,7 +14,6 @@ public class UserSearchModel extends BaseSearchModel {
 
     private String userName;
     private String name;
-    private String surname;
     private String password;
     private String phoneNumber;
     private String email;

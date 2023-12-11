@@ -15,6 +15,8 @@ import tr.com.subasi.guideassistant.common.model.BaseModel;
 public class TourTypeModel extends BaseModel {
 
     @NotNull
+    private Long companyId;
+    @NotNull
     private Long tourCategoryId;
     @NotBlank
     private String name;

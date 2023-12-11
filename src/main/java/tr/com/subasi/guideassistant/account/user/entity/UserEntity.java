@@ -27,10 +27,6 @@ public class UserEntity extends BaseEntity {
     private String name;
 
     @NotNull
-    @Column(name = COLUMN_SURNAME)
-    private String surname;
-
-    @NotNull
     @Column(name = COLUMN_USER_NAME)
     private String userName;
 

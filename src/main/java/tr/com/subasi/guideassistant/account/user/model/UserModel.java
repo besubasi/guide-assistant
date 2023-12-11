@@ -18,8 +18,6 @@ public class UserModel extends BaseModel {
     @NotNull
     private String name;
     @NotNull
-    private String surname;
-    @NotNull
     private String password;
     @NotNull
     private String phoneNumber;

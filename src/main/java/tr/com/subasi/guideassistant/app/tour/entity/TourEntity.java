@@ -31,6 +31,10 @@ public class TourEntity extends BaseEntity {
     @Column(name = COLUMN_TOUR_TYPE_ID)
     private Long tourTypeId;
 
+    @NotNull
+    @Column(name = COLUMN_CODE)
+    private String code;
+
     @NotBlank
     @Column(name = COLUMN_NAME)
     private String name;

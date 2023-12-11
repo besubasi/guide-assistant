@@ -23,6 +23,10 @@ import static tr.com.subasi.guideassistant.app.tourcategory.constant.TourCategor
 public class TourCategoryEntity extends BaseEntity {
 
     @NotNull
+    @Column(name = COLUMN_COMPANY_ID)
+    private Long companyId;
+
+    @NotNull
     @Column(name = COLUMN_NAME)
     private String name;
 

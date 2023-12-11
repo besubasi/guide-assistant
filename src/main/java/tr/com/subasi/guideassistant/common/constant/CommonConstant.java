@@ -16,7 +16,6 @@ public interface CommonConstant {
     String COLUMN_UPDATED_BY = "UPDATED_BY";
     String COLUMN_CODE = "CODE";
     String COLUMN_NAME = "NAME";
-    String COLUMN_DESCRIPTION = "DESCRIPTION";
     String COLUMN_IS_ACTIVE = "IS_ACTIVE";
 
 }

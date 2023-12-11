@@ -19,6 +19,8 @@ public class TourModel extends BaseModel {
     @NotNull
     private Long tourTypeId;
     @NotBlank
+    private String code;
+    @NotBlank
     private String name;
     @NotNull
     private Integer day;

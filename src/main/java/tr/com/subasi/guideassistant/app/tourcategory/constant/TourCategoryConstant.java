@@ -10,4 +10,5 @@ public interface TourCategoryConstant extends CommonConstant {
     String TABLE_NAME = "TOUR_CATEGORY";
     String TABLE_SEQ_NAME = TABLE_NAME + SEQUENCE_SUFFIX;
 
+    String COLUMN_COMPANY_ID = "COMPANY_ID";
 }
