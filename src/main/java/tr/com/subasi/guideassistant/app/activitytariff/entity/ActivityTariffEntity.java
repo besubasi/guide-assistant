@@ -1,4 +1,4 @@
-package tr.com.subasi.guideassistant.app.touractivityrel.entity;
+package tr.com.subasi.guideassistant.app.activitytariff.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,7 +11,10 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import tr.com.subasi.guideassistant.common.entity.BaseEntity;
 
-import static tr.com.subasi.guideassistant.app.touractivityrel.constant.TourActivityRelConstant.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+import static tr.com.subasi.guideassistant.app.activitytariff.constant.ActivityTariffConstant.*;
 
 @Data
 @NoArgsConstructor
@@ -20,23 +23,33 @@ import static tr.com.subasi.guideassistant.app.touractivityrel.constant.TourActi
 @Table(schema = SCHEMA_GUIDE, name = TABLE_NAME)
 @SequenceGenerator(name = SEQUENCE_GENERATOR, sequenceName = TABLE_SEQ_NAME, allocationSize = 1)
 @EqualsAndHashCode(callSuper = true)
-public class TourActivityRelEntity extends BaseEntity {
-
-    @NotNull
-    @Column(name = COLUMN_TOUR_ID)
-    private Long tourId;
+public class ActivityTariffEntity extends BaseEntity {
 
     @NotNull
     @Column(name = COLUMN_ACTIVITY_ID)
     private Long activityId;
 
     @NotNull
-    @Column(name = COLUMN_DAY_NUMBER)
-    private Short dayNumber;
+    @Column(name = COLUMN_PRICING_TYPE_ID)
+    private Long pricingTypeId;
 
     @NotNull
-    @Column(name = COLUMN_LINE_NUMBER)
-    private Short lineNumber;
+    @Column(name = COLUMN_START_DATE)
+    private LocalDateTime startDate;
+
+    @Column(name = COLUMN_COMMENT)
+    private String comment;
+
+    @NotNull
+    @Column(name = COLUMN_AMOUNT)
+    private BigDecimal amount;
+
+    @NotNull
+    @Column(name = COLUMN_CURRENCY_ID)
+    private Long currencyId;
+
+    @Column(name = COLUMN_COMMISSION_RATE)
+    private BigDecimal commissionRate;
 
     @NotNull
     @Column(name = COLUMN_IS_ACTIVE)

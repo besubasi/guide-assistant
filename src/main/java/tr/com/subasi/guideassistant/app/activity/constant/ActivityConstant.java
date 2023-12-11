@@ -6,7 +6,7 @@ public interface ActivityConstant extends CommonConstant {
 
 
     String REQUEST_MAPPING = "/guide/activity";
-    String TABLE_NAME = "CITY";
+    String TABLE_NAME = "ACTIVITY";
     String TABLE_SEQ_NAME = TABLE_NAME + SEQUENCE_SUFFIX;
 
     String COLUMN_ESTIMATED_TIME = "ESTIMATED_TIME";
