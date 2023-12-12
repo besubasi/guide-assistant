@@ -12,6 +12,5 @@ public interface TourDayDescriptionConstant extends CommonConstant {
 
     String COLUMN_TOUR_ID = "TOUR_ID";
     String COLUMN_DAY_NUMBER = "DAY_NUMBER";
-    String COLUMN_DESCRIPTION = "DESCRIPTION";
 
 }
