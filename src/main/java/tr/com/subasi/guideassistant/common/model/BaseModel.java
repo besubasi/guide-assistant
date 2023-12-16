@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
-public class BasicModel extends IdModel {
+public class BaseModel extends IdModel {
 
     private LocalDateTime createdAt;
     private String createdBy;
