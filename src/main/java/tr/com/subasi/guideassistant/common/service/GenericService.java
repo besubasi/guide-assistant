@@ -2,13 +2,13 @@ package tr.com.subasi.guideassistant.common.service;
 
 import jakarta.validation.constraints.NotNull;
 import org.springframework.validation.annotation.Validated;
-import tr.com.subasi.guideassistant.common.model.BaseModel;
+import tr.com.subasi.guideassistant.common.model.IdModel;
 import tr.com.subasi.guideassistant.common.model.BaseSearchModel;
 
 import java.util.List;
 
 @Validated
-public interface GenericService<M extends BaseModel, SM extends BaseSearchModel> {
+public interface GenericService<M extends IdModel, SM extends BaseSearchModel> {
 
     M save(@NotNull M model);
 

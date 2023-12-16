@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import tr.com.subasi.guideassistant.common.model.BaseModel;
+import tr.com.subasi.guideassistant.common.model.IdModel;
 
 import java.time.LocalDate;
 
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class TourCalendarModel extends BaseModel {
+public class TourCalendarModel extends IdModel {
 
     @NotNull
     private Long tourId;

@@ -5,13 +5,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import tr.com.subasi.guideassistant.common.entity.IdEntity;
 import tr.com.subasi.guideassistant.common.mapper.BaseMapper;
-import tr.com.subasi.guideassistant.common.model.BaseModel;
+import tr.com.subasi.guideassistant.common.model.IdModel;
 import tr.com.subasi.guideassistant.common.model.BaseSearchModel;
 
 import java.util.Collections;
 import java.util.List;
 
-public abstract class GenericServiceImpl<M extends BaseModel, SM extends BaseSearchModel, E extends IdEntity> implements GenericService<M, SM> {
+public abstract class GenericServiceImpl<M extends IdModel, SM extends BaseSearchModel, E extends IdEntity> implements GenericService<M, SM> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GenericServiceImpl.class);
 

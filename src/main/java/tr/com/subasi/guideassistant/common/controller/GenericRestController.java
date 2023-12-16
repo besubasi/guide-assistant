@@ -1,13 +1,13 @@
 package tr.com.subasi.guideassistant.common.controller;
 
 import tr.com.subasi.guideassistant.common.model.ApiResponse;
-import tr.com.subasi.guideassistant.common.model.BaseModel;
+import tr.com.subasi.guideassistant.common.model.IdModel;
 import tr.com.subasi.guideassistant.common.model.BaseSearchModel;
 import tr.com.subasi.guideassistant.common.service.GenericService;
 
 import java.util.List;
 
-public abstract class GenericRestController<M extends BaseModel, SM extends BaseSearchModel> implements GenericRestService<M, SM> {
+public abstract class GenericRestController<M extends IdModel, SM extends BaseSearchModel> implements GenericRestService<M, SM> {
 
     protected GenericService<M, SM> service;
 

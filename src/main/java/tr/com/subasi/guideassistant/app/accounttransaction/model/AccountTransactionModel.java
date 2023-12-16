@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import tr.com.subasi.guideassistant.app.accounttransaction.enums.EnumAccountType;
 import tr.com.subasi.guideassistant.app.accounttransaction.enums.EnumDebitType;
-import tr.com.subasi.guideassistant.common.model.BaseModel;
+import tr.com.subasi.guideassistant.common.model.IdModel;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class AccountTransactionModel extends BaseModel {
+public class AccountTransactionModel extends IdModel {
 
     @NotNull
     private Long accountId;
