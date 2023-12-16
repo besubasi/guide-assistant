@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import tr.com.subasi.guideassistant.common.entity.BaseEntity;
+import tr.com.subasi.guideassistant.common.entity.IdEntity;
 
 import static tr.com.subasi.guideassistant.app.tourdescription.constant.TourDescriptionConstant.*;
 
@@ -16,9 +16,8 @@ import static tr.com.subasi.guideassistant.app.tourdescription.constant.TourDesc
 @AllArgsConstructor
 @Entity
 @Table(schema = SCHEMA_GUIDE, name = TABLE_NAME)
-@SequenceGenerator(name = SEQUENCE_GENERATOR, sequenceName = TABLE_SEQ_NAME, allocationSize = 1)
 @EqualsAndHashCode(callSuper = true)
-public class TourDescriptionEntity extends BaseEntity {
+public class TourDescriptionEntity extends IdEntity {
 
     @NotNull
     @Column(name = COLUMN_TOUR_ID)

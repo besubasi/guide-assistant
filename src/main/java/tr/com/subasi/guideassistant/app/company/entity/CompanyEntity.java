@@ -2,7 +2,6 @@ package tr.com.subasi.guideassistant.app.company.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -10,7 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import tr.com.subasi.guideassistant.common.entity.BaseEntity;
+import tr.com.subasi.guideassistant.common.entity.IdEntity;
 
 import static tr.com.subasi.guideassistant.app.company.constant.CompanyConstant.*;
 
@@ -19,9 +18,8 @@ import static tr.com.subasi.guideassistant.app.company.constant.CompanyConstant.
 @AllArgsConstructor
 @Entity
 @Table(schema = SCHEMA_GUIDE, name = TABLE_NAME)
-@SequenceGenerator(name = SEQUENCE_GENERATOR, sequenceName = TABLE_SEQ_NAME, allocationSize = 1)
 @EqualsAndHashCode(callSuper = true)
-public class CompanyEntity extends BaseEntity {
+public class CompanyEntity extends IdEntity {
 
     @NotBlank
     @Column(name = COLUMN_CODE)

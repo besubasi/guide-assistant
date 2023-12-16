@@ -1,3 +1,4 @@
+/*
 package tr.com.subasi.guideassistant.config;
 
 import org.springframework.context.annotation.Bean;
@@ -15,4 +16,4 @@ public class SecurityConfig {
         return http.authorizeHttpRequests((auth) -> auth.anyRequest().permitAll()).build();
     }
 
-}
+}*/

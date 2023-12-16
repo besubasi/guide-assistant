@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import tr.com.subasi.guideassistant.app.sales.enums.EnumSalesType;
-import tr.com.subasi.guideassistant.common.entity.BaseEntity;
+import tr.com.subasi.guideassistant.common.entity.IdEntity;
 
 import java.math.BigDecimal;
 
@@ -18,9 +18,8 @@ import static tr.com.subasi.guideassistant.app.sales.constant.SalesConstant.*;
 @AllArgsConstructor
 @Entity
 @Table(schema = SCHEMA_GUIDE, name = TABLE_NAME)
-@SequenceGenerator(name = SEQUENCE_GENERATOR, sequenceName = TABLE_SEQ_NAME, allocationSize = 1)
 @EqualsAndHashCode(callSuper = true)
-public class SalesEntity extends BaseEntity {
+public class SalesEntity extends IdEntity {
 
     @NotNull
     @Column(name = COLUMN_TRIP_CUSTOMER_ID)

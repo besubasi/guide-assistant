@@ -2,14 +2,13 @@ package tr.com.subasi.guideassistant.app.activitycompanyrel.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import tr.com.subasi.guideassistant.common.entity.BaseEntity;
+import tr.com.subasi.guideassistant.common.entity.IdEntity;
 
 import static tr.com.subasi.guideassistant.app.activitycompanyrel.constant.ActivityCompanyRelConstant.*;
 
@@ -18,9 +17,8 @@ import static tr.com.subasi.guideassistant.app.activitycompanyrel.constant.Activ
 @AllArgsConstructor
 @Entity
 @Table(schema = SCHEMA_GUIDE, name = TABLE_NAME)
-@SequenceGenerator(name = SEQUENCE_GENERATOR, sequenceName = TABLE_SEQ_NAME, allocationSize = 1)
 @EqualsAndHashCode(callSuper = true)
-public class ActivityCompanyRelEntity extends BaseEntity {
+public class ActivityCompanyRelEntity extends IdEntity {
 
     @NotNull
     @Column(name = COLUMN_ACTIVITY_ID)

@@ -5,7 +5,7 @@ public interface CommonConstant {
     String SCHEMA_GUIDE = "GUIDE";
     String SCHEMA_ACCOUNT = "ACCOUNT";
     String SEQUENCE_SUFFIX = "_SEQ";
-    String SEQUENCE_GENERATOR = "SEQUENCE_GENERATOR";
+    String SEQUENCE_GENERATOR = "sequenceGenerator";
     String SEQUENCE_STRATEGY = "org.hibernate.id.enhanced.SequenceStyleGenerator";
     String POOLED_LO = "pooled-lo";
 
