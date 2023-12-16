@@ -2,12 +2,8 @@ package tr.com.subasi.guideassistant.common.constant;
 
 public interface CommonConstant {
 
-    String SCHEMA_GUIDE = "GUIDE";
-    String SCHEMA_ACCOUNT = "ACCOUNT";
+    String SCHEMA_GUIDE = "GUIDE_ASSISTANT";
     String SEQUENCE_SUFFIX = "_SEQ";
-    String SEQUENCE_GENERATOR = "sequenceGenerator";
-    String SEQUENCE_STRATEGY = "org.hibernate.id.enhanced.SequenceStyleGenerator";
-    String POOLED_LO = "pooled-lo";
 
     String COLUMN_ID = "ID";
     String COLUMN_CREATED_AT = "CREATED_AT";

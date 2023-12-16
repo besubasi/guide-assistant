@@ -4,7 +4,7 @@ spring:
       name: subasi
       password: 123456
   datasource:
-    url: jdbc:postgresql://localhost:5432/guide
+    url: jdbc:postgresql://localhost:5432/subasisoftware
     username: subasi
     password: 123456
     driver-class-name: org.postgresql.Driver
@@ -18,11 +18,12 @@ spring:
       connection-test-query: SELECT 1
   jpa:
     properties:
-      javax:
+      jakarta:
         persistence:
+          create-database-schemas: true
           schema-generation:
             database:
-              action: create
+              action: update
       hibernate:
         generate_statistics: false
         jdbc:
@@ -33,15 +34,22 @@ spring:
           create_namespaces: true
           auto: update
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        default_schema: guide
+        default_schema: guide_assistant
         show_sql: true
         format_sql: true
         connection:
-          url: jdbc:postgresql://localhost:5432/guide
+          url: jdbc:postgresql://localhost:5432/subasisoftware
           password: 123456
           username: subasi
           driver_class: org.postgresql.Driver
-
+  liquibase:
+    enabled: true
+    default-schema: guide_assistant
+    drop-first: false
+    url: jdbc:postgresql://localhost:5432/subasisoftware
+    user: subasi
+    password: 123456
+    driver-class-name: org.postgresql.Driver
 
 # swagger-ui custom path
 springdoc:
@@ -50,11 +58,3 @@ springdoc:
   api-docs:
     path: /api-docs
 
-#  liquibase:
-#    enabled: true
-#    default-schema: guide
-#    drop-first: false
-#    url: jdbc:postgresql://localhost:5432/guide
-#    user: subasi
-#    password: 123456
-#    driver-class-name: org.postgresql.Driver

@@ -16,7 +16,7 @@ import static tr.com.subasi.guideassistant.account.user.constant.UserConstant.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(schema = SCHEMA_ACCOUNT, name = TABLE_NAME)
+@Table(schema = SCHEMA_GUIDE, name = TABLE_NAME)
 @EqualsAndHashCode(callSuper = true)
 public class UserEntity extends IdEntity {
 
