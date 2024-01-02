@@ -15,35 +15,36 @@ public abstract class GenericServiceImpl<M extends IdModel, SM extends BaseSearc
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GenericServiceImpl.class);
 
-    protected final JpaRepository<E, Long> repository;
-    protected final BaseMapper<M, E> mapper;
+    protected final JpaRepository<E, Long> jpaRepository;
+    protected final BaseMapper<M, E> baseMapper;
 
-    public GenericServiceImpl(JpaRepository<E, Long> repository, BaseMapper<M, E> mapper) {
-        this.repository = repository;
-        this.mapper = mapper;
+    public GenericServiceImpl(JpaRepository<E, Long> jpaRepository, BaseMapper<M, E> baseMapper) {
+        this.jpaRepository = jpaRepository;
+        this.baseMapper = baseMapper;
     }
-
 
     @Override
     public M save(M model) {
-        return this.mapper.convertToModel(this.repository.save(this.mapper.convertToEntity(model)));
+        return this.baseMapper.convertToModel(this.jpaRepository.save(this.baseMapper.convertToEntity(model)));
     }
 
     @Override
     public void deleteById(Long id) {
-        repository.deleteById(id);
+        jpaRepository.deleteById(id);
     }
 
     @Override
     public M getById(Long id) {
-        return this.mapper.convertToModel(repository.getReferenceById(id));
+        return this.baseMapper.convertToModel(jpaRepository.getReferenceById(id));
     }
 
     @Override
     public List<M> getList(SM searchModel) {
         LOGGER.info("SM : " + searchModel);
-        return this.mapper.convertToModelList(repository.findAll());
+        return this.baseMapper.convertToModelList(jpaRepository.findAll());
     }
+
+    // TODO getAll
 
     @Override
     public List<M> getPage(SM searchModel) {

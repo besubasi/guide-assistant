@@ -4,7 +4,7 @@ spring:
       name: subasi
       password: 123456
   datasource:
-    url: jdbc:postgresql://localhost:5432/subasisoftware
+    url: jdbc:postgresql://localhost:5432/guide-assistant
     username: subasi
     password: 123456
     driver-class-name: org.postgresql.Driver
@@ -38,7 +38,7 @@ spring:
         show_sql: true
         format_sql: true
         connection:
-          url: jdbc:postgresql://localhost:5432/subasisoftware
+          url: jdbc:postgresql://localhost:5432/guide-assistant
           password: 123456
           username: subasi
           driver_class: org.postgresql.Driver
@@ -46,7 +46,7 @@ spring:
     enabled: true
     default-schema: guide_assistant
     drop-first: false
-    url: jdbc:postgresql://localhost:5432/subasisoftware
+    url: jdbc:postgresql://localhost:5432/guide-assistant
     user: subasi
     password: 123456
     driver-class-name: org.postgresql.Driver
