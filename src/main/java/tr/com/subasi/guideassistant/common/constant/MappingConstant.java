@@ -9,6 +9,7 @@ public interface MappingConstant {
     String MAPPING_GET_BY_ID = "/getById/{id}";
 
     String MAPPING_GET_LIST = "/getList";
+    String MAPPING_GET_LIST2 = "/getList2";
 
     String MAPPING_GET_PAGE = "/getPage";
 

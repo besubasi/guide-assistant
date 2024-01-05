@@ -7,11 +7,11 @@ import tr.com.subasi.guideassistant.account.roleauthorityrel.constant.RoleAuthor
 import tr.com.subasi.guideassistant.account.roleauthorityrel.model.RoleAuthorityRelModel;
 import tr.com.subasi.guideassistant.account.roleauthorityrel.model.RoleAuthorityRelSearchModel;
 import tr.com.subasi.guideassistant.account.roleauthorityrel.service.RoleAuthorityRelService;
-import tr.com.subasi.guideassistant.common.controller.GenericRestController;
+import tr.com.subasi.guideassistant.common.controller.BaseRestController;
 
 @RestController
 @RequestMapping(RoleAuthorityRelConstant.REQUEST_MAPPING)
-public class RoleAuthorityRelRestController extends GenericRestController<RoleAuthorityRelModel, RoleAuthorityRelSearchModel> {
+public class RoleAuthorityRelRestController extends BaseRestController<RoleAuthorityRelService, RoleAuthorityRelModel, RoleAuthorityRelSearchModel> implements RoleAuthorityRelRestService{
 
     public RoleAuthorityRelRestController(RoleAuthorityRelService service) {
         super(service);

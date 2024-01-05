@@ -5,13 +5,13 @@ import org.springframework.web.bind.annotation.RestController;
 import tr.com.subasi.guideassistant.app.currency.model.CurrencyModel;
 import tr.com.subasi.guideassistant.app.currency.model.CurrencySearchModel;
 import tr.com.subasi.guideassistant.app.currency.service.CurrencyService;
-import tr.com.subasi.guideassistant.common.controller.GenericRestController;
+import tr.com.subasi.guideassistant.common.controller.BaseRestController;
 
 import static tr.com.subasi.guideassistant.app.currency.constant.CurrencyConstant.REQUEST_MAPPING;
 
 @RestController
 @RequestMapping(REQUEST_MAPPING)
-public class CurrencyRestController extends GenericRestController<CurrencyModel, CurrencySearchModel> {
+public class CurrencyRestController extends BaseRestController<CurrencyService, CurrencyModel, CurrencySearchModel> {
 
     public CurrencyRestController(CurrencyService service) {
         super(service);

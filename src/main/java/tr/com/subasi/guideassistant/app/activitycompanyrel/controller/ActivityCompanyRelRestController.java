@@ -6,11 +6,11 @@ import tr.com.subasi.guideassistant.app.activitycompanyrel.constant.ActivityComp
 import tr.com.subasi.guideassistant.app.activitycompanyrel.model.ActivityCompanyRelModel;
 import tr.com.subasi.guideassistant.app.activitycompanyrel.model.ActivityCompanyRelSearchModel;
 import tr.com.subasi.guideassistant.app.activitycompanyrel.service.ActivityCompanyRelService;
-import tr.com.subasi.guideassistant.common.controller.GenericRestController;
+import tr.com.subasi.guideassistant.common.controller.BaseRestController;
 
 @RestController
 @RequestMapping(ActivityCompanyRelConstant.REQUEST_MAPPING)
-public class ActivityCompanyRelRestController extends GenericRestController<ActivityCompanyRelModel, ActivityCompanyRelSearchModel> {
+public class ActivityCompanyRelRestController extends BaseRestController<ActivityCompanyRelService, ActivityCompanyRelModel, ActivityCompanyRelSearchModel> {
 
     public ActivityCompanyRelRestController(ActivityCompanyRelService service) {
         super(service);
