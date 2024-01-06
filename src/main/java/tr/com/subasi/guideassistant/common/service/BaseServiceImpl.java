@@ -4,14 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import tr.com.subasi.guideassistant.common.entity.IdEntity;
-import tr.com.subasi.guideassistant.common.mapper.BaseMapper;
+import tr.com.subasi.guideassistant.common.converter.BaseConverter;
 import tr.com.subasi.guideassistant.common.model.IdModel;
 import tr.com.subasi.guideassistant.common.model.BaseSearchModel;
 
 import java.util.Collections;
 import java.util.List;
 
-public abstract class BaseServiceImpl<M extends IdModel, SM extends BaseSearchModel, E extends IdEntity, R extends JpaRepository<E, Long>, C extends BaseMapper<M, E>> implements BaseService<M, SM> {
+public abstract class BaseServiceImpl<M extends IdModel, SM extends BaseSearchModel, E extends IdEntity, R extends JpaRepository<E, Long>, C extends BaseConverter<M, E>> implements BaseService<M, SM> {
 
     protected static final Logger LOGGER = LoggerFactory.getLogger(BaseServiceImpl.class);
 

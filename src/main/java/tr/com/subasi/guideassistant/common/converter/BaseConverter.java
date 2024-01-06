@@ -1,4 +1,4 @@
-package tr.com.subasi.guideassistant.common.mapper;
+package tr.com.subasi.guideassistant.common.converter;
 
 import tr.com.subasi.guideassistant.common.model.IdModel;
 import tr.com.subasi.guideassistant.common.entity.IdEntity;
@@ -6,7 +6,7 @@ import tr.com.subasi.guideassistant.common.entity.IdEntity;
 import java.util.List;
 
 
-public interface BaseMapper<M extends IdModel, E extends IdEntity> {
+public interface BaseConverter<M extends IdModel, E extends IdEntity> {
 
     List<M> convertToModelList(List<E> entityList);
 

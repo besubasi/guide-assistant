@@ -4,9 +4,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import tr.com.subasi.guideassistant.app.tour.entity.TourEntity;
 import tr.com.subasi.guideassistant.app.tour.model.TourModel;
-import tr.com.subasi.guideassistant.common.mapper.BaseMapper;
+import tr.com.subasi.guideassistant.common.converter.BaseConverter;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface TourConverter extends BaseMapper<TourModel, TourEntity> {
+public interface TourConverter extends BaseConverter<TourModel, TourEntity> {
 }
 
