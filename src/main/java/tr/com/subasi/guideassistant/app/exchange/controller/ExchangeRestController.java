@@ -11,7 +11,7 @@ import static tr.com.subasi.guideassistant.app.exchange.constant.ExchangeConstan
 
 @RestController
 @RequestMapping(REQUEST_MAPPING)
-public class ExchangeRestController extends BaseRestController<ExchangeService, ExchangeModel, ExchangeSearchModel> {
+public class ExchangeRestController extends BaseRestController<ExchangeService, ExchangeModel, ExchangeSearchModel> implements ExchangeRestService{
 
     public ExchangeRestController(ExchangeService service) {
         super(service);

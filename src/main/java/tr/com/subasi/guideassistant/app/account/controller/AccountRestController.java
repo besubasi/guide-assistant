@@ -11,7 +11,7 @@ import static tr.com.subasi.guideassistant.app.account.constant.AccountConstant.
 
 @RestController
 @RequestMapping(REQUEST_MAPPING)
-public class AccountRestController extends BaseRestController<AccountService, AccountModel, AccountSearchModel> {
+public class AccountRestController extends BaseRestController<AccountService, AccountModel, AccountSearchModel> implements AccountRestService {
 
     public AccountRestController(AccountService service) {
         super(service);

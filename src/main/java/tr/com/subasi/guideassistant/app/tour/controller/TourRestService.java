@@ -16,9 +16,7 @@ import static tr.com.subasi.guideassistant.common.constant.MappingConstant.MAPPI
 
 @Validated
 public interface TourRestService extends BaseRestService<TourModel, TourSearchModel> {
-
     @PostMapping(value = MAPPING_GET_LIST2, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     ApiResponse<List<TourModel>> getList2(@Valid @RequestBody TourSearchModel searchModel);
-
 
 }

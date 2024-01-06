@@ -11,7 +11,7 @@ import static tr.com.subasi.guideassistant.app.activitytariff.constant.ActivityT
 
 @RestController
 @RequestMapping(REQUEST_MAPPING)
-public class ActivityTariffRestController extends BaseRestController<ActivityTariffService, ActivityTariffModel, ActivityTariffSearchModel> {
+public class ActivityTariffRestController extends BaseRestController<ActivityTariffService, ActivityTariffModel, ActivityTariffSearchModel> implements ActivityTariffRestService {
 
     public ActivityTariffRestController(ActivityTariffService service) {
         super(service);

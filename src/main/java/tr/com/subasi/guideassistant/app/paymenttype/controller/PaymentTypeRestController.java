@@ -11,7 +11,7 @@ import static tr.com.subasi.guideassistant.app.paymenttype.constant.PaymentTypeC
 
 @RestController
 @RequestMapping(REQUEST_MAPPING)
-public class PaymentTypeRestController extends BaseRestController<PaymentTypeService, PaymentTypeModel, PaymentTypeSearchModel> {
+public class PaymentTypeRestController extends BaseRestController<PaymentTypeService, PaymentTypeModel, PaymentTypeSearchModel> implements PaymentTypeRestService {
 
     public PaymentTypeRestController(PaymentTypeService service) {
         super(service);

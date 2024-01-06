@@ -11,7 +11,7 @@ import static tr.com.subasi.guideassistant.app.tripactivitypricing.constant.Trip
 
 @RestController
 @RequestMapping(REQUEST_MAPPING)
-public class TripActivityPricingRestController extends BaseRestController<TripActivityPricingService, TripActivityPricingModel, TripActivityPricingSearchModel> {
+public class TripActivityPricingRestController extends BaseRestController<TripActivityPricingService, TripActivityPricingModel, TripActivityPricingSearchModel> implements TripActivityPricingRestService {
 
     public TripActivityPricingRestController(TripActivityPricingService service) {
         super(service);

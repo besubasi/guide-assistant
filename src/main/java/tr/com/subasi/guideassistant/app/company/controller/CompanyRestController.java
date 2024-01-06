@@ -11,7 +11,7 @@ import static tr.com.subasi.guideassistant.app.company.constant.CompanyConstant.
 
 @RestController
 @RequestMapping(REQUEST_MAPPING)
-public class CompanyRestController extends BaseRestController<CompanyService, CompanyModel, CompanySearchModel> {
+public class CompanyRestController extends BaseRestController<CompanyService, CompanyModel, CompanySearchModel> implements CompanyRestService {
 
     public CompanyRestController(CompanyService service) {
         super(service);

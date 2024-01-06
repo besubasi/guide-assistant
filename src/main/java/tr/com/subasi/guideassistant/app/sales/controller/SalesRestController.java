@@ -11,7 +11,7 @@ import static tr.com.subasi.guideassistant.app.sales.constant.SalesConstant.REQU
 
 @RestController
 @RequestMapping(REQUEST_MAPPING)
-public class SalesRestController extends BaseRestController<SalesService, SalesModel, SalesSearchModel> {
+public class SalesRestController extends BaseRestController<SalesService, SalesModel, SalesSearchModel> implements SalesRestService {
 
     public SalesRestController(SalesService service) {
         super(service);

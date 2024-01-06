@@ -11,7 +11,7 @@ import static tr.com.subasi.guideassistant.app.tourtype.constant.TourTypeConstan
 
 @RestController
 @RequestMapping(REQUEST_MAPPING)
-public class TourTypeRestController extends BaseRestController<TourTypeService, TourTypeModel, TourTypeSearchModel> {
+public class TourTypeRestController extends BaseRestController<TourTypeService, TourTypeModel, TourTypeSearchModel> implements TourTypeRestService {
 
     public TourTypeRestController(TourTypeService service) {
         super(service);

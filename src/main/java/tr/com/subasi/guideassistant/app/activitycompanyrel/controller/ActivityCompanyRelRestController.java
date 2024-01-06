@@ -10,7 +10,7 @@ import tr.com.subasi.guideassistant.common.controller.BaseRestController;
 
 @RestController
 @RequestMapping(ActivityCompanyRelConstant.REQUEST_MAPPING)
-public class ActivityCompanyRelRestController extends BaseRestController<ActivityCompanyRelService, ActivityCompanyRelModel, ActivityCompanyRelSearchModel> {
+public class ActivityCompanyRelRestController extends BaseRestController<ActivityCompanyRelService, ActivityCompanyRelModel, ActivityCompanyRelSearchModel> implements ActivityCompanyRelRestService {
 
     public ActivityCompanyRelRestController(ActivityCompanyRelService service) {
         super(service);

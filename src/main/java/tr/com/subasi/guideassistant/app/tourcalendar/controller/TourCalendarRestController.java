@@ -11,7 +11,7 @@ import static tr.com.subasi.guideassistant.app.tourcalendar.constant.TourCalenda
 
 @RestController
 @RequestMapping(REQUEST_MAPPING)
-public class TourCalendarRestController extends BaseRestController<TourCalendarService, TourCalendarModel, TourCalendarSearchModel> {
+public class TourCalendarRestController extends BaseRestController<TourCalendarService, TourCalendarModel, TourCalendarSearchModel> implements TourCalendarRestService {
 
     public TourCalendarRestController(TourCalendarService service) {
         super(service);

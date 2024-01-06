@@ -11,7 +11,7 @@ import static tr.com.subasi.guideassistant.app.currency.constant.CurrencyConstan
 
 @RestController
 @RequestMapping(REQUEST_MAPPING)
-public class CurrencyRestController extends BaseRestController<CurrencyService, CurrencyModel, CurrencySearchModel> {
+public class CurrencyRestController extends BaseRestController<CurrencyService, CurrencyModel, CurrencySearchModel> implements CurrencyRestService {
 
     public CurrencyRestController(CurrencyService service) {
         super(service);

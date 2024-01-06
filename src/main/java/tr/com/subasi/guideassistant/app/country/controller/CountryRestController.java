@@ -11,7 +11,7 @@ import static tr.com.subasi.guideassistant.app.country.constant.CountryConstant.
 
 @RestController
 @RequestMapping(REQUEST_MAPPING)
-public class CountryRestController extends BaseRestController<CountryService, CountryModel, CountrySearchModel> {
+public class CountryRestController extends BaseRestController<CountryService, CountryModel, CountrySearchModel> implements CountryRestService {
 
     public CountryRestController(CountryService service) {
         super(service);

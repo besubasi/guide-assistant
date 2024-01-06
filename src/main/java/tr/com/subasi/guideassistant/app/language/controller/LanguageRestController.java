@@ -11,7 +11,7 @@ import static tr.com.subasi.guideassistant.app.language.constant.LanguageConstan
 
 @RestController
 @RequestMapping(REQUEST_MAPPING)
-public class LanguageRestController extends BaseRestController<LanguageService, LanguageModel, LanguageSearchModel> {
+public class LanguageRestController extends BaseRestController<LanguageService, LanguageModel, LanguageSearchModel> implements LanguageRestService {
 
     public LanguageRestController(LanguageService service) {
         super(service);

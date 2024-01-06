@@ -11,7 +11,7 @@ import static tr.com.subasi.guideassistant.app.city.constant.CityConstant.REQUES
 
 @RestController
 @RequestMapping(REQUEST_MAPPING)
-public class CityRestController extends BaseRestController<CityService, CityModel, CitySearchModel> {
+public class CityRestController extends BaseRestController<CityService, CityModel, CitySearchModel> implements CityRestService {
 
     public CityRestController(CityService service) {
         super(service);

@@ -11,7 +11,7 @@ import static tr.com.subasi.guideassistant.app.district.constant.DistrictConstan
 
 @RestController
 @RequestMapping(REQUEST_MAPPING)
-public class DistrictRestController extends BaseRestController<DistrictService, DistrictModel, DistrictSearchModel> {
+public class DistrictRestController extends BaseRestController<DistrictService, DistrictModel, DistrictSearchModel> implements DistrictRestService{
 
     public DistrictRestController(DistrictService service) {
         super(service);

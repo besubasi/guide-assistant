@@ -11,7 +11,7 @@ import static tr.com.subasi.guideassistant.app.pricingtype.constant.PricingTypeC
 
 @RestController
 @RequestMapping(REQUEST_MAPPING)
-public class PricingTypeRestController extends BaseRestController<PricingTypeService, PricingTypeModel, PricingTypeSearchModel> {
+public class PricingTypeRestController extends BaseRestController<PricingTypeService, PricingTypeModel, PricingTypeSearchModel> implements PricingTypeRestService {
 
     public PricingTypeRestController(PricingTypeService service) {
         super(service);

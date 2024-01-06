@@ -11,7 +11,7 @@ import static tr.com.subasi.guideassistant.app.activitycompany.constant.Activity
 
 @RestController
 @RequestMapping(REQUEST_MAPPING)
-public class ActivityCompanyRestController extends BaseRestController<ActivityCompanyService, ActivityCompanyModel, ActivityCompanySearchModel> {
+public class ActivityCompanyRestController extends BaseRestController<ActivityCompanyService, ActivityCompanyModel, ActivityCompanySearchModel> implements ActivityCompanyRestService {
 
     public ActivityCompanyRestController(ActivityCompanyService service) {
         super(service);

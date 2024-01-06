@@ -11,7 +11,7 @@ import static tr.com.subasi.guideassistant.app.tourdescription.constant.TourDesc
 
 @RestController
 @RequestMapping(REQUEST_MAPPING)
-public class TourDescriptionRestController extends BaseRestController<TourDescriptionService, TourDescriptionModel, TourDescriptionSearchModel> {
+public class TourDescriptionRestController extends BaseRestController<TourDescriptionService, TourDescriptionModel, TourDescriptionSearchModel> implements TourDescriptionRestService{
 
     public TourDescriptionRestController(TourDescriptionService service) {
         super(service);
