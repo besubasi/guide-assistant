@@ -7,7 +7,7 @@ import tr.com.subasi.guideassistant.common.service.BaseService;
 
 import java.util.List;
 
-public abstract class BaseRestController<S extends BaseService<M, SM>, M extends IdModel, SM extends BaseSearchModel> {
+public abstract class BaseRestController<S extends BaseService<M, SM>, M extends IdModel, SM extends BaseSearchModel> implements BaseRestService<M, SM> {
 
     protected S service;
 
