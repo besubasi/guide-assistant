@@ -25,8 +25,8 @@ public class TourModel extends IdModel {
     @NotNull
     private Integer day;
 
-    private String tourCode;
-    private String tourName;
+    private String companyCode;
+    private String companyName;
     private String tourTypeName;
 
     private Boolean active = Boolean.TRUE;

@@ -19,24 +19,29 @@ public class TourServiceImpl extends BaseServiceImpl<TourModel, TourSearchModel,
 
     @Autowired
     public TourServiceImpl(TourRepository repository, TourConverter converter) {
-         super(repository, converter);
+        super(repository, converter);
     }
 
     @Override
     public List<TourModel> getList2(TourSearchModel searchModel) {
+        List<Tuple> tupleList = repository.getList2(searchModel);
+        return this.convertToModel(tupleList);
+    }
 
-        List<Tuple> tupleList = repository.getListWithCompanyAndTourType();
-
+    private List<TourModel> convertToModel(List<Tuple> tupleList) {
         List<TourModel> tourModelList = new ArrayList<>();
-        CollectionUtils.emptyIfNull(tupleList).forEach(tuple -> {
-            TourEntity tourEntity = tuple.get(1, TourEntity.class);
-            TourModel tourModel = converter.convertToModel(tourEntity);
-            tourModel.setTourCode(tuple.get(2, String.class));
-            tourModel.setTourName(tuple.get(3, String.class));
-            tourModel.setTourTypeName(tuple.get(4, String.class));
-            tourModelList.add(tourModel);
-        });
-
+        CollectionUtils.emptyIfNull(tupleList).forEach(tuple ->
+                tourModelList.add(this.convertToModel(tuple))
+        );
         return tourModelList;
+    }
+
+    private TourModel convertToModel(Tuple tuple) {
+        TourEntity tourEntity = tuple.get(0, TourEntity.class);
+        TourModel tourModel = converter.convertToModel(tourEntity);
+        tourModel.setCompanyCode(tuple.get("companyCode", String.class));
+        tourModel.setCompanyName(tuple.get("companyName", String.class));
+        tourModel.setTourTypeName(tuple.get("tourTypeName", String.class));
+        return tourModel;
     }
 }

@@ -19,6 +19,9 @@ public class TourSearchModel extends BaseSearchModel {
     private Integer day;
     private Boolean active;
 
+    private Long companyCode;
+    private Long tourTypeName;
+
 }
 
 
