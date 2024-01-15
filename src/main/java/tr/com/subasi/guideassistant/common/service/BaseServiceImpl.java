@@ -8,6 +8,7 @@ import tr.com.subasi.guideassistant.common.entity.IdEntity;
 import tr.com.subasi.guideassistant.common.model.BaseSearchModel;
 import tr.com.subasi.guideassistant.common.model.IdModel;
 import tr.com.subasi.guideassistant.common.model.Page;
+import tr.com.subasi.guideassistant.common.util.SortUtil;
 
 import java.util.List;
 
@@ -47,7 +48,8 @@ public abstract class BaseServiceImpl<M extends IdModel, SM extends BaseSearchMo
     @Override
     public Page<M> getPage(SM searchModel) {
         LOGGER.info("SM : " + searchModel);
-        return new Page<>();
+        org.springframework.data.domain.Page<E> page = repository.findAll(SortUtil.convertToPageRequest(searchModel.getPageable()));
+        return new Page<>(converter.convertToModelList(page.getContent()), page.getTotalElements(), page.getTotalPages(), searchModel.getPageable());
     }
 
 }
