@@ -12,5 +12,6 @@ public interface MappingConstant {
     String MAPPING_GET_LIST2 = "/getList2";
 
     String MAPPING_GET_PAGE = "/getPage";
+    String MAPPING_GET_PAGE2 = "/getPage2";
 
 }

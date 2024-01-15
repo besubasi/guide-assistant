@@ -9,6 +9,8 @@ import tr.com.subasi.guideassistant.app.tour.entity.TourEntity;
 import tr.com.subasi.guideassistant.app.tour.model.TourModel;
 import tr.com.subasi.guideassistant.app.tour.model.TourSearchModel;
 import tr.com.subasi.guideassistant.app.tour.repository.TourRepository;
+import tr.com.subasi.guideassistant.app.tour.repository.TourRepositoryImpl;
+import tr.com.subasi.guideassistant.common.model.Page;
 import tr.com.subasi.guideassistant.common.service.BaseServiceImpl;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ import java.util.List;
 public class TourServiceImpl extends BaseServiceImpl<TourModel, TourSearchModel, TourEntity, TourRepository, TourConverter> implements TourService {
 
     @Autowired
-    public TourServiceImpl(TourRepository repository, TourConverter converter) {
+    public TourServiceImpl(TourRepositoryImpl repository, TourConverter converter) {
         super(repository, converter);
     }
 
@@ -26,6 +28,12 @@ public class TourServiceImpl extends BaseServiceImpl<TourModel, TourSearchModel,
     public List<TourModel> getList2(TourSearchModel searchModel) {
         List<Tuple> tupleList = repository.getList2(searchModel);
         return this.convertToModel(tupleList);
+    }
+
+    @Override
+    public Page<TourModel> getPage2(TourSearchModel searchModel) {
+        Page<Tuple> page = repository.getPage2(searchModel);
+        return new Page<>(this.convertToModel(page.getData()), page.getTotalElements(), page.getTotalPages(), searchModel.getPageable());
     }
 
     private List<TourModel> convertToModel(List<Tuple> tupleList) {

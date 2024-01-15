@@ -3,6 +3,7 @@ package tr.com.subasi.guideassistant.common.controller;
 import tr.com.subasi.guideassistant.common.model.ApiResponse;
 import tr.com.subasi.guideassistant.common.model.BaseSearchModel;
 import tr.com.subasi.guideassistant.common.model.IdModel;
+import tr.com.subasi.guideassistant.common.model.Page;
 import tr.com.subasi.guideassistant.common.service.BaseService;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public abstract class BaseRestController<S extends BaseService<M, SM>, M extends
         return new ApiResponse<>(service.getList(searchModel));
     }
 
-    public ApiResponse<List<M>> getPage(SM searchModel) {
+    public ApiResponse<Page<M>> getPage(SM searchModel) {
         return new ApiResponse<>(service.getPage(searchModel));
     }
 }

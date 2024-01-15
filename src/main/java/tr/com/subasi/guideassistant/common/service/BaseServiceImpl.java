@@ -3,12 +3,12 @@ package tr.com.subasi.guideassistant.common.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.JpaRepository;
-import tr.com.subasi.guideassistant.common.entity.IdEntity;
 import tr.com.subasi.guideassistant.common.converter.BaseConverter;
-import tr.com.subasi.guideassistant.common.model.IdModel;
+import tr.com.subasi.guideassistant.common.entity.IdEntity;
 import tr.com.subasi.guideassistant.common.model.BaseSearchModel;
+import tr.com.subasi.guideassistant.common.model.IdModel;
+import tr.com.subasi.guideassistant.common.model.Page;
 
-import java.util.Collections;
 import java.util.List;
 
 public abstract class BaseServiceImpl<M extends IdModel, SM extends BaseSearchModel, E extends IdEntity, R extends JpaRepository<E, Long>, C extends BaseConverter<M, E>> implements BaseService<M, SM> {
@@ -44,12 +44,10 @@ public abstract class BaseServiceImpl<M extends IdModel, SM extends BaseSearchMo
         return this.converter.convertToModelList(repository.findAll());
     }
 
-    // TODO getAll
-
     @Override
-    public List<M> getPage(SM searchModel) {
+    public Page<M> getPage(SM searchModel) {
         LOGGER.info("SM : " + searchModel);
-        return Collections.emptyList();
+        return new Page<>();
     }
 
 }

@@ -6,6 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import tr.com.subasi.guideassistant.common.model.ApiResponse;
+import tr.com.subasi.guideassistant.common.model.Page;
 
 import java.util.List;
 
@@ -27,6 +28,6 @@ public interface BaseRestService<M, SM> {
     ApiResponse<List<M>> getList(@Valid @RequestBody SM searchModel);
 
     @PostMapping(value = MAPPING_GET_PAGE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    ApiResponse<List<M>> getPage(@Valid @RequestBody SM searchModel);
+    ApiResponse<Page<M>> getPage(@Valid @RequestBody SM searchModel);
 
 }
