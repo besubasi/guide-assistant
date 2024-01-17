@@ -1,4 +1,4 @@
-package tr.com.subasi.guideassistant.app.activitygallery.model;
+package tr.com.subasi.guideassistant.app.tourgallery.model;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -12,10 +12,10 @@ import tr.com.subasi.guideassistant.common.model.BaseModel;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class ActivityGalleryModel extends BaseModel {
+public class TourGalleryModel extends BaseModel {
 
     @NotNull
-    private Long activityId;
+    private Long tourId;
     @NotNull
     private Long fileContentId;
     @NotNull

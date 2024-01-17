@@ -1,4 +1,4 @@
-package tr.com.subasi.guideassistant.app.activitygallery.model;
+package tr.com.subasi.guideassistant.app.tourgallery.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,9 +11,9 @@ import tr.com.subasi.guideassistant.common.model.BaseSearchModel;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class ActivityGallerySearchModel extends BaseSearchModel {
+public class TourGallerySearchModel extends BaseSearchModel {
 
-    private Long activityId;
+    private Long tourId;
     private Long fileContentId;
     private Boolean premier;
 

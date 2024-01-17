@@ -75,6 +75,7 @@ public class ActivityGalleryRepositoryImpl extends SimpleJpaRepository<ActivityG
 
         ofNullable(searchModel.getActivityId()).ifPresent(param -> predicates.add(builder.and(builder.equal(activityGalleryEntity.get("activityId"), param))));
         ofNullable(searchModel.getFileContentId()).ifPresent(param -> predicates.add(builder.and(builder.equal(activityGalleryEntity.get("fileContentId"), param))));
+        ofNullable(searchModel.getPremier()).ifPresent(param -> predicates.add(builder.and(builder.equal(activityGalleryEntity.get("premier"), param))));
 
         if (CollectionUtils.isNotEmpty(predicates))
             query.where(predicates.toArray(new Predicate[0]));
