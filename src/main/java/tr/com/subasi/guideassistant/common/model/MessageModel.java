@@ -12,6 +12,12 @@ import java.util.List;
 @Data
 public class MessageModel implements Serializable {
 
+    @NotBlank
+    private EnumMessageType type;
+    @NotBlank
+    private String key;
+    private List<Object> parameters;
+
     public MessageModel(EnumMessageType type, String key) {
         this.type = type;
         this.key = key;
@@ -21,12 +27,5 @@ public class MessageModel implements Serializable {
         this(type, key);
         this.parameters = parameters;
     }
-
-    @NotBlank
-    private EnumMessageType type;
-    @NotBlank
-    private String key;
-    private List<Object> parameters;
-
 
 }
