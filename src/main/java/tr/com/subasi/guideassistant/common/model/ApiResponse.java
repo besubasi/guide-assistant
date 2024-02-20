@@ -12,11 +12,11 @@ import java.util.List;
 @AllArgsConstructor
 public class ApiResponse<T> implements Serializable {
 
-    T body;
+    T data;
     List<MessageModel> messageList;
 
-    public ApiResponse(T body) {
-        this.body = body;
+    public ApiResponse(T data) {
+        this.data = data;
     }
 
     public ApiResponse(List<MessageModel> messageList) {
