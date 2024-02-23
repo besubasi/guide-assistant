@@ -11,4 +11,8 @@ public interface TourTypeConstant extends CommonConstant {
 
     String COLUMN_COMPANY_ID = "COMPANY_ID";
     String COLUMN_TOUR_CATEGORY_ID = "TOUR_CATEGORY_ID";
+
+    String FK_TOUR_TYPE_TO_COMPANY = "FK_TOUR_TYPE_TO_COMPANY";
+    String FK_TOUR_TYPE_TO_TOUR_CATEGORY = "FK_TOUR_TYPE_TO_TOUR_CATEGORY";
+
 }

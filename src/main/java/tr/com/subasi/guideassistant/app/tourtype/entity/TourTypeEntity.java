@@ -1,13 +1,13 @@
 package tr.com.subasi.guideassistant.app.tourtype.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import tr.com.subasi.guideassistant.app.company.entity.CompanyEntity;
+import tr.com.subasi.guideassistant.app.tourcategory.entity.TourCategoryEntity;
 import tr.com.subasi.guideassistant.common.entity.IdEntity;
 
 import static tr.com.subasi.guideassistant.app.tourtype.constant.TourTypeConstant.*;
@@ -35,5 +35,13 @@ public class TourTypeEntity extends IdEntity {
     @NotNull
     @Column(name = COLUMN_IS_ACTIVE)
     private Boolean active = Boolean.TRUE;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = COLUMN_COMPANY_ID, foreignKey = @ForeignKey(name = FK_TOUR_TYPE_TO_COMPANY), insertable = false, updatable = false)
+    private CompanyEntity company;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = COLUMN_TOUR_CATEGORY_ID, foreignKey = @ForeignKey(name = FK_TOUR_TYPE_TO_TOUR_CATEGORY), insertable = false, updatable = false)
+    private TourCategoryEntity tourCategory;
 
 }

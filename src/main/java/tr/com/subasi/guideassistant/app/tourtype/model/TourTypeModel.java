@@ -22,4 +22,8 @@ public class TourTypeModel extends IdModel {
     private String name;
     private Boolean active = Boolean.TRUE;
 
+    private String companyCode;
+    private String companyName;
+    private String tourCategoryName;
+
 }
