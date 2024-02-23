@@ -5,13 +5,8 @@ public interface MappingConstant {
 
     String MAPPING_SAVE = "/save";
     String MAPPING_DELETE_BY_ID = "/deleteById/{id}";
-
     String MAPPING_GET_BY_ID = "/getById/{id}";
-
     String MAPPING_GET_LIST = "/getList";
-    String MAPPING_GET_LIST2 = "/getList2";
-
     String MAPPING_GET_PAGE = "/getPage";
-    String MAPPING_GET_PAGE2 = "/getPage2";
 
 }

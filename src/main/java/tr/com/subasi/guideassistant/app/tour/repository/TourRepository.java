@@ -13,9 +13,10 @@ import java.util.List;
 @Repository
 public interface TourRepository extends JpaRepository<TourEntity, Long> {
 
-    List<Tuple> getList2(TourSearchModel searchModel);
+    List<Tuple> getList(TourSearchModel searchModel);
 
-    Page<Tuple> getPage2(TourSearchModel searchModel);
+    Page<Tuple> getPage(TourSearchModel searchModel);
 
+    Tuple getDetail(Long id);
 
 }

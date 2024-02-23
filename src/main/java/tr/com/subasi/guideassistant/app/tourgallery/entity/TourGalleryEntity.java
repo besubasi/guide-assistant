@@ -26,12 +26,12 @@ public class TourGalleryEntity extends BaseEntity {
     private Long tourId;
 
     @NotNull
-    @Column(name = COLUMN_FILE_CONTENT_ID)
-    private Long fileContentId;
+    @Column(name = COLUMN_CONTENT_URL)
+    private String contentUrl;
 
     @NotNull
     @Column(name = COLUMN_PREMIER)
-    private Boolean premier;
+    private Boolean premier = Boolean.FALSE;
 
     @NotNull
     @Column(name = COLUMN_LINE_NUMBER)

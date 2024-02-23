@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import tr.com.subasi.guideassistant.app.company.entity.CompanyEntity;
 import tr.com.subasi.guideassistant.app.tour.entity.TourEntity;
 import tr.com.subasi.guideassistant.app.tour.model.TourSearchModel;
+import tr.com.subasi.guideassistant.app.tourcategory.entity.TourCategoryEntity;
 import tr.com.subasi.guideassistant.app.tourtype.entity.TourTypeEntity;
 import tr.com.subasi.guideassistant.common.model.Page;
 import tr.com.subasi.guideassistant.common.model.Pageable;
@@ -30,12 +31,12 @@ public class TourRepositoryImpl extends SimpleJpaRepository<TourEntity, Long> im
     }
 
     @Override
-    public List<Tuple> getList2(TourSearchModel searchModel) {
+    public List<Tuple> getList(TourSearchModel searchModel) {
         return entityManager.createQuery(this.prepareQuery(searchModel)).getResultList();
     }
 
     @Override
-    public Page<Tuple> getPage2(TourSearchModel searchModel) {
+    public Page<Tuple> getPage(TourSearchModel searchModel) {
         long count = this.getCount(searchModel);
         if (count == 0)
             return new Page<>(Collections.emptyList(), searchModel.getPageable());
@@ -50,6 +51,11 @@ public class TourRepositoryImpl extends SimpleJpaRepository<TourEntity, Long> im
         return new Page<>(resultList, count, totalPages, pageable);
     }
 
+    @Override
+    public Tuple getDetail(Long id) {
+        return null;
+    }
+
     private CriteriaQuery<Tuple> prepareQuery(TourSearchModel searchModel) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Tuple> query = criteriaBuilder.createTupleQuery();
@@ -57,12 +63,14 @@ public class TourRepositoryImpl extends SimpleJpaRepository<TourEntity, Long> im
         Root<TourEntity> tour = query.from(TourEntity.class);
         Join<TourEntity, CompanyEntity> company = tour.join("company", JoinType.INNER);
         Join<TourEntity, TourTypeEntity> tourType = tour.join("tourType", JoinType.INNER);
+        Join<TourTypeEntity, TourCategoryEntity> tourCategory = tourType.join("tourCategory", JoinType.INNER);
 
         query.multiselect(
                 tour,
                 company.get("code").alias("companyCode"),
                 company.get("name").alias("companyName"),
-                tourType.get("name").alias("tourTypeName")
+                tourType.get("name").alias("tourTypeName"),
+                tourCategory.get("name").alias("tourCategoryName")
         );
 
         this.prepareWhereCriteria(searchModel, criteriaBuilder, query, tour, company, tourType);
@@ -88,13 +96,11 @@ public class TourRepositoryImpl extends SimpleJpaRepository<TourEntity, Long> im
 
         ofNullable(searchModel.getId()).ifPresent(param -> predicates.add(builder.and(builder.equal(tourEntity.get("id"), param))));
         ofNullable(searchModel.getCompanyId()).ifPresent(param -> predicates.add(builder.and(builder.equal(companyEntity.get("id"), param))));
-        ofNullable(searchModel.getCompanyId()).ifPresent(param -> predicates.add(builder.and(builder.equal(tourTypeEntity.get("id"), param))));
+        ofNullable(searchModel.getTourTypeId()).ifPresent(param -> predicates.add(builder.and(builder.equal(tourTypeEntity.get("id"), param))));
         ofNullable(searchModel.getCode()).ifPresent(param -> predicates.add(builder.and(builder.equal(tourEntity.get("code"), param))));
         ofNullable(searchModel.getName()).ifPresent(param -> predicates.add(builder.and(builder.equal(tourEntity.get("name"), param))));
         ofNullable(searchModel.getDay()).ifPresent(param -> predicates.add(builder.and(builder.equal(tourEntity.get("day"), param))));
         ofNullable(searchModel.getActive()).ifPresent(param -> predicates.add(builder.and(builder.equal(tourEntity.get("active"), param))));
-        ofNullable(searchModel.getCompanyCode()).ifPresent(param -> predicates.add(builder.and(builder.equal(companyEntity.get("code"), param))));
-        ofNullable(searchModel.getTourTypeName()).ifPresent(param -> predicates.add(builder.and(builder.equal(tourTypeEntity.get("name"), param))));
 
         if (CollectionUtils.isNotEmpty(predicates))
             query.where(predicates.toArray(new Predicate[0]));

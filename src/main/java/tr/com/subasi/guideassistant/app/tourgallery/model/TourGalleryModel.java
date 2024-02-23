@@ -7,7 +7,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import tr.com.subasi.guideassistant.common.model.BaseModel;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,7 +16,7 @@ public class TourGalleryModel extends BaseModel {
     @NotNull
     private Long tourId;
     @NotNull
-    private Long fileContentId;
+    private String contentUrl;
     @NotNull
     private Boolean premier;
     @NotNull

@@ -74,7 +74,6 @@ public class TourGalleryRepositoryImpl extends SimpleJpaRepository<TourGalleryEn
         List<Predicate> predicates = new ArrayList<>();
 
         ofNullable(searchModel.getTourId()).ifPresent(param -> predicates.add(builder.and(builder.equal(tourGalleryEntity.get("tourId"), param))));
-        ofNullable(searchModel.getFileContentId()).ifPresent(param -> predicates.add(builder.and(builder.equal(tourGalleryEntity.get("fileContentId"), param))));
         ofNullable(searchModel.getPremier()).ifPresent(param -> predicates.add(builder.and(builder.equal(tourGalleryEntity.get("premier"), param))));
 
         if (CollectionUtils.isNotEmpty(predicates))

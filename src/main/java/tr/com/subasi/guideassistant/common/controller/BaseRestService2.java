@@ -19,10 +19,10 @@ public interface BaseRestService2<SVM, M, SM> {
     ApiResponse<M> save(@Valid @RequestBody SVM saveModel);
 
     @DeleteMapping(MAPPING_DELETE_BY_ID)
-    void deleteById(@NotNull @PathVariable Long id);
+    void deleteById(@NotNull @PathVariable("id") Long id);
 
     @GetMapping(value = MAPPING_GET_BY_ID, produces = MediaType.APPLICATION_JSON_VALUE)
-    ApiResponse<M> getById(@NotNull @PathVariable Long id);
+    ApiResponse<M> getById(@NotNull @PathVariable("id") Long id);
 
     @PostMapping(value = MAPPING_GET_LIST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     ApiResponse<List<M>> getList(@Valid @RequestBody SM searchModel);

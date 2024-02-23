@@ -12,6 +12,7 @@ import tr.com.subasi.guideassistant.common.entity.BaseEntity;
 
 
 import static tr.com.subasi.guideassistant.app.activitygallery.constant.ActivityGalleryConstant.*;
+import static tr.com.subasi.guideassistant.app.activitygallery.constant.ActivityGalleryConstant.COLUMN_CONTENT_URL;
 
 @Data
 @NoArgsConstructor
@@ -26,12 +27,12 @@ public class ActivityGalleryEntity extends BaseEntity {
     private Long activityId;
 
     @NotNull
-    @Column(name = COLUMN_FILE_CONTENT_ID)
-    private Long fileContentId;
+    @Column(name = COLUMN_CONTENT_URL)
+    private String contentUrl;
 
     @NotNull
     @Column(name = COLUMN_PREMIER)
-    private Boolean premier;
+    private Boolean premier = Boolean.FALSE;
 
     @NotNull
     @Column(name = COLUMN_LINE_NUMBER)

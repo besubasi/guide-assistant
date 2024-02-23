@@ -1,15 +1,26 @@
 package tr.com.subasi.guideassistant.app.tour.service;
 
+import jakarta.validation.constraints.NotNull;
+import tr.com.subasi.guideassistant.app.tour.model.TourDetailModel;
 import tr.com.subasi.guideassistant.app.tour.model.TourModel;
+import tr.com.subasi.guideassistant.app.tour.model.TourSaveModel;
 import tr.com.subasi.guideassistant.app.tour.model.TourSearchModel;
 import tr.com.subasi.guideassistant.common.model.Page;
-import tr.com.subasi.guideassistant.common.service.BaseService;
 
 import java.util.List;
 
-public interface TourService extends BaseService<TourModel, TourSearchModel> {
+public interface TourService {
 
-    List<TourModel> getList2(TourSearchModel searchModel);
-    Page<TourModel> getPage2(TourSearchModel searchModel);
+    TourSaveModel save(@NotNull TourSaveModel model);
+
+    void deleteById(@NotNull Long id);
+
+    TourModel getById(@NotNull Long id);
+
+    List<TourModel> getList(@NotNull TourSearchModel searchModel);
+
+    Page<TourModel> getPage(@NotNull TourSearchModel searchModel);
+
+    TourDetailModel getTourDetail(@NotNull Long id);
 
 }

@@ -14,7 +14,6 @@ import tr.com.subasi.guideassistant.common.model.BaseSearchModel;
 public class TourGallerySearchModel extends BaseSearchModel {
 
     private Long tourId;
-    private Long fileContentId;
     private Boolean premier;
 
 }

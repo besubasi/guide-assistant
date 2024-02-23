@@ -17,7 +17,7 @@ public class ActivityGalleryModel extends BaseModel {
     @NotNull
     private Long activityId;
     @NotNull
-    private Long fileContentId;
+    private String contentUrl;
     @NotNull
     private Boolean premier;
     @NotNull
