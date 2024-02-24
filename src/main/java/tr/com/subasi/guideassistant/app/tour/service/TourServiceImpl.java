@@ -79,6 +79,7 @@ public class TourServiceImpl implements TourService {
         tourModel.setCompanyCode(tuple.get("companyCode", String.class));
         tourModel.setCompanyName(tuple.get("companyName", String.class));
         tourModel.setTourTypeName(tuple.get("tourTypeName", String.class));
+        tourModel.setTourCategoryName(tuple.get("tourCategoryName", String.class));
         return tourModel;
     }
 }
