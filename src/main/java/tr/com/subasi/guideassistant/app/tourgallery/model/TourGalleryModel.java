@@ -5,20 +5,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import tr.com.subasi.guideassistant.common.model.BaseModel;
+import tr.com.subasi.guideassistant.common.model.IdModel;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class TourGalleryModel extends BaseModel {
+public class TourGalleryModel extends IdModel {
 
     @NotNull
     private Long tourId;
     @NotNull
     private String contentUrl;
-    @NotNull
-    private Boolean premier;
     @NotNull
     private Integer lineNumber;
     private String description;

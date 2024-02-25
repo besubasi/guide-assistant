@@ -6,6 +6,7 @@ public interface TourDescriptionConstant extends CommonConstant {
 
 
     String REQUEST_MAPPING = "/guide/tour-description";
+    String MAPPING_GET_BY_TOUR_ID = "/getByTourId/{id}";
 
     String TABLE_NAME = "TOUR_DESCRIPTION";
     String TABLE_SEQ_NAME = TABLE_NAME + SEQUENCE_SUFFIX;

@@ -8,4 +8,6 @@ import tr.com.subasi.guideassistant.app.tourdescription.entity.TourDescriptionEn
 @Repository
 public interface TourDescriptionRepository extends JpaRepository<TourDescriptionEntity, Long> {
 
+    TourDescriptionEntity getByTourId(Long tourId);
+
 }

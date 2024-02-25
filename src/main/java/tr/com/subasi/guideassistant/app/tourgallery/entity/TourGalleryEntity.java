@@ -8,8 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import tr.com.subasi.guideassistant.common.entity.BaseEntity;
-
+import tr.com.subasi.guideassistant.common.entity.IdEntity;
 
 import static tr.com.subasi.guideassistant.app.tourgallery.constant.TourGalleryConstant.*;
 
@@ -19,7 +18,7 @@ import static tr.com.subasi.guideassistant.app.tourgallery.constant.TourGalleryC
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(schema = SCHEMA_GUIDE, name = TABLE_NAME)
-public class TourGalleryEntity extends BaseEntity {
+public class TourGalleryEntity extends IdEntity {
 
     @NotNull
     @Column(name = COLUMN_TOUR_ID)
@@ -28,10 +27,6 @@ public class TourGalleryEntity extends BaseEntity {
     @NotNull
     @Column(name = COLUMN_CONTENT_URL)
     private String contentUrl;
-
-    @NotNull
-    @Column(name = COLUMN_PREMIER)
-    private Boolean premier = Boolean.FALSE;
 
     @NotNull
     @Column(name = COLUMN_LINE_NUMBER)

@@ -1,9 +1,14 @@
 package tr.com.subasi.guideassistant.app.tourdescription.service;
 
+import jakarta.validation.constraints.NotNull;
 import tr.com.subasi.guideassistant.app.tourdescription.model.TourDescriptionModel;
-import tr.com.subasi.guideassistant.app.tourdescription.model.TourDescriptionSearchModel;
-import tr.com.subasi.guideassistant.common.service.BaseService;
 
-public interface TourDescriptionService extends BaseService<TourDescriptionModel, TourDescriptionSearchModel> {
+public interface TourDescriptionService {
+
+    TourDescriptionModel save(@NotNull TourDescriptionModel model);
+
+    void deleteById(@NotNull Long id);
+
+    TourDescriptionModel getByTourId(@NotNull Long tourId);
 
 }
