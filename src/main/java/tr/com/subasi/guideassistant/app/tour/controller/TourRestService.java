@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotNull;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import tr.com.subasi.guideassistant.app.tour.model.TourDetailModel;
 import tr.com.subasi.guideassistant.app.tour.model.TourModel;
 import tr.com.subasi.guideassistant.app.tour.model.TourSaveModel;
 import tr.com.subasi.guideassistant.app.tour.model.TourSearchModel;
@@ -18,8 +17,6 @@ import static tr.com.subasi.guideassistant.common.constant.MappingConstant.*;
 
 @Validated
 public interface TourRestService {
-
-    String MAPPING_GET_TOUR_DETAIL = "/getTourDetail/{id}";
 
     @PostMapping(value = MAPPING_SAVE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     ApiResponse<TourSaveModel> save(@Valid @RequestBody TourSaveModel model);
@@ -35,8 +32,5 @@ public interface TourRestService {
 
     @PostMapping(value = MAPPING_GET_PAGE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     ApiResponse<Page<TourModel>> getPage(@Valid @RequestBody TourSearchModel searchModel);
-
-    @GetMapping(value = MAPPING_GET_TOUR_DETAIL, produces = MediaType.APPLICATION_JSON_VALUE)
-    ApiResponse<TourDetailModel> getTourDetail(@NotNull @PathVariable("id") Long id);
 
 }

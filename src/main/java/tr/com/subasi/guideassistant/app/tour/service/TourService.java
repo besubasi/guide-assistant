@@ -1,7 +1,6 @@
 package tr.com.subasi.guideassistant.app.tour.service;
 
 import jakarta.validation.constraints.NotNull;
-import tr.com.subasi.guideassistant.app.tour.model.TourDetailModel;
 import tr.com.subasi.guideassistant.app.tour.model.TourModel;
 import tr.com.subasi.guideassistant.app.tour.model.TourSaveModel;
 import tr.com.subasi.guideassistant.app.tour.model.TourSearchModel;
@@ -20,7 +19,5 @@ public interface TourService {
     List<TourModel> getList(@NotNull TourSearchModel searchModel);
 
     Page<TourModel> getPage(@NotNull TourSearchModel searchModel);
-
-    TourDetailModel getTourDetail(@NotNull Long id);
 
 }
