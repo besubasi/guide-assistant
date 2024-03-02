@@ -15,4 +15,6 @@ public interface TourGalleryRepository extends JpaRepository<TourGalleryEntity, 
 
     Page<TourGalleryEntity> getPage(TourGallerySearchModel searchModel);
 
+    List<TourGalleryEntity> getByTourIdOrderByLineNumber(Long tourId);
+
 }

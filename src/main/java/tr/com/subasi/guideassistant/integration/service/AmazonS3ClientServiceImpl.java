@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
-import software.amazon.awssdk.services.s3.model.Bucket;
-import software.amazon.awssdk.services.s3.model.ListBucketsResponse;
-import software.amazon.awssdk.services.s3.model.PutObjectRequest;
-import software.amazon.awssdk.services.s3.model.PutObjectResponse;
+import software.amazon.awssdk.services.s3.model.*;
 import tr.com.subasi.guideassistant.integration.model.AmazonS3FileUploadModel;
 
 import java.io.ByteArrayInputStream;
@@ -55,15 +52,20 @@ public class AmazonS3ClientServiceImpl implements AmazonS3ClientService {
     }
 
     @Override
-    public String upload(AmazonS3FileUploadModel model) {
+    public String uploadContent(AmazonS3FileUploadModel model) {
         String key = model.getFolderName() + "/" + model.getFileName();
+        return this.uploadContentByKey(key, model.getContent());
+    }
+
+    @Override
+    public String uploadContentByKey(String key, byte[] content) {
         PutObjectRequest putObjectRequest = PutObjectRequest.builder()
                 .bucket(this.bucketName)
                 .key(key)
                 .build();
 
-        InputStream inputStream = new ByteArrayInputStream(model.getContent());
-        PutObjectResponse putObjectResponse = s3Client.putObject(putObjectRequest, RequestBody.fromInputStream(inputStream, model.getContent().length));
+        InputStream inputStream = new ByteArrayInputStream(content);
+        PutObjectResponse putObjectResponse = s3Client.putObject(putObjectRequest, RequestBody.fromInputStream(inputStream, content.length));
 
         System.out.println("putObjectResponse = " + putObjectResponse);
         try {
@@ -73,5 +75,27 @@ public class AmazonS3ClientServiceImpl implements AmazonS3ClientService {
         }
 
         return bucketUrl + key;
+    }
+
+    @Override
+    public void deleteContentByUrl(String contentUrl) {
+        String key = contentUrl.replace(bucketUrl, "");
+        this.deleteContentByKey(key);
+    }
+
+    @Override
+    public void deleteContentByKey(String key) {
+        DeleteObjectRequest deleteObjectRequest = DeleteObjectRequest.builder()
+                .bucket(this.bucketName)
+                .key(key)
+                .build();
+        s3Client.deleteObject(deleteObjectRequest);
+    }
+
+    @Override
+    public void updateContentByUrl(String contentUrl, byte[] content) {
+        String key = contentUrl.replace(bucketUrl, "");
+        this.deleteContentByKey(key);
+        this.uploadContentByKey(key, content);
     }
 }

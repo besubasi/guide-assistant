@@ -11,13 +11,10 @@ import tr.com.subasi.guideassistant.common.model.IdModel;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class TourGalleryModel extends IdModel {
+public class TourGalleryUpdateModel extends IdModel {
 
     @NotNull
     private Long tourId;
-
-    @NotNull
-    private String contentUrl;
 
     @NotNull
     private Integer lineNumber;

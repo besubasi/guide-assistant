@@ -99,6 +99,6 @@ public class TourServiceImpl implements TourService {
         uploadModel.setFolderName(companyId + "/tour/" + tourId);
         uploadModel.setFileName(UUID.randomUUID() + ".jpg");
         uploadModel.setContent(content);
-        return this.amazonS3ClientService.upload(uploadModel);
+        return this.amazonS3ClientService.uploadContent(uploadModel);
     }
 }

@@ -10,6 +10,14 @@ public interface AmazonS3ClientService {
 
     List<String> listBucket();
 
-    String upload(AmazonS3FileUploadModel model);
+    String uploadContent(AmazonS3FileUploadModel model);
+
+    String uploadContentByKey(String key, byte[] content);
+
+    void deleteContentByUrl(String contentUrl);
+
+    void deleteContentByKey(String key);
+
+    void updateContentByUrl(String contentUrl, byte[] content);
 
 }
