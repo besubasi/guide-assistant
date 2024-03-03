@@ -6,9 +6,8 @@ import tr.com.subasi.guideassistant.app.tour.repository.TourRepository;
 import tr.com.subasi.guideassistant.app.tourgallery.converter.TourGalleryConverter;
 import tr.com.subasi.guideassistant.app.tourgallery.entity.TourGalleryEntity;
 import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryContentUpdateModel;
-import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryCreateModel;
+import tr.com.subasi.guideassistant.app.tourgallery.model.TourGallerySaveModel;
 import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryModel;
-import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryUpdateModel;
 import tr.com.subasi.guideassistant.app.tourgallery.repository.TourGalleryRepository;
 import tr.com.subasi.guideassistant.integration.model.AmazonS3FileUploadModel;
 import tr.com.subasi.guideassistant.integration.service.AmazonS3ClientService;
@@ -35,10 +34,10 @@ public class TourGalleryServiceImpl implements TourGalleryService {
     }
 
     @Override
-    public List<TourGalleryModel> createAll(List<TourGalleryCreateModel> modelList) {
+    public List<TourGalleryModel> createAll(List<TourGallerySaveModel> modelList) {
         TourEntity tourEntity = tourRepository.getReferenceById(modelList.get(0).getTourId());
 
-        for (TourGalleryCreateModel model : modelList) {
+        for (TourGallerySaveModel model : modelList) {
             String contentUrl = this.uploadAmazonS3(tourEntity.getCompanyId(), tourEntity.getId(), model.getContent().getBytes());
 
             TourGalleryEntity tourGalleryEntity = converter.convertToEntityByCreateModel(model);
@@ -54,7 +53,7 @@ public class TourGalleryServiceImpl implements TourGalleryService {
     }
 
     @Override
-    public TourGalleryModel create(TourGalleryCreateModel model) {
+    public TourGalleryModel create(TourGallerySaveModel model) {
         TourEntity tourEntity = tourRepository.getReferenceById(model.getTourId());
 
         String contentUrl = this.uploadAmazonS3(tourEntity.getCompanyId(), tourEntity.getId(), model.getContent().getBytes());
@@ -68,9 +67,9 @@ public class TourGalleryServiceImpl implements TourGalleryService {
     }
 
     @Override
-    public TourGalleryModel update(TourGalleryUpdateModel model) {
+    public TourGalleryModel update(TourGalleryModel model) {
         TourEntity tourEntity = tourRepository.getReferenceById(model.getTourId());
-        TourGalleryModel tourGalleryModel = converter.convertToModel(repository.save(converter.convertToEntityByUpdateModel(model)));
+        TourGalleryModel tourGalleryModel = converter.convertToModel(repository.save(converter.convertToEntity(model)));
         this.updateTourPremierContentUrl(tourEntity);
         return tourGalleryModel;
     }

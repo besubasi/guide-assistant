@@ -17,10 +17,10 @@ public class TourGalleryModel extends IdModel {
     private Long tourId;
 
     @NotNull
-    private String contentUrl;
+    private Integer lineNumber;
 
     @NotNull
-    private Integer lineNumber;
+    private String contentUrl;
     private String description;
 
 }

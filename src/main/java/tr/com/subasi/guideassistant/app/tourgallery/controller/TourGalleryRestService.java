@@ -6,9 +6,8 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryContentUpdateModel;
-import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryCreateModel;
+import tr.com.subasi.guideassistant.app.tourgallery.model.TourGallerySaveModel;
 import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryModel;
-import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryUpdateModel;
 import tr.com.subasi.guideassistant.common.model.ApiResponse;
 
 import java.util.List;
@@ -19,13 +18,13 @@ import static tr.com.subasi.guideassistant.common.constant.MappingConstant.*;
 public interface TourGalleryRestService {
 
     @PostMapping(value = MAPPING_CREATE_ALL, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    ApiResponse<List<TourGalleryModel>> createAll(@Valid @RequestBody List<TourGalleryCreateModel> modelList);
+    ApiResponse<List<TourGalleryModel>> createAll(@Valid @RequestBody List<TourGallerySaveModel> modelList);
 
     @PostMapping(value = MAPPING_CREATE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    ApiResponse<TourGalleryModel> create(@Valid @RequestBody TourGalleryCreateModel model);
+    ApiResponse<TourGalleryModel> create(@Valid @RequestBody TourGallerySaveModel model);
 
     @PostMapping(value = MAPPING_UPDATE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    ApiResponse<TourGalleryModel> update(@Valid @RequestBody TourGalleryUpdateModel model);
+    ApiResponse<TourGalleryModel> update(@Valid @RequestBody TourGalleryModel model);
 
     @PostMapping(value = MAPPING_UPDATE_CONTENT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     ApiResponse<TourGalleryModel> updateContent(@Valid @RequestBody TourGalleryContentUpdateModel model);

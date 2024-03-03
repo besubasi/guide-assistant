@@ -4,20 +4,19 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.validation.annotation.Validated;
 import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryContentUpdateModel;
-import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryCreateModel;
+import tr.com.subasi.guideassistant.app.tourgallery.model.TourGallerySaveModel;
 import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryModel;
-import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryUpdateModel;
 
 import java.util.List;
 
 @Validated
 public interface TourGalleryService {
 
-    List<TourGalleryModel> createAll(@Valid List<TourGalleryCreateModel> modelList);
+    List<TourGalleryModel> createAll(@Valid List<TourGallerySaveModel> modelList);
 
-    TourGalleryModel create(@Valid TourGalleryCreateModel model);
+    TourGalleryModel create(@Valid TourGallerySaveModel model);
 
-    TourGalleryModel update(@Valid TourGalleryUpdateModel model);
+    TourGalleryModel update(@Valid TourGalleryModel model);
 
     TourGalleryModel updateContent(@Valid TourGalleryContentUpdateModel model);
 

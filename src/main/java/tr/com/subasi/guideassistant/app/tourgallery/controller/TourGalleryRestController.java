@@ -3,9 +3,8 @@ package tr.com.subasi.guideassistant.app.tourgallery.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryContentUpdateModel;
-import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryCreateModel;
+import tr.com.subasi.guideassistant.app.tourgallery.model.TourGallerySaveModel;
 import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryModel;
-import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryUpdateModel;
 import tr.com.subasi.guideassistant.app.tourgallery.service.TourGalleryService;
 import tr.com.subasi.guideassistant.common.model.ApiResponse;
 
@@ -24,17 +23,17 @@ public class TourGalleryRestController implements TourGalleryRestService {
     }
 
     @Override
-    public ApiResponse<List<TourGalleryModel>> createAll(List<TourGalleryCreateModel> modelList) {
+    public ApiResponse<List<TourGalleryModel>> createAll(List<TourGallerySaveModel> modelList) {
         return new ApiResponse<>(service.createAll(modelList));
     }
 
     @Override
-    public ApiResponse<TourGalleryModel> create(TourGalleryCreateModel model) {
+    public ApiResponse<TourGalleryModel> create(TourGallerySaveModel model) {
         return new ApiResponse<>(service.create(model));
     }
 
     @Override
-    public ApiResponse<TourGalleryModel> update(TourGalleryUpdateModel model) {
+    public ApiResponse<TourGalleryModel> update(TourGalleryModel model) {
         return new ApiResponse<>(service.update(model));
     }
 
