@@ -5,11 +5,12 @@ import jakarta.validation.constraints.NotNull;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryContentUpdateModel;
-import tr.com.subasi.guideassistant.app.tourgallery.model.TourGallerySaveModel;
 import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryModel;
 import tr.com.subasi.guideassistant.common.model.ApiResponse;
 
+import java.io.IOException;
 import java.util.List;
 
 import static tr.com.subasi.guideassistant.common.constant.MappingConstant.*;
@@ -17,11 +18,8 @@ import static tr.com.subasi.guideassistant.common.constant.MappingConstant.*;
 @Validated
 public interface TourGalleryRestService {
 
-    @PostMapping(value = MAPPING_CREATE_ALL, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    ApiResponse<List<TourGalleryModel>> createAll(@Valid @RequestBody List<TourGallerySaveModel> modelList);
-
-    @PostMapping(value = MAPPING_CREATE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    ApiResponse<TourGalleryModel> create(@Valid @RequestBody TourGallerySaveModel model);
+    @PostMapping(value = MAPPING_CREATE_FILES)
+    ApiResponse<Boolean> createFiles(@RequestParam("tourId") Long tourId, @RequestParam("file") MultipartFile[] files) throws IOException;
 
     @PostMapping(value = MAPPING_UPDATE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     ApiResponse<TourGalleryModel> update(@Valid @RequestBody TourGalleryModel model);

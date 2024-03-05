@@ -11,7 +11,9 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class AmazonS3ClientServiceImpl implements AmazonS3ClientService {
@@ -59,9 +61,14 @@ public class AmazonS3ClientServiceImpl implements AmazonS3ClientService {
 
     @Override
     public String uploadContentByKey(String key, byte[] content) {
+
+        Map<String, String> metadata = new HashMap<>();
+        metadata.put("Content-Type", "image/jpeg");
+
         PutObjectRequest putObjectRequest = PutObjectRequest.builder()
                 .bucket(this.bucketName)
                 .key(key)
+                .metadata(metadata)
                 .build();
 
         InputStream inputStream = new ByteArrayInputStream(content);

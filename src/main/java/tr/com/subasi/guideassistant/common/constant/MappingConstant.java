@@ -10,6 +10,7 @@ public interface MappingConstant {
     String MAPPING_GET_PAGE = "/getPage";
 
 
+    String MAPPING_CREATE_FILES = "/createFiles";
     String MAPPING_CREATE_ALL = "/createAll";
     String MAPPING_CREATE = "/create";
     String MAPPING_UPDATE = "/update";

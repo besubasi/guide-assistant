@@ -3,7 +3,6 @@ package tr.com.subasi.guideassistant.app.tourgallery.converter;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import tr.com.subasi.guideassistant.app.tourgallery.entity.TourGalleryEntity;
-import tr.com.subasi.guideassistant.app.tourgallery.model.TourGallerySaveModel;
 import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryModel;
 import tr.com.subasi.guideassistant.common.converter.BaseConverter;
 
@@ -15,7 +14,5 @@ public interface TourGalleryConverter extends BaseConverter<TourGalleryModel, To
     List<TourGalleryModel> convertToModelList(List<TourGalleryEntity> entityList);
 
     TourGalleryModel convertToModel(TourGalleryEntity entity);
-
-    TourGalleryEntity convertToEntityByCreateModel(TourGallerySaveModel model);
 
 }
