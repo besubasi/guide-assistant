@@ -3,7 +3,6 @@ package tr.com.subasi.guideassistant.app.tourgallery.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryContentUpdateModel;
 import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryModel;
 import tr.com.subasi.guideassistant.app.tourgallery.service.TourGalleryService;
 import tr.com.subasi.guideassistant.common.model.ApiResponse;
@@ -24,18 +23,18 @@ public class TourGalleryRestController implements TourGalleryRestService {
     }
 
     @Override
-    public ApiResponse<Boolean> createFiles(Long tourId, MultipartFile[] files) throws IOException {
-        return new ApiResponse<>(service.createFiles(tourId, files));
+    public ApiResponse<Boolean> createContentList(Long tourId, MultipartFile[] files) throws IOException {
+        return new ApiResponse<>(service.createContentList(tourId, files));
     }
 
     @Override
-    public ApiResponse<TourGalleryModel> update(TourGalleryModel model) {
-        return new ApiResponse<>(service.update(model));
+    public ApiResponse<TourGalleryModel> updateContent(Long id, MultipartFile file) throws IOException {
+        return new ApiResponse<>(service.updateContent(id, file));
     }
 
     @Override
-    public ApiResponse<TourGalleryModel> updateContent(TourGalleryContentUpdateModel model) {
-        return new ApiResponse<>(service.updateContent(model));
+    public ApiResponse<TourGalleryModel> save(TourGalleryModel model) {
+        return new ApiResponse<>(service.save(model));
     }
 
     @Override

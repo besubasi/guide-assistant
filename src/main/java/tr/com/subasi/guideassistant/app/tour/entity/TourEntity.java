@@ -41,8 +41,8 @@ public class TourEntity extends IdEntity {
     @Column(name = COLUMN_DAY)
     private Integer day;
 
-    @Column(name = COLUMN_PREMIER_CONTENT_URL)
-    private String premierContentUrl;
+    @Column(name = COLUMN_CONTENT_URL)
+    private String contentUrl;
 
     @NotNull
     @Column(name = COLUMN_IS_ACTIVE)

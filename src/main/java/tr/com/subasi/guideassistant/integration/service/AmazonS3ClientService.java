@@ -18,6 +18,6 @@ public interface AmazonS3ClientService {
 
     void deleteContentByKey(String key);
 
-    void updateContentByUrl(String contentUrl, byte[] content);
+    String updateContentByUrl(String contentUrl, byte[] content);
 
 }

@@ -7,7 +7,6 @@ import tr.com.subasi.guideassistant.app.tour.entity.TourEntity;
 import tr.com.subasi.guideassistant.app.tour.repository.TourRepository;
 import tr.com.subasi.guideassistant.app.tourgallery.converter.TourGalleryConverter;
 import tr.com.subasi.guideassistant.app.tourgallery.entity.TourGalleryEntity;
-import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryContentUpdateModel;
 import tr.com.subasi.guideassistant.app.tourgallery.model.TourGalleryModel;
 import tr.com.subasi.guideassistant.app.tourgallery.repository.TourGalleryRepository;
 import tr.com.subasi.guideassistant.integration.model.AmazonS3FileUploadModel;
@@ -37,7 +36,7 @@ public class TourGalleryServiceImpl implements TourGalleryService {
     }
 
     @Override
-    public Boolean createFiles(Long tourId, MultipartFile[] files) throws IOException {
+    public Boolean createContentList(Long tourId, MultipartFile[] files) throws IOException {
         TourEntity tourEntity = tourRepository.getReferenceById(tourId);
         List<TourGalleryEntity> oldTourGalleryEntityList = repository.getByTourIdOrderByLineNumber(tourEntity.getId());
         int lineNumber = CollectionUtils.isNotEmpty(oldTourGalleryEntityList) ? oldTourGalleryEntityList.get(oldTourGalleryEntityList.size()-1).getLineNumber()+1 : 1;
@@ -52,24 +51,24 @@ public class TourGalleryServiceImpl implements TourGalleryService {
             newTourGalleryEntityList.add(entity);
         }
         repository.saveAll(newTourGalleryEntityList);
-
-        tourEntity.setPremierContentUrl(CollectionUtils.isNotEmpty(oldTourGalleryEntityList) ? oldTourGalleryEntityList.get(0).getContentUrl() : newTourGalleryEntityList.get(0).getContentUrl());
-        tourRepository.save(tourEntity);
+        this.updateTourContentUrl(tourEntity);
         return Boolean.TRUE;
     }
 
     @Override
-    public TourGalleryModel update(TourGalleryModel model) {
-        TourEntity tourEntity = tourRepository.getReferenceById(model.getTourId());
-        TourGalleryModel tourGalleryModel = converter.convertToModel(repository.save(converter.convertToEntity(model)));
-        this.updateTourPremierContentUrl(tourEntity);
+    public TourGalleryModel updateContent(Long id, MultipartFile file) throws IOException {
+        TourGalleryEntity tourGalleryEntity = repository.getReferenceById(id);
+        String contentUrl = amazonS3ClientService.updateContentByUrl(tourGalleryEntity.getContentUrl(), file.getBytes());
+        tourGalleryEntity.setContentUrl(contentUrl);
+        TourGalleryModel tourGalleryModel = converter.convertToModel(repository.save(tourGalleryEntity));
+        this.updateTourContentUrl(tourGalleryEntity.getTourId());
         return tourGalleryModel;
     }
 
     @Override
-    public TourGalleryModel updateContent(TourGalleryContentUpdateModel model) {
-        TourGalleryModel tourGalleryModel = converter.convertToModel(repository.getReferenceById(model.getId()));
-        amazonS3ClientService.updateContentByUrl(tourGalleryModel.getContentUrl(), model.getContent().getBytes());
+    public TourGalleryModel save(TourGalleryModel model) {
+        TourGalleryModel tourGalleryModel = converter.convertToModel(repository.save(converter.convertToEntity(model)));
+        this.updateTourContentUrl(tourGalleryModel.getTourId());
         return tourGalleryModel;
     }
 
@@ -77,6 +76,7 @@ public class TourGalleryServiceImpl implements TourGalleryService {
     public void deleteById(Long id) {
         TourGalleryEntity entity = repository.getReferenceById(id);
         amazonS3ClientService.deleteContentByUrl(entity.getContentUrl());
+        this.updateTourContentUrl(entity.getTourId());
         repository.deleteById(id);
     }
 
@@ -90,12 +90,18 @@ public class TourGalleryServiceImpl implements TourGalleryService {
         return converter.convertToModelList(repository.getByTourIdOrderByLineNumber(tourId));
     }
 
-    private void updateTourPremierContentUrl(TourEntity tourEntity) {
-        List<TourGalleryEntity> entityList = repository.getByTourIdOrderByLineNumber(tourEntity.getId());
-        tourEntity.setPremierContentUrl(entityList.get(0).getContentUrl());
-        tourRepository.save(tourEntity);
+    private void updateTourContentUrl(Long tourId) {
+        TourEntity tourEntity = tourRepository.getReferenceById(tourId);
+        this.updateTourContentUrl(tourEntity);
     }
-
+    private void updateTourContentUrl(TourEntity tourEntity) {
+        List<TourGalleryEntity> entityList = repository.getByTourIdOrderByLineNumber(tourEntity.getId());
+        String contentUrl = entityList.get(0).getContentUrl();
+        if(!contentUrl.equals(tourEntity.getContentUrl())){
+            tourEntity.setContentUrl(contentUrl);
+            tourRepository.save(tourEntity);
+        }
+    }
 
     private String uploadAmazonS3(Long companyId, Long tourId, byte[] content) {
         AmazonS3FileUploadModel uploadModel = new AmazonS3FileUploadModel();

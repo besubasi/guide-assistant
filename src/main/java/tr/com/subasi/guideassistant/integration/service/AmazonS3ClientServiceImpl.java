@@ -96,13 +96,14 @@ public class AmazonS3ClientServiceImpl implements AmazonS3ClientService {
                 .bucket(this.bucketName)
                 .key(key)
                 .build();
-        s3Client.deleteObject(deleteObjectRequest);
+        DeleteObjectResponse deleteObjectResponse = s3Client.deleteObject(deleteObjectRequest);
+        System.out.println("deleteObjectResponse = " + deleteObjectResponse);
     }
 
     @Override
-    public void updateContentByUrl(String contentUrl, byte[] content) {
+    public String updateContentByUrl(String contentUrl, byte[] content) {
         String key = contentUrl.replace(bucketUrl, "");
         this.deleteContentByKey(key);
-        this.uploadContentByKey(key, content);
+        return this.uploadContentByKey(key, content);
     }
 }

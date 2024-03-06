@@ -11,7 +11,7 @@ public interface TourConstant extends CommonConstant {
     String COLUMN_COMPANY_ID = "COMPANY_ID";
     String COLUMN_TOUR_TYPE_ID = "TOUR_TYPE_ID";
     String COLUMN_DAY = "DAY";
-    String COLUMN_PREMIER_CONTENT_URL = "PREMIER_CONTENT_URL";
+    String COLUMN_CONTENT_URL = "CONTENT_URL";
 
     String UX_TOUR_CODE = "UX_TOUR_CODE";
     String FK_TOUR_TO_COMPANY = "FK_TOUR_TO_COMPANY";
