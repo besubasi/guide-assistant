@@ -11,9 +11,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class AmazonS3ClientServiceImpl implements AmazonS3ClientService {
@@ -61,26 +59,20 @@ public class AmazonS3ClientServiceImpl implements AmazonS3ClientService {
 
     @Override
     public String uploadContentByKey(String key, byte[] content) {
-
-        Map<String, String> metadata = new HashMap<>();
-        metadata.put("Content-Type", "image/jpeg");
+//        Map<String, String> metadata = new HashMap<>();
+//        metadata.put("Content-Type", "image/jpeg");
 
         PutObjectRequest putObjectRequest = PutObjectRequest.builder()
                 .bucket(this.bucketName)
                 .key(key)
-                .metadata(metadata)
+//                .metadata(metadata)
                 .build();
 
-        InputStream inputStream = new ByteArrayInputStream(content);
-        PutObjectResponse putObjectResponse = s3Client.putObject(putObjectRequest, RequestBody.fromInputStream(inputStream, content.length));
-
-        System.out.println("putObjectResponse = " + putObjectResponse);
-        try {
-            inputStream.close();
+        try (InputStream inputStream = new ByteArrayInputStream(content)) {
+            s3Client.putObject(putObjectRequest, RequestBody.fromInputStream(inputStream, content.length));
         } catch (IOException e) {
             e.fillInStackTrace();
         }
-
         return bucketUrl + key;
     }
 
@@ -100,10 +92,4 @@ public class AmazonS3ClientServiceImpl implements AmazonS3ClientService {
         System.out.println("deleteObjectResponse = " + deleteObjectResponse);
     }
 
-    @Override
-    public String updateContentByUrl(String contentUrl, byte[] content) {
-        String key = contentUrl.replace(bucketUrl, "");
-        this.deleteContentByKey(key);
-        return this.uploadContentByKey(key, content);
-    }
 }

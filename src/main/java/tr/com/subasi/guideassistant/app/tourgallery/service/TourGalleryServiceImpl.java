@@ -39,7 +39,7 @@ public class TourGalleryServiceImpl implements TourGalleryService {
     public Boolean createContentList(Long tourId, MultipartFile[] files) throws IOException {
         TourEntity tourEntity = tourRepository.getReferenceById(tourId);
         List<TourGalleryEntity> oldTourGalleryEntityList = repository.getByTourIdOrderByLineNumber(tourEntity.getId());
-        int lineNumber = CollectionUtils.isNotEmpty(oldTourGalleryEntityList) ? oldTourGalleryEntityList.get(oldTourGalleryEntityList.size()-1).getLineNumber()+1 : 1;
+        int lineNumber = CollectionUtils.isNotEmpty(oldTourGalleryEntityList) ? oldTourGalleryEntityList.get(oldTourGalleryEntityList.size() - 1).getLineNumber() + 1 : 1;
 
         List<TourGalleryEntity> newTourGalleryEntityList = new ArrayList<>();
         for (MultipartFile file : files) {
@@ -58,10 +58,14 @@ public class TourGalleryServiceImpl implements TourGalleryService {
     @Override
     public TourGalleryModel updateContent(Long id, MultipartFile file) throws IOException {
         TourGalleryEntity tourGalleryEntity = repository.getReferenceById(id);
-        String contentUrl = amazonS3ClientService.updateContentByUrl(tourGalleryEntity.getContentUrl(), file.getBytes());
+        amazonS3ClientService.deleteContentByUrl(tourGalleryEntity.getContentUrl());
+
+        TourEntity tourEntity = tourRepository.getReferenceById(tourGalleryEntity.getTourId());
+        String contentUrl = this.uploadAmazonS3(tourEntity.getCompanyId(), tourEntity.getId(), file.getBytes());
+
         tourGalleryEntity.setContentUrl(contentUrl);
         TourGalleryModel tourGalleryModel = converter.convertToModel(repository.save(tourGalleryEntity));
-        this.updateTourContentUrl(tourGalleryEntity.getTourId());
+        this.updateTourContentUrl(tourEntity);
         return tourGalleryModel;
     }
 
@@ -94,10 +98,11 @@ public class TourGalleryServiceImpl implements TourGalleryService {
         TourEntity tourEntity = tourRepository.getReferenceById(tourId);
         this.updateTourContentUrl(tourEntity);
     }
+
     private void updateTourContentUrl(TourEntity tourEntity) {
         List<TourGalleryEntity> entityList = repository.getByTourIdOrderByLineNumber(tourEntity.getId());
         String contentUrl = entityList.get(0).getContentUrl();
-        if(!contentUrl.equals(tourEntity.getContentUrl())){
+        if (!contentUrl.equals(tourEntity.getContentUrl())) {
             tourEntity.setContentUrl(contentUrl);
             tourRepository.save(tourEntity);
         }
