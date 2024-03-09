@@ -8,9 +8,17 @@ import tr.com.subasi.guideassistant.app.tourdaydescription.model.TourDayDescript
 import tr.com.subasi.guideassistant.app.tourdaydescription.repository.TourDayDescriptionRepository;
 import tr.com.subasi.guideassistant.common.service.BaseServiceImpl;
 
+import java.util.List;
+
 @Service
 public class TourDayDescriptionServiceImpl extends BaseServiceImpl<TourDayDescriptionModel, TourDayDescriptionSearchModel, TourDayDescriptionEntity, TourDayDescriptionRepository, TourDayDescriptionConverter> implements TourDayDescriptionService {
     public TourDayDescriptionServiceImpl(TourDayDescriptionRepository repository, TourDayDescriptionConverter converter) {
         super(repository, converter);
     }
+
+    @Override
+    public List<TourDayDescriptionModel> getListByTourId(Long tourId) {
+        return converter.convertToModelList(repository.findAllByTourIdOrderByDayNumber(tourId));
+    }
+
 }

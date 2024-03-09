@@ -6,6 +6,9 @@ import tr.com.subasi.guideassistant.app.tourdaydescription.model.TourDayDescript
 import tr.com.subasi.guideassistant.app.tourdaydescription.model.TourDayDescriptionSearchModel;
 import tr.com.subasi.guideassistant.app.tourdaydescription.service.TourDayDescriptionService;
 import tr.com.subasi.guideassistant.common.controller.BaseRestController;
+import tr.com.subasi.guideassistant.common.model.ApiResponse;
+
+import java.util.List;
 
 import static tr.com.subasi.guideassistant.app.tourdaydescription.constant.TourDayDescriptionConstant.REQUEST_MAPPING;
 
@@ -15,5 +18,10 @@ public class TourDayDescriptionRestController extends BaseRestController<TourDay
 
     public TourDayDescriptionRestController(TourDayDescriptionService service) {
         super(service);
+    }
+
+    @Override
+    public ApiResponse<List<TourDayDescriptionModel>> getListByTourId(Long tourId) {
+        return new ApiResponse<>(service.getListByTourId(tourId));
     }
 }
