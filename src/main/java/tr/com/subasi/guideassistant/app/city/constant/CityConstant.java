@@ -10,4 +10,7 @@ public interface CityConstant extends CommonConstant {
     String TABLE_SEQ_NAME = TABLE_NAME + SEQUENCE_SUFFIX;
 
     String COLUMN_COUNTRY_ID = "COUNTRY_ID";
+
+    String FK_CITY_TO_COUNTRY = "FK_CITY_TO_COUNTRY";
+
 }
