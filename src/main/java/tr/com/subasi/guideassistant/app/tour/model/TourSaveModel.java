@@ -26,6 +26,6 @@ public class TourSaveModel extends IdModel {
     private Integer day;
 
     private String contentUrl;
-    private Boolean active = Boolean.TRUE;
+    private boolean active;
 
 }

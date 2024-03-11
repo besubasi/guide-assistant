@@ -16,6 +16,6 @@ public class TourActivityRelSearchModel extends BaseSearchModel {
     private Long activityId;
     private Short dayNumber;
     private Short lineNumber;
-    private Boolean active = Boolean.TRUE;
+    private Boolean active;
 
 }

@@ -1,9 +1,6 @@
 package tr.com.subasi.guideassistant.common.controller;
 
-import tr.com.subasi.guideassistant.common.model.ApiResponse;
-import tr.com.subasi.guideassistant.common.model.BaseSearchModel;
-import tr.com.subasi.guideassistant.common.model.IdModel;
-import tr.com.subasi.guideassistant.common.model.Page;
+import tr.com.subasi.guideassistant.common.model.*;
 import tr.com.subasi.guideassistant.common.service.BaseService;
 import tr.com.subasi.guideassistant.common.service.BaseService2;
 
@@ -27,6 +24,10 @@ public abstract class BaseRestController2<S extends BaseService2<SVM, M, SM>, SV
 
     public ApiResponse<M> getById(Long id) {
         return new ApiResponse<>(service.getById(id));
+    }
+
+    public ApiResponse<List<LookupModel>> getLookupList(SM searchModel) {
+        return new ApiResponse<>(service.getLookupList(searchModel));
     }
 
     public ApiResponse<List<M>> getList(SM searchModel) {

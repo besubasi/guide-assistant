@@ -7,6 +7,7 @@ import tr.com.subasi.guideassistant.app.country.model.CountryModel;
 import tr.com.subasi.guideassistant.app.country.model.CountrySearchModel;
 import tr.com.subasi.guideassistant.app.country.repository.CountryRepository;
 import tr.com.subasi.guideassistant.app.country.repository.CountryRepositoryImpl;
+import tr.com.subasi.guideassistant.common.model.LookupModel;
 import tr.com.subasi.guideassistant.common.model.Page;
 import tr.com.subasi.guideassistant.common.service.BaseServiceImpl;
 
@@ -16,6 +17,12 @@ import java.util.List;
 public class CountryServiceImpl extends BaseServiceImpl<CountryModel, CountrySearchModel, CountryEntity, CountryRepository, CountryConverter> implements CountryService {
     public CountryServiceImpl(CountryRepositoryImpl repository, CountryConverter converter) {
         super(repository, converter);
+    }
+
+    @Override
+    public List<LookupModel> getLookupList(CountrySearchModel searchModel) {
+        List<CountryEntity> entityList = repository.getList(searchModel);
+        return converter.convertToLookupModelList(entityList);
     }
 
     @Override

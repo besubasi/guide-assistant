@@ -18,6 +18,6 @@ public class CitySaveModel extends IdModel {
     private Long countryId;
     @NotBlank
     private String name;
-    private Boolean active = Boolean.TRUE;
+    private boolean active;
 
 }

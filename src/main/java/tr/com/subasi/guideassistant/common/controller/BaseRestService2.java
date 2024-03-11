@@ -6,6 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import tr.com.subasi.guideassistant.common.model.ApiResponse;
+import tr.com.subasi.guideassistant.common.model.LookupModel;
 import tr.com.subasi.guideassistant.common.model.Page;
 
 import java.util.List;
@@ -23,6 +24,9 @@ public interface BaseRestService2<SVM, M, SM> {
 
     @GetMapping(value = MAPPING_GET_BY_ID, produces = MediaType.APPLICATION_JSON_VALUE)
     ApiResponse<M> getById(@NotNull @PathVariable("id") Long id);
+
+    @PostMapping(value = MAPPING_GET_LOOKUP_LIST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    ApiResponse<List<LookupModel>> getLookupList(@Valid @RequestBody SM searchModel);
 
     @PostMapping(value = MAPPING_GET_LIST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     ApiResponse<List<M>> getList(@Valid @RequestBody SM searchModel);

@@ -20,6 +20,6 @@ public class DistrictSaveModel extends IdModel {
     private Long cityId;
     @NotBlank
     private String name;
-    private Boolean active = Boolean.TRUE;
+    private boolean active;
 
 }

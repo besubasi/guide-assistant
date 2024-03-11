@@ -20,7 +20,7 @@ public class TourTypeModel extends IdModel {
     private Long tourCategoryId;
     @NotBlank
     private String name;
-    private Boolean active = Boolean.TRUE;
+    private boolean active;
 
     private String companyCode;
     private String companyName;

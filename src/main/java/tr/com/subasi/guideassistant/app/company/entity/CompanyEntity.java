@@ -7,6 +7,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import tr.com.subasi.guideassistant.app.city.entity.CityEntity;
+import tr.com.subasi.guideassistant.app.country.entity.CountryEntity;
+import tr.com.subasi.guideassistant.app.district.entity.DistrictEntity;
 import tr.com.subasi.guideassistant.common.entity.IdEntity;
 
 import static tr.com.subasi.guideassistant.app.company.constant.CompanyConstant.*;
@@ -50,6 +53,19 @@ public class CompanyEntity extends IdEntity {
 
     @NotNull
     @Column(name = COLUMN_IS_ACTIVE)
-    private Boolean active = Boolean.TRUE;
+    private boolean active;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = COLUMN_COUNTRY_ID, foreignKey = @ForeignKey(name = FK_COMPANY_TO_COUNTRY), insertable = false, updatable = false)
+    private CountryEntity country;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = COLUMN_CITY_ID, foreignKey = @ForeignKey(name = FK_COMPANY_TO_CITY), insertable = false, updatable = false)
+    private CityEntity city;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = COLUMN_DISTRICT_ID, foreignKey = @ForeignKey(name = FK_COMPANY_TO_DISTRICT), insertable = false, updatable = false)
+    private DistrictEntity district;
 
 }

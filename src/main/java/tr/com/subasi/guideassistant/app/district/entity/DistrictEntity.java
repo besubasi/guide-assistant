@@ -34,7 +34,7 @@ public class DistrictEntity extends IdEntity {
 
     @NotNull
     @Column(name = COLUMN_IS_ACTIVE)
-    private Boolean active = Boolean.TRUE;
+    private boolean active;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = COLUMN_COUNTRY_ID, foreignKey = @ForeignKey(name = FK_DISTRICT_TO_COUNTRY), insertable = false, updatable = false)

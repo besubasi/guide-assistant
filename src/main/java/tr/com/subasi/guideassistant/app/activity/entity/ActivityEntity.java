@@ -34,10 +34,10 @@ public class ActivityEntity extends IdEntity {
 
     @NotNull
     @Column(name = COLUMN_IS_EXTRA)
-    private Boolean extra = Boolean.FALSE;
+    private boolean extra;
 
     @NotNull
     @Column(name = COLUMN_IS_ACTIVE)
-    private Boolean active = Boolean.TRUE;
+    private boolean active = Boolean.TRUE;
 
 }

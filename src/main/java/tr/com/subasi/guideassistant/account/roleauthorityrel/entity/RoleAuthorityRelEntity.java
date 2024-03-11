@@ -29,6 +29,6 @@ public class RoleAuthorityRelEntity extends IdEntity {
 
     @NotNull
     @Column(name = COLUMN_IS_ACTIVE)
-    private Boolean active = Boolean.TRUE;
+    private boolean active;
 
 }

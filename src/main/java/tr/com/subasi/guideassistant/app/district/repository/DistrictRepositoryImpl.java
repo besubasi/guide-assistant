@@ -41,7 +41,6 @@ public class DistrictRepositoryImpl extends SimpleJpaRepository<DistrictEntity, 
 
         query.multiselect(
                 district,
-                country.get("code").alias("countryCode"),
                 country.get("name").alias("countryName"),
                 city.get("name").alias("cityName")
         );

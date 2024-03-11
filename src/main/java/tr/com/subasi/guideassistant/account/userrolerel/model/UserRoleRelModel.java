@@ -17,6 +17,6 @@ public class UserRoleRelModel extends IdModel {
     private Long userId;
     @NotBlank
     private Long roleId;
-    private Boolean active = Boolean.TRUE;
+    private boolean active;
 
 }

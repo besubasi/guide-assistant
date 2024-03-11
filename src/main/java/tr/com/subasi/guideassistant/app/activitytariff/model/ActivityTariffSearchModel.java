@@ -19,7 +19,7 @@ public class ActivityTariffSearchModel extends BaseSearchModel {
     private LocalDateTime startDate;
     private String comment;
     private Long currencyId;
-    private Boolean active = Boolean.TRUE;
+    private Boolean active;
 
 }
 

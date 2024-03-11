@@ -26,6 +26,6 @@ public class UserModel extends IdModel {
     @NotNull
     private Long languageId;
     private Long referenceUserId;
-    private Boolean active;
+    private boolean active;
 
 }

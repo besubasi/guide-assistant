@@ -29,7 +29,7 @@ public class TourCategoryEntity extends IdEntity {
 
     @NotNull
     @Column(name = COLUMN_IS_ACTIVE)
-    private Boolean active = Boolean.TRUE;
+    private boolean active;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = COLUMN_COMPANY_ID, foreignKey = @ForeignKey(name = FK_TOUR_CATEGORY_TO_COMPANY), insertable = false, updatable = false)

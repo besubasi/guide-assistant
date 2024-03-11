@@ -23,6 +23,6 @@ public class ActivityCompanyModel extends IdModel {
     private String secondUser;
     private String secondUserPhone;
     private String secondUserEmail;
-    private Boolean active = Boolean.TRUE;
+    private boolean active;
 
 }

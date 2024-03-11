@@ -17,6 +17,6 @@ public class CountryModel extends IdModel {
     private String code;
     @NotBlank
     private String name;
-    private Boolean active = Boolean.TRUE;
+    private boolean active;
 
 }

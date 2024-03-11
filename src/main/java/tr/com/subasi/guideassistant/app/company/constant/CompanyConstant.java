@@ -15,4 +15,8 @@ public interface CompanyConstant extends CommonConstant {
     String COLUMN_ADDRESS = "ADDRESS";
     String COLUMN_WEBSITE_URL = "WEBSITE_URL";
     String COLUMN_IMAGE_URL = "IMAGE_URL";
+
+    String FK_COMPANY_TO_COUNTRY = "FK_COMPANY_TO_COUNTRY";
+    String FK_COMPANY_TO_CITY = "FK_COMPANY_TO_CITY";
+    String FK_COMPANY_TO_DISTRICT = "FK_COMPANY_TO_DISTRICT";
 }

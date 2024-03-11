@@ -28,6 +28,6 @@ public class ActivityTariffModel extends IdModel {
     @NotNull
     private Long currencyId;
     private BigDecimal commissionRate;
-    private Boolean active = Boolean.TRUE;
+    private boolean active;
 
 }

@@ -20,5 +20,5 @@ public class TourCategorySaveModel extends IdModel {
     @NotBlank
     private String name;
 
-    private Boolean active = Boolean.TRUE;
+    private boolean active;
 }

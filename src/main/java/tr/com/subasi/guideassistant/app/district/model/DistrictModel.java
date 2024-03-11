@@ -11,9 +11,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 public class DistrictModel extends DistrictSaveModel {
 
-    private String countryCode;
     private String countryName;
-    private String cityCode;
     private String cityName;
 
 }

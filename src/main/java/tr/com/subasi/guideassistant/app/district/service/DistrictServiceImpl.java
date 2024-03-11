@@ -21,7 +21,6 @@ public class DistrictServiceImpl extends BaseServiceImpl2<DistrictSaveModel, Dis
         super(repository, converter);
     }
 
-
     @Override
     public List<DistrictModel> getList(DistrictSearchModel searchModel) {
         List<Tuple> tupleList = repository.getList(searchModel);
@@ -39,7 +38,6 @@ public class DistrictServiceImpl extends BaseServiceImpl2<DistrictSaveModel, Dis
     private DistrictModel convertToModel(Tuple tuple) {
         DistrictEntity districtEntity = tuple.get(0, DistrictEntity.class);
         DistrictModel tourModel = converter.convertToModel(districtEntity);
-        tourModel.setCountryCode(tuple.get("countryCode", String.class));
         tourModel.setCountryName(tuple.get("countryName", String.class));
         tourModel.setCityName(tuple.get("cityName", String.class));
         return tourModel;

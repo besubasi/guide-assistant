@@ -24,6 +24,6 @@ public class TripActivityModel extends IdModel {
     private String estimatedTime;
     private Long activityCompanyId;
     private Boolean extra = Boolean.FALSE;
-    private Boolean active = Boolean.TRUE;
+    private boolean active;
 
 }

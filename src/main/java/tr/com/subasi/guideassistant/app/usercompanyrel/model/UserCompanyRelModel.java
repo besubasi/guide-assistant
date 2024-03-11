@@ -17,6 +17,6 @@ public class UserCompanyRelModel extends IdModel {
     private Long userId;
     @NotBlank
     private Long companyId;
-    private Boolean active = Boolean.TRUE;
+    private boolean active;
 
 }

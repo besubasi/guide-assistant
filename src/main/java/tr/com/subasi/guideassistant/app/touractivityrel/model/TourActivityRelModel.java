@@ -21,6 +21,6 @@ public class TourActivityRelModel extends IdModel {
     private Short dayNumber;
     @NotNull
     private Short lineNumber;
-    private Boolean active = Boolean.TRUE;
+    private boolean active;
 
 }

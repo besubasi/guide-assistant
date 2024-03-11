@@ -17,6 +17,6 @@ public class ActivityCompanyRelModel extends IdModel {
     private Long activityId;
     @NotNull
     private Long activityCompanyId;
-    private Boolean active = Boolean.TRUE;
+    private boolean active;
 
 }

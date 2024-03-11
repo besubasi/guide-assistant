@@ -19,7 +19,7 @@ public class ActivityModel extends IdModel {
     private String name;
     @NotNull
     private String estimatedTime;
-    private Boolean extra = Boolean.FALSE;
-    private Boolean active = Boolean.TRUE;
+    private boolean extra;
+    private boolean active;
 
 }
