@@ -36,6 +36,9 @@ public class ActivityEntity extends IdEntity {
     @Column(name = COLUMN_IS_EXTRA)
     private boolean extra;
 
+    @Column(name = COLUMN_CONTENT_URL)
+    private String contentUrl;
+
     @NotNull
     @Column(name = COLUMN_IS_ACTIVE)
     private boolean active = Boolean.TRUE;

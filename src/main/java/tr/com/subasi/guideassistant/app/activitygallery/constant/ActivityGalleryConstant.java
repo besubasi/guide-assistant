@@ -4,7 +4,7 @@ import tr.com.subasi.guideassistant.common.constant.CommonConstant;
 
 public interface ActivityGalleryConstant extends CommonConstant {
 
-	String REQUEST_MAPPING = "/activitygallery";
+	String REQUEST_MAPPING = "/guide/activity-gallery";
 
 	String TABLE_NAME = "ACTIVITY_GALLERY";
 

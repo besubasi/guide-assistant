@@ -11,5 +11,6 @@ public interface ActivityConstant extends CommonConstant {
 
     String COLUMN_ESTIMATED_TIME = "ESTIMATED_TIME";
     String COLUMN_IS_EXTRA = "IS_EXTRA";
+    String COLUMN_CONTENT_URL = "CONTENT_URL";
 
 }

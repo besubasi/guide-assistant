@@ -20,6 +20,7 @@ public class ActivityModel extends IdModel {
     @NotNull
     private String estimatedTime;
     private boolean extra;
+    private String contentUrl;
     private boolean active;
 
 }

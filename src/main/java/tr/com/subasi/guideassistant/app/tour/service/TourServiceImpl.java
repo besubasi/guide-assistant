@@ -2,8 +2,6 @@ package tr.com.subasi.guideassistant.app.tour.service;
 
 import jakarta.persistence.Tuple;
 import org.apache.commons.collections4.CollectionUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import tr.com.subasi.guideassistant.app.tour.converter.TourConverter;
 import tr.com.subasi.guideassistant.app.tour.entity.TourEntity;
@@ -20,8 +18,6 @@ import java.util.List;
 
 @Service
 public class TourServiceImpl implements TourService {
-
-    protected static final Logger LOGGER = LoggerFactory.getLogger(TourServiceImpl.class);
 
     private final TourRepository repository;
     private final TourConverter converter;
@@ -48,13 +44,11 @@ public class TourServiceImpl implements TourService {
 
     @Override
     public List<TourModel> getList(TourSearchModel searchModel) {
-        LOGGER.info("SM : " + searchModel);
         return this.convertToModel(repository.getList(searchModel));
     }
 
     @Override
     public Page<TourModel> getPage(TourSearchModel searchModel) {
-        LOGGER.info("SM : " + searchModel);
         org.springframework.data.domain.Page<TourEntity> page = repository.findAll(SortUtil.convertToPageRequest(searchModel.getPageable()));
         return new Page<>(converter.convertToModelList(page.getContent()), page.getTotalElements(), page.getTotalPages(), searchModel.getPageable());
     }

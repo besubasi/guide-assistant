@@ -8,8 +8,8 @@ import tr.com.subasi.guideassistant.app.tourdescription.model.TourDescriptionMod
 import tr.com.subasi.guideassistant.common.model.ApiResponse;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static tr.com.subasi.guideassistant.app.tourdescription.constant.TourDescriptionConstant.MAPPING_GET_BY_TOUR_ID;
 import static tr.com.subasi.guideassistant.common.constant.MappingConstant.MAPPING_DELETE_BY_ID;
+import static tr.com.subasi.guideassistant.common.constant.MappingConstant.MAPPING_GET_BY_TOUR_ID;
 import static tr.com.subasi.guideassistant.common.constant.MappingConstant.MAPPING_SAVE;
 
 @Validated
@@ -22,7 +22,6 @@ public interface TourDescriptionRestService {
     void deleteById(@NotNull @PathVariable("id") Long id);
 
     @GetMapping(value = MAPPING_GET_BY_TOUR_ID, produces = APPLICATION_JSON_VALUE)
-    ApiResponse<TourDescriptionModel> getByTourId(@NotNull @PathVariable("id") Long tourId);
-
+    ApiResponse<TourDescriptionModel> getByTourId(@NotNull @PathVariable("tourId") Long tourId);
 
 }

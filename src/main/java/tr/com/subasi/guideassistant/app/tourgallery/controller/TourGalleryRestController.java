@@ -16,7 +16,7 @@ import static tr.com.subasi.guideassistant.app.tourgallery.constant.TourGalleryC
 @RequestMapping(REQUEST_MAPPING)
 public class TourGalleryRestController implements TourGalleryRestService {
 
-    TourGalleryService service;
+    private final TourGalleryService service;
 
     public TourGalleryRestController(TourGalleryService service) {
         this.service = service;
