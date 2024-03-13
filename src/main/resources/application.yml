@@ -4,9 +4,9 @@ spring:
       name: subasi
       password: 123456
   datasource:
-    url: jdbc:postgresql://localhost:5432/guide-assistant
-    username: subasi
-    password: 123456
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/guide-assistant}
+    username: ${DATASOURCE_USERNAME:subasi}
+    password: ${DATASOURCE_PASSWORD:123456}
     driver-class-name: org.postgresql.Driver
     hikari:
       minimumIdle: 5
@@ -38,17 +38,17 @@ spring:
         show_sql: true
         format_sql: true
         connection:
-          url: jdbc:postgresql://localhost:5432/guide-assistant
-          password: 123456
-          username: subasi
+          url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/guide-assistant}
+          username: ${DATASOURCE_USERNAME:subasi}
+          password: ${DATASOURCE_PASSWORD:123456}
           driver_class: org.postgresql.Driver
   liquibase:
     enabled: true
     default-schema: guide_assistant
     drop-first: false
-    url: jdbc:postgresql://localhost:5432/guide-assistant
-    user: subasi
-    password: 123456
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/guide-assistant}
+    user: ${DATASOURCE_USERNAME:subasi}
+    password: ${DATASOURCE_PASSWORD:123456}
     driver-class-name: org.postgresql.Driver
 
 # swagger-ui custom path
@@ -59,9 +59,9 @@ springdoc:
     path: /api-docs
 
 aws:
-  accessKey: AK
-  secretKey: UV
-  region: o
+  accessKey: ${AWS_ACCESS_KEY:accessKey}
+  secretKey: ${AWS_SECRET_KEY:secretKey}
+  region: ${AWS_REGION:region}
   s3:
-    bucketName: x
-    bucketUrl: https://
+    bucketName: ${AWS_S3_BUCKET_NAME:bucketName}
+    bucketUrl: ${AWS_S3_BUCKET_URL:bucketUrl}
