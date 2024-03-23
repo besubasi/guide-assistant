@@ -13,4 +13,7 @@ public interface TourActivityRelConstant extends CommonConstant {
     String COLUMN_DAY_NUMBER = "DAY_NUMBER";
     String COLUMN_LINE_NUMBER = "LINE_NUMBER";
 
+    String FK_TOUR_ACTIVITY_REL_TO_TOUR = "FK_TOUR_ACTIVITY_REL_TO_TOUR";
+    String FK_TOUR_ACTIVITY_REL_TO_ACTIVITY = "FK_TOUR_ACTIVITY_REL_TO_ACTIVITY";
+
 }
