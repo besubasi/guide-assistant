@@ -1,6 +1,6 @@
-package tr.com.subasi.guideassistant.integration.service;
+package tr.com.subasi.guideassistant.integration.aws.s3.service;
 
-import tr.com.subasi.guideassistant.integration.model.AmazonS3FileUploadModel;
+import tr.com.subasi.guideassistant.integration.aws.s3.model.AmazonS3FileUploadModel;
 
 import java.util.List;
 

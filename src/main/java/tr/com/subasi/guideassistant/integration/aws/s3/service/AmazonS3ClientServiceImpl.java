@@ -1,11 +1,11 @@
-package tr.com.subasi.guideassistant.integration.service;
+package tr.com.subasi.guideassistant.integration.aws.s3.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.*;
-import tr.com.subasi.guideassistant.integration.model.AmazonS3FileUploadModel;
+import tr.com.subasi.guideassistant.integration.aws.s3.model.AmazonS3FileUploadModel;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

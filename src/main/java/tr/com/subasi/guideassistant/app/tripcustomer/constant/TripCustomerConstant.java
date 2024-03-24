@@ -15,5 +15,6 @@ public interface TripCustomerConstant extends CommonConstant {
     String COLUMN_RELATION_USER_ID = "RELATION_USER_ID";
     String COLUMN_PRICING_TYPE_ID = "PRICING_TYPE_ID";
     String COLUMN_IS_NEGATIVE_BALANCE = "IS_NEGATIVE_BALANCE";
+    String COLUMN_LIMIT = "LIMIT";
 
 }

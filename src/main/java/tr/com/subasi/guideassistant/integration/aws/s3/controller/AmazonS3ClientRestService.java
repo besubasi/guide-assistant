@@ -1,4 +1,4 @@
-package tr.com.subasi.guideassistant.integration.controller;
+package tr.com.subasi.guideassistant.integration.aws.s3.controller;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;

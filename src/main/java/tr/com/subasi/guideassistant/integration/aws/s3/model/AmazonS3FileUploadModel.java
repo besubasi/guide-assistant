@@ -1,4 +1,4 @@
-package tr.com.subasi.guideassistant.integration.model;
+package tr.com.subasi.guideassistant.integration.aws.s3.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

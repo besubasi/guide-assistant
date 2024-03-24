@@ -7,6 +7,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import tr.com.subasi.guideassistant.common.model.IdModel;
 
+import java.math.BigDecimal;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,5 +23,6 @@ public class TripCustomerModel extends IdModel {
     private Long pricingTypeId;
     private Long relationUserId;
     private Boolean negativeBalance = Boolean.FALSE;
+    private BigDecimal limit = BigDecimal.ZERO;
 
 }

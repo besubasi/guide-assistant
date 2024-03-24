@@ -10,6 +10,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import tr.com.subasi.guideassistant.common.entity.IdEntity;
 
+import java.math.BigDecimal;
+
 import static tr.com.subasi.guideassistant.app.tripcustomer.constant.TripCustomerConstant.*;
 
 @Data
@@ -39,5 +41,8 @@ public class TripCustomerEntity extends IdEntity {
     @Column(name = COLUMN_IS_NEGATIVE_BALANCE)
     private Boolean negativeBalance = Boolean.FALSE;
 
+    @NotNull
+    @Column(name = COLUMN_LIMIT)
+    private BigDecimal limit = BigDecimal.ZERO;
 
 }

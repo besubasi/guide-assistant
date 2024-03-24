@@ -9,8 +9,8 @@ import tr.com.subasi.guideassistant.app.activitygallery.converter.ActivityGaller
 import tr.com.subasi.guideassistant.app.activitygallery.entity.ActivityGalleryEntity;
 import tr.com.subasi.guideassistant.app.activitygallery.model.ActivityGalleryModel;
 import tr.com.subasi.guideassistant.app.activitygallery.repository.ActivityGalleryRepository;
-import tr.com.subasi.guideassistant.integration.model.AmazonS3FileUploadModel;
-import tr.com.subasi.guideassistant.integration.service.AmazonS3ClientService;
+import tr.com.subasi.guideassistant.integration.aws.s3.model.AmazonS3FileUploadModel;
+import tr.com.subasi.guideassistant.integration.aws.s3.service.AmazonS3ClientService;
 
 import java.io.IOException;
 import java.util.ArrayList;
