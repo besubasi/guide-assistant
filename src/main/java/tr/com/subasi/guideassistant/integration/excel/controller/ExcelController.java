@@ -40,8 +40,9 @@ public class ExcelController implements ExcelRestService {
         try {
             return new ApiResponse<>(excelService.uploadTripCustomer(file));
         } catch (IOException e) {
-            LOGGER.error("", e);
-            return new ApiResponse<>(Collections.singletonList(new MessageModel(EnumMessageType.ERROR, "Excel okuma sırasında hata oluştu")));
+            String errorMessage = "Excel ile tur katılımcı listesi oluştuma işlemi sırasında hata oluştur";
+            LOGGER.error(errorMessage, e);
+            return new ApiResponse<>(Collections.singletonList(new MessageModel(EnumMessageType.ERROR, errorMessage)));
         }
     }
 }

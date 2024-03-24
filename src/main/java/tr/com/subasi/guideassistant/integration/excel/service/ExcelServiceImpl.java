@@ -18,24 +18,14 @@ public class ExcelServiceImpl implements ExcelService {
     public List<TripCustomerExcelModel> uploadTripCustomer(MultipartFile file) throws IOException {
         List<TripCustomerExcelModel> modelList = new ArrayList<>();
 
-        // Excel dosyasını okumak için bir Workbook nesnesi oluştur
         Workbook workbook = WorkbookFactory.create(file.getInputStream());
-
-        // İlk sayfayı al, eğer birden fazla sayfa varsa buradaki işlemi tekrarlayabilirsiniz
         Sheet sheet = workbook.getSheetAt(0);
-
-        // Başlık satırını al
         Row headerRow = sheet.getRow(0);
-
-        // Başlık satırındaki sütun sayısını al
         int colCount = headerRow.getPhysicalNumberOfCells();
-
-        // Başlık satırındaki sütun isimlerini saklayacak bir dizi oluştur
         String[] columnNames = new String[colCount];
         for (int i = 0; i < colCount; i++)
             columnNames[i] = headerRow.getCell(i).getStringCellValue();
 
-        // Veri satırlarını işle
         Iterator<Row> rowIterator = sheet.iterator();
         // İlk satır başlık olduğu için atla
         rowIterator.next();
@@ -43,22 +33,21 @@ public class ExcelServiceImpl implements ExcelService {
             Row row = rowIterator.next();
             TripCustomerExcelModel model = new TripCustomerExcelModel();
 
-            // Her bir sütunu TripCustomerExcelModel modeline eşle
             for (int i = 0; i < colCount; i++) {
                 Cell cell = row.getCell(i);
-
+                String cellValue = cell.getStringCellValue();
                 switch (EnumTripCustomerExcelHeader.valueOf(columnNames[i])) {
                     case NAME:
-                        model.setName(cell.getStringCellValue());
+                        model.setName(cellValue);
                         break;
                     case USER_NAME:
-                        model.setUserName(cell.getStringCellValue());
+                        model.setUserName(cellValue);
                         break;
                     case PHONE_NUMBER:
-                        model.setPhoneNumber(cell.getStringCellValue());
+                        model.setPhoneNumber(cellValue);
                         break;
                     case EMAIL:
-                        model.setEmail(cell.getStringCellValue());
+                        model.setEmail(cellValue);
                         break;
                 }
             }

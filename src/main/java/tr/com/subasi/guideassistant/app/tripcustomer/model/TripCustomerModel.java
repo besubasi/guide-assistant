@@ -23,6 +23,6 @@ public class TripCustomerModel extends IdModel {
     private Long pricingTypeId;
     private Long relationUserId;
     private Boolean negativeBalance = Boolean.FALSE;
-    private BigDecimal limit = BigDecimal.ZERO;
+    private BigDecimal lowerLimit = BigDecimal.ZERO;
 
 }

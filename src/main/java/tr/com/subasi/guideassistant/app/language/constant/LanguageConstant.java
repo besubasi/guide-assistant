@@ -5,7 +5,7 @@ import tr.com.subasi.guideassistant.common.constant.CommonConstant;
 public interface LanguageConstant extends CommonConstant {
 
 
-    String REQUEST_MAPPING = "/guide/language";
+    String REQUEST_MAPPING = "/language";
     String TABLE_NAME = "LANGUAGE";
     String TABLE_SEQ_NAME = TABLE_NAME + SEQUENCE_SUFFIX;
 

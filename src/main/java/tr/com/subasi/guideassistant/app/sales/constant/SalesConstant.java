@@ -5,7 +5,7 @@ import tr.com.subasi.guideassistant.common.constant.CommonConstant;
 public interface SalesConstant extends CommonConstant {
 
 
-    String REQUEST_MAPPING = "/guide/sales";
+    String REQUEST_MAPPING = "/sales";
     String TABLE_NAME = "SALES";
     String TABLE_SEQ_NAME = TABLE_NAME + SEQUENCE_SUFFIX;
 

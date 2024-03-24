@@ -42,7 +42,7 @@ public class TripCustomerEntity extends IdEntity {
     private Boolean negativeBalance = Boolean.FALSE;
 
     @NotNull
-    @Column(name = COLUMN_LIMIT)
-    private BigDecimal limit = BigDecimal.ZERO;
+    @Column(name = COLUMN_LOWER_LIMIT)
+    private BigDecimal lowerLimit = BigDecimal.ZERO;
 
 }

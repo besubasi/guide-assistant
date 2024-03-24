@@ -3,4 +3,11 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
+    <changeSet id="24032024-lanuage" author="bsubasi">
+        <sql>INSERT INTO guide_assistant."language" (id, is_active, code, "name")
+             VALUES (1, true, 'tr', 'Türkçe');</sql>
+        <sql>INSERT INTO guide_assistant."language" (id, is_active, code, "name")
+             VALUES (2, true, 'en', 'English');</sql>
+    </changeSet>
+
 </databaseChangeLog>

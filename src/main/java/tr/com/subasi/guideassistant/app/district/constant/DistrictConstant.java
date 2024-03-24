@@ -5,7 +5,7 @@ import tr.com.subasi.guideassistant.common.constant.CommonConstant;
 public interface DistrictConstant extends CommonConstant {
 
 
-    String REQUEST_MAPPING = "/guide/district";
+    String REQUEST_MAPPING = "/district";
     String TABLE_NAME = "DISTRICT";
     String TABLE_SEQ_NAME = TABLE_NAME + SEQUENCE_SUFFIX;
 

@@ -4,7 +4,7 @@ import tr.com.subasi.guideassistant.common.constant.CommonConstant;
 
 public interface ExchangeConstant extends CommonConstant {
 
-    String REQUEST_MAPPING = "/guide/exchange";
+    String REQUEST_MAPPING = "/exchange";
 
     String TABLE_NAME = "EXCHANGE";
     String TABLE_SEQ_NAME = TABLE_NAME + SEQUENCE_SUFFIX;

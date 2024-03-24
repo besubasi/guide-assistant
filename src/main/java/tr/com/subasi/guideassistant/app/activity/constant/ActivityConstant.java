@@ -5,7 +5,7 @@ import tr.com.subasi.guideassistant.common.constant.CommonConstant;
 public interface ActivityConstant extends CommonConstant {
 
 
-    String REQUEST_MAPPING = "/guide/activity";
+    String REQUEST_MAPPING = "/activity";
     String TABLE_NAME = "ACTIVITY";
     String TABLE_SEQ_NAME = TABLE_NAME + SEQUENCE_SUFFIX;
 
