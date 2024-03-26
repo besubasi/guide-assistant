@@ -8,4 +8,6 @@ public interface RoleConstant extends CommonConstant {
     String TABLE_NAME = "ROLE";
     String TABLE_SEQ_NAME = TABLE_NAME + SEQUENCE_SUFFIX;
 
+    String TEST = TABLE_NAME + "TEST";
+
 }
