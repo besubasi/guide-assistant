@@ -1,3 +1,6 @@
+server:
+  port: 5180
+
 spring:
   security:
     user:
