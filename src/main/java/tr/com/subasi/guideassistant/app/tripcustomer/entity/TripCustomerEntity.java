@@ -27,6 +27,13 @@ public class TripCustomerEntity extends IdEntity {
     private Long tripId;
 
     @NotNull
+    @Column(name = COLUMN_NAME)
+    private String name;
+
+    @NotNull
+    @Column(name = COLUMN_PHONE_NUMBER)
+    private String phoneNumber;
+
     @Column(name = COLUMN_USER_ID)
     private Long userId;
 
@@ -34,15 +41,19 @@ public class TripCustomerEntity extends IdEntity {
     @Column(name = COLUMN_PRICING_TYPE_ID)
     private Long pricingTypeId;
 
-    @Column(name = COLUMN_RELATION_USER_ID)
-    private Long relationUserId;
+    @Column(name = COLUMN_RELATION_TRIP_CUSTOMER_ID)
+    private Long relationTripCustomerId;
 
     @NotNull
     @Column(name = COLUMN_IS_NEGATIVE_BALANCE)
     private Boolean negativeBalance = Boolean.FALSE;
 
     @NotNull
-    @Column(name = COLUMN_LOWER_LIMIT)
-    private BigDecimal lowerLimit = BigDecimal.ZERO;
+    @Column(name = COLUMN_NEGATIVE_BALANCE_LIMIT)
+    private BigDecimal negativeBalanceLimit = BigDecimal.ZERO;
+
+    @NotNull
+    @Column(name = COLUMN_ACTIVATION_CODE)
+    private String activationCode;
 
 }

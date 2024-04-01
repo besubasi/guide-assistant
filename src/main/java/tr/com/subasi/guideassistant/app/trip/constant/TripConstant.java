@@ -14,4 +14,5 @@ public interface TripConstant extends CommonConstant {
     String COLUMN_SECOND_GUIDE_USER_ID = "SECOND_GUIDE_USER_ID";
     String COLUMN_START_DATE = "START_DATE";
     String COLUMN_DAY = "DAY";
+    String COLUMN_ACTIVATION_CODE = "ACTIVATION_CODE";
 }

@@ -1,4 +1,4 @@
-package tr.com.subasi.guideassistant.app.touractivityrel.model;
+package tr.com.subasi.guideassistant.app.user.model;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -11,17 +11,21 @@ import tr.com.subasi.guideassistant.common.model.IdModel;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class TourActivityRelSaveModel extends IdModel {
+public class UserModel extends IdModel {
 
     @NotNull
-    private Long tourId;
+    private String userName;
     @NotNull
-    private Long activityId;
+    private String name;
     @NotNull
-    private Short dayNumber;
+    private String password;
     @NotNull
-    private Short lineNumber;
-    private Long activityCompanyId;
+    private String phoneNumber;
+    @NotNull
+    private String email;
+    @NotNull
+    private Long languageId;
+    private Long referenceUserId;
     private boolean active;
 
 }

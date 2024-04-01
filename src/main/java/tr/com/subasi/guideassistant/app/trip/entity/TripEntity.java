@@ -45,4 +45,11 @@ public class TripEntity extends IdEntity {
     @Column(name = COLUMN_DAY)
     private Integer day;
 
+    @Column(name = COLUMN_ACTIVATION_CODE)
+    private String activationCode;
+
+    @NotNull
+    @Column(name = COLUMN_IS_ACTIVE)
+    private boolean active;
+
 }
