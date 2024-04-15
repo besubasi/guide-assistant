@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import tr.com.subasi.guideassistant.common.enums.EnumRoleType;
 import tr.com.subasi.guideassistant.common.model.BaseSearchModel;
 
 @Data
@@ -19,6 +20,7 @@ public class UserSearchModel extends BaseSearchModel {
     private String email;
     private Long languageId;
     private Long referenceUserId;
+    private EnumRoleType roleType;
     private Boolean active;
 
 }

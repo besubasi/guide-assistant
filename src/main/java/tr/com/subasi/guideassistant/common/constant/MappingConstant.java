@@ -3,6 +3,7 @@ package tr.com.subasi.guideassistant.common.constant;
 public interface MappingConstant {
 
     String MAPPING_SAVE = "/save";
+    String MAPPING_SAVE_GUIDE_USER = "/saveGuideUser";
     String MAPPING_SAVE_BATCH = "/saveBatch";
     String MAPPING_DELETE_BY_ID = "/deleteById/{id}";
     String MAPPING_GET_BY_ID = "/getById/{id}";

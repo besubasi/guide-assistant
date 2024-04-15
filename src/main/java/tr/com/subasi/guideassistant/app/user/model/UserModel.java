@@ -1,31 +1,25 @@
 package tr.com.subasi.guideassistant.app.user.model;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import tr.com.subasi.guideassistant.common.enums.EnumRoleType;
 import tr.com.subasi.guideassistant.common.model.IdModel;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class UserModel extends IdModel {
 
     @NotNull
-    private String userName;
+    protected String name;
     @NotNull
-    private String name;
+    protected String phoneNumber;
     @NotNull
-    private String password;
-    @NotNull
-    private String phoneNumber;
-    @NotNull
-    private String email;
-    @NotNull
-    private Long languageId;
-    private Long referenceUserId;
+    protected String password;
+    protected String email;
+    protected Long languageId;
+    protected String referencePhoneNumber;
+    protected EnumRoleType roleType = EnumRoleType.TRAVELER;
     private boolean active;
 
 }

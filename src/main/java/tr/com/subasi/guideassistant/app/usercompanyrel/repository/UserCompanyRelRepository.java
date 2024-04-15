@@ -7,5 +7,7 @@ import tr.com.subasi.guideassistant.app.usercompanyrel.entity.UserCompanyRelEnti
 @Repository
 public interface UserCompanyRelRepository extends JpaRepository<UserCompanyRelEntity, Long> {
 
+    void deleteByUserId(Long userId);
+
 }
 
