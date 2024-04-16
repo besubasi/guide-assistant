@@ -1,5 +1,6 @@
 package tr.com.subasi.guideassistant.app.tripcustomer.model;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,9 +20,13 @@ public class TripCustomerModel extends IdModel {
     private Long tripId;
 
     @NotNull
-    private String name;
+    private Integer lineNumber;
+    private Integer relationLineNumber;
 
     @NotNull
+    private String name;
+
+    @NotBlank
     private String phoneNumber;
 
     @NotNull
@@ -33,7 +38,6 @@ public class TripCustomerModel extends IdModel {
     private Boolean negativeBalance = Boolean.FALSE;
     private BigDecimal negativeBalanceLimit = BigDecimal.ZERO;
 
-    private Long relationTripCustomerId;
     private Long userId;
 
 }

@@ -10,12 +10,15 @@ public class TripCustomerSaveModel {
 
     @NotNull
     private Integer lineNumber;
+    private Integer relationLineNumber;
 
     @NotNull
     private String name;
 
     @NotNull
     private String phoneNumber;
+
+    private String email;
 
     @NotNull
     private Long pricingTypeId;
@@ -24,5 +27,4 @@ public class TripCustomerSaveModel {
     private Boolean negativeBalance = Boolean.FALSE;
     private BigDecimal negativeBalanceLimit = BigDecimal.ZERO;
 
-    private Integer relationLineNumber;
 }

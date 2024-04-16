@@ -3,6 +3,7 @@ package tr.com.subasi.guideassistant.app.tripcustomer.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,11 +28,18 @@ public class TripCustomerEntity extends IdEntity {
     private Long tripId;
 
     @NotNull
-    @Column(name = COLUMN_NAME)
+    @Column(name = COLUMN_LINE_NUMBER)
+    private Integer lineNumber;
+
+    @Column(name = COLUMN_RELATION_LINE_NUMBER)
+    private Integer relationLineNumber;
+
+    @NotBlank
+    @Column(name = COLUMN_NAME, nullable = false)
     private String name;
 
-    @NotNull
-    @Column(name = COLUMN_PHONE_NUMBER)
+    @NotBlank
+    @Column(name = COLUMN_PHONE_NUMBER, nullable = false)
     private String phoneNumber;
 
     @Column(name = COLUMN_EMAIL)
@@ -43,9 +51,6 @@ public class TripCustomerEntity extends IdEntity {
     @NotNull
     @Column(name = COLUMN_PRICING_TYPE_ID)
     private Long pricingTypeId;
-
-    @Column(name = COLUMN_RELATION_TRIP_CUSTOMER_ID)
-    private Long relationTripCustomerId;
 
     @NotNull
     @Column(name = COLUMN_IS_NEGATIVE_BALANCE)

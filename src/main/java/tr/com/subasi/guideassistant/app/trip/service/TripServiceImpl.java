@@ -52,6 +52,7 @@ public class TripServiceImpl implements TripService {
     public Boolean save(TripSaveModel model) {
         TripEntity tripEntity = this.repository.save(this.converter.convertToEntityBySaveModel(model));
         List<TripCustomerEntity> tripCustomerEntityList = tripCustomerConverter.convertToEntityListBySaveModel(model.getCustomerList());
+        tripCustomerEntityList.forEach(x->x.setTripId(tripEntity.getId()));
         tripCustomerRepository.saveAll(tripCustomerEntityList);
 
         TourActivityRelSearchModel searchModel = new TourActivityRelSearchModel();
