@@ -27,6 +27,8 @@ public class TripCustomerModel extends IdModel {
     @NotNull
     private Long pricingTypeId;
 
+    private String email;
+
     @NotNull
     private Boolean negativeBalance = Boolean.FALSE;
     private BigDecimal negativeBalanceLimit = BigDecimal.ZERO;

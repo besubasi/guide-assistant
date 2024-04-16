@@ -12,6 +12,7 @@ public interface TripCustomerConstant extends CommonConstant {
     String COLUMN_TRIP_ID = "TRIP_ID";
     String COLUMN_USER_ID = "USER_ID";
     String COLUMN_PHONE_NUMBER = "PHONE_NUMBER";
+    String COLUMN_EMAIL = "EMAIL";
     String COLUMN_RELATION_TRIP_CUSTOMER_ID = "RELATION_TRIP_CUSTOMER_ID";
     String COLUMN_PRICING_TYPE_ID = "PRICING_TYPE_ID";
     String COLUMN_IS_NEGATIVE_BALANCE = "IS_NEGATIVE_BALANCE";

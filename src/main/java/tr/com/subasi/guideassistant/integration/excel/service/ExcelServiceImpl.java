@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class ExcelServiceImpl implements ExcelService {
@@ -40,14 +41,17 @@ public class ExcelServiceImpl implements ExcelService {
                     case NAME:
                         model.setName(cellValue);
                         break;
-                    case USER_NAME:
-                        model.setUserName(cellValue);
-                        break;
                     case PHONE_NUMBER:
                         model.setPhoneNumber(cellValue);
                         break;
                     case EMAIL:
                         model.setEmail(cellValue);
+                        break;
+                    case PRICING_TYPE_CODE:
+                        model.setPricingTypeCode(cellValue);
+                        break;
+                    case RELATION_LINE_NUMBER:
+                        Optional.ofNullable(cellValue).ifPresent(relationLineNumber->model.setRelationLineNumber(Integer.valueOf(relationLineNumber)));
                         break;
                 }
             }

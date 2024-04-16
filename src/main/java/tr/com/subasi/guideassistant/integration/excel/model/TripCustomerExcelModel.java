@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TripCustomerExcelModel {
 
-    private String name, userName, phoneNumber, email;
+    private String name, phoneNumber, email, pricingTypeCode;
+    private Integer relationLineNumber;
 
 }

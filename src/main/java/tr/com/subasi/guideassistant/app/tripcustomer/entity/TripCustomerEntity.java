@@ -34,6 +34,9 @@ public class TripCustomerEntity extends IdEntity {
     @Column(name = COLUMN_PHONE_NUMBER)
     private String phoneNumber;
 
+    @Column(name = COLUMN_EMAIL)
+    private String email;
+
     @Column(name = COLUMN_USER_ID)
     private Long userId;
 
