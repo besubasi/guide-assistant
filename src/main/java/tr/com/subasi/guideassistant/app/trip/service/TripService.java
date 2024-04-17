@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface TripService {
 
-    Boolean save(@NotNull TripSaveModel model);
+    String save(@NotNull TripSaveModel model);
 
     void deleteById(@NotNull Long id);
 

@@ -23,6 +23,7 @@ import tr.com.subasi.guideassistant.common.util.SortUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class TripServiceImpl implements TripService {
@@ -49,10 +50,16 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
-    public Boolean save(TripSaveModel model) {
+    public String save(TripSaveModel model) {
         TripEntity tripEntity = this.repository.save(this.converter.convertToEntityBySaveModel(model));
+        String activationCode = this.generateActivationCode();
+        tripEntity.setActivationCode(activationCode);
         List<TripCustomerEntity> tripCustomerEntityList = tripCustomerConverter.convertToEntityListBySaveModel(model.getCustomerList());
-        tripCustomerEntityList.forEach(x->x.setTripId(tripEntity.getId()));
+        tripCustomerEntityList.forEach(x -> {
+            x.setTripId(tripEntity.getId());
+            x.setActivationCode(activationCode);
+        });
+
         tripCustomerRepository.saveAll(tripCustomerEntityList);
 
         TourActivityRelSearchModel searchModel = new TourActivityRelSearchModel();
@@ -60,7 +67,7 @@ public class TripServiceImpl implements TripService {
         searchModel.setActive(Boolean.TRUE);
 
         List<Tuple> tupleList = tourActivityRelRepository.getList(searchModel);
-        if(CollectionUtils.isNotEmpty(tupleList)){
+        if (CollectionUtils.isNotEmpty(tupleList)) {
             List<TripActivityEntity> tripActivityList = new ArrayList<>();
             tupleList.forEach(tuple -> {
                 TourActivityRelEntity tourActivityRelEntity = tuple.get(0, TourActivityRelEntity.class);
@@ -80,7 +87,7 @@ public class TripServiceImpl implements TripService {
             tripActivityRepository.saveAll(tripActivityList);
         }
 
-        return Boolean.TRUE;
+        return activationCode;
     }
 
     @Override
@@ -107,6 +114,14 @@ public class TripServiceImpl implements TripService {
     public Page<TripModel> getPage(TripSearchModel searchModel) {
         org.springframework.data.domain.Page<TripEntity> page = repository.findAll(SortUtil.convertToPageRequest(searchModel.getPageable()));
         return new Page<>(converter.convertToModelList(page.getContent()), page.getTotalElements(), page.getTotalPages(), searchModel.getPageable());
+    }
+
+
+    private String generateActivationCode() {
+        Random random = new Random();
+        int min = 100000; // En küçük 6 basamaklı sayı
+        int max = 999999; // En büyük 6 basamaklı sayı
+        return String.valueOf(random.nextInt(max - min + 1) + min);
     }
 
 }

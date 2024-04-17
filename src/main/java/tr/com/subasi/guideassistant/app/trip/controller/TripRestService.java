@@ -20,7 +20,7 @@ import static tr.com.subasi.guideassistant.common.constant.MappingConstant.*;
 public interface TripRestService {
 
     @PostMapping(value = MAPPING_SAVE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    ApiResponse<Boolean> save(@Valid @RequestBody TripSaveModel model);
+    ApiResponse<String> save(@Valid @RequestBody TripSaveModel model);
 
     @DeleteMapping(MAPPING_DELETE_BY_ID)
     void deleteById(@NotNull @PathVariable("id") Long id);

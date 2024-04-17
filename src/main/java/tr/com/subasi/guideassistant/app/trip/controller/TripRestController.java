@@ -24,7 +24,7 @@ public class TripRestController implements TripRestService {
         this.service = service;
     }
 
-    public ApiResponse<Boolean> save(TripSaveModel model) {
+    public ApiResponse<String> save(TripSaveModel model) {
         return new ApiResponse<>(service.save(model));
     }
 
