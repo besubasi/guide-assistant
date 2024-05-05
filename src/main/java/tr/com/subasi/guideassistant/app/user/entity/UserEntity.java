@@ -22,6 +22,10 @@ public class UserEntity extends IdEntity {
     private String name;
 
     @NotNull
+    @Column(name = COLUMN_USERNAME)
+    private String username;
+
+    @NotNull
     @Column(name = COLUMN_PHONE_NUMBER)
     private String phoneNumber;
 

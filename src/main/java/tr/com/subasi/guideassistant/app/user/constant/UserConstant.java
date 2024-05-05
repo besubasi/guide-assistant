@@ -9,6 +9,7 @@ public interface UserConstant extends CommonConstant {
     String TABLE_SEQ_NAME = TABLE_NAME + SEQUENCE_SUFFIX;
 
     String COLUMN_PASSWORD = "PASSWORD";
+    String COLUMN_USERNAME = "USERNAME";
     String COLUMN_PHONE_NUMBER = "PHONE_NUMBER";
     String COLUMN_ROLE_TYPE = "ROLE_TYPE";
     String COLUMN_EMAIL = "EMAIL";

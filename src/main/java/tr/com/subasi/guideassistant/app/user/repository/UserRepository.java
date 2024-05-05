@@ -7,4 +7,6 @@ import tr.com.subasi.guideassistant.app.user.entity.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
+    UserEntity findByUsername(String username);
+
 }

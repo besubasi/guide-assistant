@@ -12,6 +12,7 @@ public class UserModel extends IdModel {
 
     @NotNull
     protected String name;
+    private String username;
     @NotNull
     protected String phoneNumber;
     @NotNull
