@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import tr.com.subasi.guideassistant.app.user.GuideUserModel;
 import tr.com.subasi.guideassistant.app.user.service.UserService;
 import tr.com.subasi.guideassistant.common.model.ApiResponse;
+import tr.com.subasi.guideassistant.common.session.model.LoginMobileModel;
 import tr.com.subasi.guideassistant.common.session.model.LoginModel;
 import tr.com.subasi.guideassistant.common.session.model.LoginResponse;
 import tr.com.subasi.guideassistant.common.session.service.AuthenticationService;
@@ -45,6 +46,14 @@ public class SessionController {
 
     @PostMapping("/login")
     public ApiResponse<LoginResponse> login(@Valid @RequestBody LoginModel loginModel) {
+        return new ApiResponse<>(authenticationService.login(loginModel));
+    }
+
+    @PostMapping("/loginMobile")
+    public ApiResponse<LoginResponse> login(@Valid @RequestBody LoginMobileModel loginMobileModel) {
+        LoginModel loginModel = new LoginModel();
+        loginModel.setUsername(loginMobileModel.getPhoneNumber());
+        loginModel.setPassword("1234");
         return new ApiResponse<>(authenticationService.login(loginModel));
     }
 

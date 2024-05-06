@@ -42,6 +42,7 @@ public class SecurityConfig {
                                 "/auth/welcome/**",
                                 "/auth/register/**",
                                 "/auth/login/**",
+                                "/auth/loginMobile/**",
                                 "/api/v1/auth/**",
                                 "/v2/api-docs",
                                 "/v3/api-docs",

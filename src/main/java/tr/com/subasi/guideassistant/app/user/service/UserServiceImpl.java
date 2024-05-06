@@ -16,7 +16,6 @@ import tr.com.subasi.guideassistant.common.service.BaseServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl extends BaseServiceImpl<UserModel, UserSearchModel, UserEntity, UserRepository, UserConverter> implements UserService {
@@ -33,11 +32,15 @@ public class UserServiceImpl extends BaseServiceImpl<UserModel, UserSearchModel,
 
     @Override
     public GuideUserModel saveGuideUser(GuideUserModel model) {
-        if (StringUtils.isNotBlank(model.getUsername()))
+        if (StringUtils.isBlank(model.getUsername()))
             model.setUsername(model.getPhoneNumber());
 
         UserEntity entity = this.converter.convertToEntityByGuideUser(model);
-        Optional.ofNullable(entity.getPassword()).ifPresent(x -> entity.setPassword(bCryptPasswordEncoder.encode(x)));
+        if (StringUtils.isBlank(entity.getPassword())) {
+            entity.setPassword(bCryptPasswordEncoder.encode("1234"));
+        } else {
+            entity.setPassword(bCryptPasswordEncoder.encode(entity.getPassword()));
+        }
 
         GuideUserModel guideUserModel = this.converter.convertToGuideUserModel(this.repository.save(entity));
         guideUserModel.setCompanyIdList(model.getCompanyIdList());
