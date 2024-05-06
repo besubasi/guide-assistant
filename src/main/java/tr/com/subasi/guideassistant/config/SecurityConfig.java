@@ -53,11 +53,19 @@ public class SecurityConfig {
                                 "/configuration/security",
                                 "/swagger-ui/**",
                                 "/webjars/**",
-                                "/swagger-ui.html"
+                                "/swagger-ui.html",
+                                "/company/getList",
+                                "/tour/getList",
+                                "/tour-activity-rel/getList",
+                                "/tour-description/getList",
+                                "/tour-category/getList",
+                                "/tour-day-description/getList",
+                                "/account/user/save",
+                                "/account/user/saveGuideUser"
                         ).permitAll()
                 )
                 .authorizeHttpRequests(x ->
-                        x.requestMatchers("/auth/user").authenticated()
+                        x.requestMatchers("/auth/user","/trip/*").authenticated()
                                 .requestMatchers("/auth/admin").hasRole("ADMIN")
                 )
                 .sessionManagement(x -> x.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

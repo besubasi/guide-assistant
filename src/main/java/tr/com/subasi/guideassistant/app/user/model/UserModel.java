@@ -15,7 +15,6 @@ public class UserModel extends IdModel {
     private String username;
     @NotNull
     protected String phoneNumber;
-    @NotNull
     protected String password;
     protected String email;
     protected Long languageId;
