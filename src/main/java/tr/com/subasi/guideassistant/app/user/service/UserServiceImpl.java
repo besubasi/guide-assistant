@@ -42,10 +42,17 @@ public class UserServiceImpl extends BaseServiceImpl<UserModel, UserSearchModel,
             entity.setPassword(bCryptPasswordEncoder.encode(entity.getPassword()));
         }
 
-        GuideUserModel guideUserModel = this.converter.convertToGuideUserModel(this.repository.save(entity));
-        guideUserModel.setCompanyIdList(model.getCompanyIdList());
-        this.saveUserCompanyRel(model);
-        return guideUserModel;
+        UserEntity userEntity = this.repository.findByUsername(model.getUsername());
+        if (userEntity != null) {
+            GuideUserModel guideUserModel = this.converter.convertToGuideUserModel(userEntity);
+            guideUserModel.setCompanyIdList(model.getCompanyIdList());
+            return guideUserModel;
+        } else {
+            GuideUserModel guideUserModel = this.converter.convertToGuideUserModel(this.repository.save(entity));
+            guideUserModel.setCompanyIdList(model.getCompanyIdList());
+            this.saveUserCompanyRel(guideUserModel);
+            return guideUserModel;
+        }
     }
 
     private void saveUserCompanyRel(GuideUserModel model) {

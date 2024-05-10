@@ -44,6 +44,7 @@ public class SecurityConfig {
                                 "/auth/login/**",
                                 "/auth/loginMobile/**",
                                 "/api/v1/auth/**",
+                                "/api-docs/**",
                                 "/v2/api-docs",
                                 "/v3/api-docs",
                                 "/v3/api-docs/**",
@@ -61,6 +62,7 @@ public class SecurityConfig {
                                 "/tour-category/getList",
                                 "/tour-day-description/getList",
                                 "/account/user/save",
+                                "/country/save",
                                 "/account/user/saveGuideUser"
                         ).permitAll()
                 )
