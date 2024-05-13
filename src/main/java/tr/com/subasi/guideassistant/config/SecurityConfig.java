@@ -63,6 +63,7 @@ public class SecurityConfig {
                                 "/tour-day-description/getList",
                                 "/account/user/save",
                                 "/country/save",
+                                "/sendSMS",
                                 "/account/user/saveGuideUser"
                         ).permitAll()
                 )
