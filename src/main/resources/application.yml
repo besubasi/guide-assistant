@@ -68,3 +68,7 @@ aws:
   s3:
     bucketName: ${AWS_S3_BUCKET_NAME:bucketName}
     bucketUrl: ${AWS_S3_BUCKET_URL:bucketUrl}
+
+twilio:
+  userName: ${TWILIO_USER_NAME:twilioUserName}
+  password: ${TWILIO_PASSWORD:twilioPassword}

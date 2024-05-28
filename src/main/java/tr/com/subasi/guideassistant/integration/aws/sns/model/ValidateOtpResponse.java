@@ -11,9 +11,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class SMSRequest implements Serializable {
+public class ValidateOtpResponse implements Serializable {
 
-    private String phoneNumber;
-    private String message;
+    private boolean result;
 
 }

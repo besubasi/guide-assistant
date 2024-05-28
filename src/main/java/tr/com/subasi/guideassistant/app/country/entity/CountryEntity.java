@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import tr.com.subasi.guideassistant.common.entity.BaseEntity;
+import tr.com.subasi.guideassistant.common.entity.IdEntity;
 
 import static tr.com.subasi.guideassistant.app.country.constant.CountryConstant.*;
 
@@ -18,7 +18,7 @@ import static tr.com.subasi.guideassistant.app.country.constant.CountryConstant.
 @Entity
 @Table(schema = SCHEMA_GUIDE, name = TABLE_NAME)
 @EqualsAndHashCode(callSuper = true)
-public class CountryEntity extends BaseEntity {
+public class CountryEntity extends IdEntity {
 
     @NotNull
     @Column(name = COLUMN_CODE)

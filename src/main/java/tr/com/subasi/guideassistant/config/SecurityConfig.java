@@ -63,8 +63,12 @@ public class SecurityConfig {
                                 "/tour-day-description/getList",
                                 "/account/user/save",
                                 "/country/save",
-                                "/sendSMS",
-                                "/account/user/saveGuideUser"
+                                "/country/getList",
+                                "/sendSms",
+                                "/sendOtp",
+                                "/validateOtp",
+                                "twilio/sendSms",
+                                "/user/saveGuideUser"
                         ).permitAll()
                 )
                 .authorizeHttpRequests(x ->
