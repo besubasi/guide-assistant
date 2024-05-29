@@ -11,6 +11,7 @@ public interface MappingConstant {
     String MAPPING_GET_BY_ACTIVITY_ID = "/getByActivityId/{activityId}";
     String MAPPING_GET_LOOKUP_LIST = "/getLookupList";
     String MAPPING_GET_LIST = "/getList";
+    String MAPPING_GET_DETAIL = "/getDetail";
     String MAPPING_GET_PAGE = "/getPage";
     String MAPPING_CREATE_CONTENT_LIST = "/createContentList";
     String MAPPING_UPDATE_CONTENT = "/updateContent";

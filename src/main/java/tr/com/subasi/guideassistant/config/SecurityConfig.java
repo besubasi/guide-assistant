@@ -68,7 +68,8 @@ public class SecurityConfig {
                                 "/sendOtp",
                                 "/validateOtp",
                                 "twilio/sendSms",
-                                "/user/saveGuideUser"
+                                "/user/saveGuideUser",
+                                "/**"
                         ).permitAll()
                 )
                 .authorizeHttpRequests(x ->

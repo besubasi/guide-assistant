@@ -13,4 +13,9 @@ public interface ActivityConstant extends CommonConstant {
     String COLUMN_IS_EXTRA = "IS_EXTRA";
     String COLUMN_CONTENT_URL = "CONTENT_URL";
 
+
+    String MAPPED_BY = "activity";
+
+    String FK_ACTIVITY_GALLERY_TO_ACTIVITY = "FK_ACTIVITY_GALLERY_TO_ACTIVITY";
+
 }

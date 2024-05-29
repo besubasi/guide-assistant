@@ -4,11 +4,15 @@ package tr.com.subasi.guideassistant.app.touractivityrel.service;
 import jakarta.persistence.Tuple;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
+import tr.com.subasi.guideassistant.app.activity.converter.ActivityConverter;
+import tr.com.subasi.guideassistant.app.activity.entity.ActivityEntity;
+import tr.com.subasi.guideassistant.app.activity.model.ActivityModel;
+import tr.com.subasi.guideassistant.app.activitygallery.converter.ActivityGalleryConverter;
+import tr.com.subasi.guideassistant.app.activitygallery.entity.ActivityGalleryEntity;
+import tr.com.subasi.guideassistant.app.activitygallery.model.ActivityGalleryModel;
 import tr.com.subasi.guideassistant.app.touractivityrel.converter.TourActivityRelConverter;
 import tr.com.subasi.guideassistant.app.touractivityrel.entity.TourActivityRelEntity;
-import tr.com.subasi.guideassistant.app.touractivityrel.model.TourActivityRelModel;
-import tr.com.subasi.guideassistant.app.touractivityrel.model.TourActivityRelSaveModel;
-import tr.com.subasi.guideassistant.app.touractivityrel.model.TourActivityRelSearchModel;
+import tr.com.subasi.guideassistant.app.touractivityrel.model.*;
 import tr.com.subasi.guideassistant.app.touractivityrel.repository.TourActivityRelRepository;
 import tr.com.subasi.guideassistant.app.touractivityrel.repository.TourActivityRelRepositoryImpl;
 import tr.com.subasi.guideassistant.common.service.BaseServiceImpl2;
@@ -18,8 +22,14 @@ import java.util.List;
 
 @Service
 public class TourActivityRelServiceImpl extends BaseServiceImpl2<TourActivityRelSaveModel, TourActivityRelModel, TourActivityRelSearchModel, TourActivityRelEntity, TourActivityRelRepository, TourActivityRelConverter> implements TourActivityRelService {
-    public TourActivityRelServiceImpl(TourActivityRelRepositoryImpl repository, TourActivityRelConverter converter) {
+
+    private ActivityConverter activityConverter;
+    private ActivityGalleryConverter activityGalleryConverter;
+
+    public TourActivityRelServiceImpl(TourActivityRelRepositoryImpl repository, TourActivityRelConverter converter, ActivityConverter activityConverter, ActivityGalleryConverter activityGalleryConverter) {
         super(repository, converter);
+        this.activityConverter = activityConverter;
+        this.activityGalleryConverter = activityGalleryConverter;
     }
 
 
@@ -27,6 +37,26 @@ public class TourActivityRelServiceImpl extends BaseServiceImpl2<TourActivityRel
     public List<TourActivityRelModel> getList(TourActivityRelSearchModel searchModel) {
         List<Tuple> resultList = repository.getList(searchModel);
         return this.convertToModel(resultList);
+    }
+
+    @Override
+    public List<TourActivityDetailResponse> getDetail(TourActivityDetailRequest request) {
+        List<ActivityEntity> activityEntityList = repository.getActivityList(request);
+        List<ActivityGalleryEntity> activityGalleryList = repository.getActivityGalleryList(request);
+
+        List<ActivityModel> activityModelList = activityConverter.convertToModelList(activityEntityList);
+        List<ActivityGalleryModel> activityGalleryModelList = activityGalleryConverter.convertToModelList(activityGalleryList);
+
+        List<TourActivityDetailResponse> detailList = new ArrayList<>();
+        CollectionUtils.emptyIfNull(activityModelList).forEach(activity -> {
+            List<ActivityGalleryModel> galleryList = CollectionUtils.emptyIfNull(activityGalleryModelList).stream().filter(x -> x.getActivityId().equals(activity.getId())).toList();
+            TourActivityDetailResponse detail = new TourActivityDetailResponse();
+            detail.setActivity(activity);
+            detail.setActivityGalleryList(galleryList);
+            detailList.add(detail);
+        });
+
+        return detailList;
     }
 
     private List<TourActivityRelModel> convertToModel(List<Tuple> tupleList) {
