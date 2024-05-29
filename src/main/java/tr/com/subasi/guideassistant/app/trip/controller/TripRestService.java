@@ -7,6 +7,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import tr.com.subasi.guideassistant.app.trip.model.TripModel;
 import tr.com.subasi.guideassistant.app.trip.model.TripSaveModel;
+import tr.com.subasi.guideassistant.app.trip.model.TripSaveResponse;
 import tr.com.subasi.guideassistant.app.trip.model.TripSearchModel;
 import tr.com.subasi.guideassistant.common.model.ApiResponse;
 import tr.com.subasi.guideassistant.common.model.LookupModel;
@@ -20,7 +21,7 @@ import static tr.com.subasi.guideassistant.common.constant.MappingConstant.*;
 public interface TripRestService {
 
     @PostMapping(value = MAPPING_SAVE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    ApiResponse<String> save(@Valid @RequestBody TripSaveModel model);
+    ApiResponse<TripSaveResponse> save(@Valid @RequestBody TripSaveModel model);
 
     @DeleteMapping(MAPPING_DELETE_BY_ID)
     void deleteById(@NotNull @PathVariable("id") Long id);

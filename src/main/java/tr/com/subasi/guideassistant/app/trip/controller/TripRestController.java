@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tr.com.subasi.guideassistant.app.trip.model.TripModel;
 import tr.com.subasi.guideassistant.app.trip.model.TripSaveModel;
+import tr.com.subasi.guideassistant.app.trip.model.TripSaveResponse;
 import tr.com.subasi.guideassistant.app.trip.model.TripSearchModel;
 import tr.com.subasi.guideassistant.app.trip.service.TripService;
 import tr.com.subasi.guideassistant.common.model.ApiResponse;
@@ -24,7 +25,7 @@ public class TripRestController implements TripRestService {
         this.service = service;
     }
 
-    public ApiResponse<String> save(TripSaveModel model) {
+    public ApiResponse<TripSaveResponse> save(TripSaveModel model) {
         return new ApiResponse<>(service.save(model));
     }
 

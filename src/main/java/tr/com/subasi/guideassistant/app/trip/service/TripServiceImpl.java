@@ -10,6 +10,7 @@ import tr.com.subasi.guideassistant.app.trip.converter.TripConverter;
 import tr.com.subasi.guideassistant.app.trip.entity.TripEntity;
 import tr.com.subasi.guideassistant.app.trip.model.TripModel;
 import tr.com.subasi.guideassistant.app.trip.model.TripSaveModel;
+import tr.com.subasi.guideassistant.app.trip.model.TripSaveResponse;
 import tr.com.subasi.guideassistant.app.trip.model.TripSearchModel;
 import tr.com.subasi.guideassistant.app.trip.repository.TripRepository;
 import tr.com.subasi.guideassistant.app.tripactivity.entity.TripActivityEntity;
@@ -50,7 +51,7 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
-    public String save(TripSaveModel model) {
+    public TripSaveResponse save(TripSaveModel model) {
         TripEntity tripEntity = this.repository.save(this.converter.convertToEntityBySaveModel(model));
         String activationCode = this.generateActivationCode();
         tripEntity.setActivationCode(activationCode);
@@ -87,7 +88,7 @@ public class TripServiceImpl implements TripService {
             tripActivityRepository.saveAll(tripActivityList);
         }
 
-        return activationCode;
+        return new TripSaveResponse(activationCode);
     }
 
     @Override
