@@ -17,6 +17,7 @@ import tr.com.subasi.guideassistant.common.util.JwtTokenUtil;
 @Service
 @Slf4j
 public class AuthenticationService {
+    public static final String TRAVELER_ENTRY = "1234";
 
     private final AuthenticationManager authenticationManager;
     private final UserDetailsService userDetailsService;
@@ -42,6 +43,22 @@ public class AuthenticationService {
             log.error("login error for " + loginModel.getUsername(), e);
         }
         throw new UsernameNotFoundException("invalid username {}" + loginModel.getUsername());
+    }
+
+    public LoginResponse loginTraveler(String phoneNumber) {
+        try{
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(phoneNumber, TRAVELER_ENTRY));
+            if (authentication.isAuthenticated()) {
+                UserDetailsModel userDetailsModel = (UserDetailsModel) userDetailsService.loadUserByUsername(phoneNumber);
+                String token = JwtTokenUtil.generateToken(userDetailsModel);
+                allTokenExpired(userDetailsModel);
+                saveToken(userDetailsModel, token);
+                return LoginResponse.builder().user(userDetailsModel).token(token).build();
+            }
+        } catch (Exception e){
+            log.error("login error for " + phoneNumber, e);
+        }
+        throw new UsernameNotFoundException("invalid username {}" + phoneNumber);
     }
 
     public void saveToken(UserDetailsModel userDetailsModel, String token) {

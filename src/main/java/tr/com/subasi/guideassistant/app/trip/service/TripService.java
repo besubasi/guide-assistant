@@ -1,12 +1,10 @@
 package tr.com.subasi.guideassistant.app.trip.service;
 
 import jakarta.validation.constraints.NotNull;
-import tr.com.subasi.guideassistant.app.trip.model.TripModel;
-import tr.com.subasi.guideassistant.app.trip.model.TripSaveModel;
-import tr.com.subasi.guideassistant.app.trip.model.TripSaveResponse;
-import tr.com.subasi.guideassistant.app.trip.model.TripSearchModel;
+import tr.com.subasi.guideassistant.app.trip.model.*;
 import tr.com.subasi.guideassistant.common.model.LookupModel;
 import tr.com.subasi.guideassistant.common.model.Page;
+import tr.com.subasi.guideassistant.common.session.model.LoginResponse;
 
 import java.util.List;
 
@@ -23,5 +21,7 @@ public interface TripService {
     List<TripModel> getList(@NotNull TripSearchModel searchModel);
 
     Page<TripModel> getPage(@NotNull TripSearchModel searchModel);
+
+    LoginResponse joinTrip(JoinTripRequest joinTripRequest);
 
 }

@@ -8,18 +8,20 @@ import tr.com.subasi.guideassistant.app.touractivityrel.model.TourActivityRelSea
 import tr.com.subasi.guideassistant.app.touractivityrel.repository.TourActivityRelRepository;
 import tr.com.subasi.guideassistant.app.trip.converter.TripConverter;
 import tr.com.subasi.guideassistant.app.trip.entity.TripEntity;
-import tr.com.subasi.guideassistant.app.trip.model.TripModel;
-import tr.com.subasi.guideassistant.app.trip.model.TripSaveModel;
-import tr.com.subasi.guideassistant.app.trip.model.TripSaveResponse;
-import tr.com.subasi.guideassistant.app.trip.model.TripSearchModel;
+import tr.com.subasi.guideassistant.app.trip.model.*;
 import tr.com.subasi.guideassistant.app.trip.repository.TripRepository;
 import tr.com.subasi.guideassistant.app.tripactivity.entity.TripActivityEntity;
 import tr.com.subasi.guideassistant.app.tripactivity.repository.TripActivityRepository;
 import tr.com.subasi.guideassistant.app.tripcustomer.converter.TripCustomerConverter;
 import tr.com.subasi.guideassistant.app.tripcustomer.entity.TripCustomerEntity;
 import tr.com.subasi.guideassistant.app.tripcustomer.repository.TripCustomerRepository;
+import tr.com.subasi.guideassistant.app.user.model.UserModel;
+import tr.com.subasi.guideassistant.app.user.service.UserService;
+import tr.com.subasi.guideassistant.common.enums.EnumRoleType;
 import tr.com.subasi.guideassistant.common.model.LookupModel;
 import tr.com.subasi.guideassistant.common.model.Page;
+import tr.com.subasi.guideassistant.common.session.model.LoginResponse;
+import tr.com.subasi.guideassistant.common.session.service.AuthenticationService;
 import tr.com.subasi.guideassistant.common.util.SortUtil;
 
 import java.util.ArrayList;
@@ -35,19 +37,25 @@ public class TripServiceImpl implements TripService {
     private final TripCustomerConverter tripCustomerConverter;
     private final TourActivityRelRepository tourActivityRelRepository;
     private final TripActivityRepository tripActivityRepository;
+    private final UserService userService;
+    private final AuthenticationService authenticationService;
 
     public TripServiceImpl(TripRepository repository,
                            TripConverter converter,
                            TripCustomerRepository tripCustomerRepository,
                            TripCustomerConverter tripCustomerConverter,
                            TourActivityRelRepository tourActivityRelRepository,
-                           TripActivityRepository tripActivityRepository) {
+                           TripActivityRepository tripActivityRepository,
+                           UserService userService,
+                           AuthenticationService authenticationService) {
         this.repository = repository;
         this.converter = converter;
         this.tripCustomerRepository = tripCustomerRepository;
         this.tripCustomerConverter = tripCustomerConverter;
         this.tourActivityRelRepository = tourActivityRelRepository;
         this.tripActivityRepository = tripActivityRepository;
+        this.userService = userService;
+        this.authenticationService = authenticationService;
     }
 
     @Override
@@ -117,12 +125,53 @@ public class TripServiceImpl implements TripService {
         return new Page<>(converter.convertToModelList(page.getContent()), page.getTotalElements(), page.getTotalPages(), searchModel.getPageable());
     }
 
+    @Override
+    public LoginResponse joinTrip(JoinTripRequest joinTripRequest) {
+        String phoneNumber = joinTripRequest.getPhoneNumber();
+        TripCustomerEntity tripCustomer = tripCustomerRepository.getByPhoneNumberAndActivationCode(phoneNumber, joinTripRequest.getActivationCode());
+        if (tripCustomer == null)
+            return null;
+
+        UserModel user = userService.getByPhoneNumber(phoneNumber);
+        if (user == null) {
+            this.createUserByTripCustomer(tripCustomer);
+        } else {
+            this.setUserActiveTripInfo(tripCustomer, user);
+        }
+
+        return authenticationService.loginTraveler(phoneNumber);
+    }
 
     private String generateActivationCode() {
         Random random = new Random();
         int min = 100000; // En küçük 6 basamaklı sayı
         int max = 999999; // En büyük 6 basamaklı sayı
         return String.valueOf(random.nextInt(max - min + 1) + min);
+    }
+
+    private void createUserByTripCustomer(TripCustomerEntity tripCustomer) {
+        UserModel userModel = new UserModel();
+        userModel.setName(tripCustomer.getName());
+        userModel.setPassword(AuthenticationService.TRAVELER_ENTRY);
+        userModel.setLanguageId(1L); // TODO
+        userModel.setEmail(tripCustomer.getEmail());
+        userModel.setActive(Boolean.TRUE);
+        userModel.setActiveTripId(tripCustomer.getTripId());
+        userModel.setRoleType(EnumRoleType.TRAVELER);
+        userModel.setUsername(tripCustomer.getPhoneNumber());
+        userModel.setPhoneNumber(tripCustomer.getPhoneNumber());
+        if (tripCustomer.getRelationLineNumber() != null) {
+            TripCustomerEntity referenceTripCustomer = tripCustomerRepository.getByTripIdAndLineNumber(tripCustomer.getTripId(), tripCustomer.getRelationLineNumber());
+            if (referenceTripCustomer != null)
+                userModel.setReferencePhoneNumber(referenceTripCustomer.getPhoneNumber());
+        }
+
+        userService.save(userModel);
+    }
+
+    private void setUserActiveTripInfo(TripCustomerEntity tripCustomer, UserModel user) {
+        user.setActiveTripId(tripCustomer.getTripId());
+        userService.save(user);
     }
 
 }

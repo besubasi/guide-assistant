@@ -5,13 +5,10 @@ import jakarta.validation.constraints.NotNull;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import tr.com.subasi.guideassistant.app.trip.model.TripModel;
-import tr.com.subasi.guideassistant.app.trip.model.TripSaveModel;
-import tr.com.subasi.guideassistant.app.trip.model.TripSaveResponse;
-import tr.com.subasi.guideassistant.app.trip.model.TripSearchModel;
+import tr.com.subasi.guideassistant.app.trip.model.*;
 import tr.com.subasi.guideassistant.common.model.ApiResponse;
 import tr.com.subasi.guideassistant.common.model.LookupModel;
-import tr.com.subasi.guideassistant.common.model.Page;
+import tr.com.subasi.guideassistant.common.session.model.LoginResponse;
 
 import java.util.List;
 
@@ -35,8 +32,8 @@ public interface TripRestService {
     @PostMapping(value = MAPPING_GET_LIST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     ApiResponse<List<TripModel>> getList(@Valid @RequestBody TripSearchModel searchModel);
 
-    @PostMapping(value = MAPPING_GET_PAGE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    ApiResponse<Page<TripModel>> getPage(@Valid @RequestBody TripSearchModel searchModel);
+    @PostMapping(value = MAPPING_JOIN, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    ApiResponse<LoginResponse> joinTrip(@Valid @RequestBody JoinTripRequest joinTripRequest);
 
 
 }

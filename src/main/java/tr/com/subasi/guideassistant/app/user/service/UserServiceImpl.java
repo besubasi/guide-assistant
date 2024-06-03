@@ -23,11 +23,20 @@ public class UserServiceImpl extends BaseServiceImpl<UserModel, UserSearchModel,
     private final UserCompanyRelRepository userCompanyRelRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserServiceImpl(UserRepository repository, UserConverter converter, UserCompanyRelRepository userCompanyRelRepository,
+    public UserServiceImpl(UserRepository repository, UserConverter converter,
+                           UserCompanyRelRepository userCompanyRelRepository,
                            BCryptPasswordEncoder bCryptPasswordEncoder) {
         super(repository, converter);
         this.userCompanyRelRepository = userCompanyRelRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
+
+    @Override
+    public UserModel getByPhoneNumber(String phoneNumber) {
+        if (StringUtils.isBlank(phoneNumber))
+            return null;
+
+        return converter.convertToModel(repository.findByPhoneNumber(phoneNumber));
     }
 
     @Override

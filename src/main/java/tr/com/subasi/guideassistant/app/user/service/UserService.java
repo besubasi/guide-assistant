@@ -10,4 +10,6 @@ public interface UserService extends BaseService<UserModel, UserSearchModel> {
 
     GuideUserModel saveGuideUser(@NotNull GuideUserModel model);
 
+    UserModel getByPhoneNumber(String phoneNumber);
+
 }

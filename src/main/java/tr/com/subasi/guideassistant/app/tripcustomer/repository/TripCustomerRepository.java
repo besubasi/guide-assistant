@@ -8,4 +8,7 @@ import tr.com.subasi.guideassistant.app.tripcustomer.entity.TripCustomerEntity;
 @Repository
 public interface TripCustomerRepository extends JpaRepository<TripCustomerEntity, Long> {
 
+    TripCustomerEntity getByPhoneNumberAndActivationCode(String phoneNumber, String activationCode);
+
+    TripCustomerEntity getByTripIdAndLineNumber(Long tripId, Integer lineNumber);
 }

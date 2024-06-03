@@ -2,15 +2,15 @@ package tr.com.subasi.guideassistant.app.trip.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import tr.com.subasi.guideassistant.app.trip.model.TripModel;
-import tr.com.subasi.guideassistant.app.trip.model.TripSaveModel;
-import tr.com.subasi.guideassistant.app.trip.model.TripSaveResponse;
-import tr.com.subasi.guideassistant.app.trip.model.TripSearchModel;
+import tr.com.subasi.guideassistant.app.trip.model.*;
 import tr.com.subasi.guideassistant.app.trip.service.TripService;
+import tr.com.subasi.guideassistant.common.enums.EnumMessageType;
 import tr.com.subasi.guideassistant.common.model.ApiResponse;
 import tr.com.subasi.guideassistant.common.model.LookupModel;
-import tr.com.subasi.guideassistant.common.model.Page;
+import tr.com.subasi.guideassistant.common.model.MessageModel;
+import tr.com.subasi.guideassistant.common.session.model.LoginResponse;
 
+import java.util.Collections;
 import java.util.List;
 
 import static tr.com.subasi.guideassistant.app.trip.constant.TripConstant.REQUEST_MAPPING;
@@ -45,8 +45,12 @@ public class TripRestController implements TripRestService {
         return new ApiResponse<>(service.getList(searchModel));
     }
 
-    public ApiResponse<Page<TripModel>> getPage(TripSearchModel searchModel) {
-        return new ApiResponse<>(service.getPage(searchModel));
-    }
+    @Override
+    public ApiResponse<LoginResponse> joinTrip(JoinTripRequest joinTripRequest) {
+        LoginResponse loginResponse = service.joinTrip(joinTripRequest);
+        if (loginResponse != null)
+            return new ApiResponse<>(loginResponse);
 
+        return new ApiResponse<>(Collections.singletonList(new MessageModel(EnumMessageType.ERROR, "Belirtlen bilgilere uygun seyahat bulunamamıştır")));
+    }
 }

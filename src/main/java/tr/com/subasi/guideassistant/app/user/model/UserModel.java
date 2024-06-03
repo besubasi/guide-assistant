@@ -20,6 +20,7 @@ public class UserModel extends IdModel {
     protected Long languageId;
     protected String referencePhoneNumber;
     protected EnumRoleType roleType = EnumRoleType.TRAVELER;
+    private Long activeTripId;
     private boolean active;
 
 }

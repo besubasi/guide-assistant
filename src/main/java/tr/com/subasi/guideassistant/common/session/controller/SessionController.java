@@ -51,10 +51,7 @@ public class SessionController {
 
     @PostMapping("/loginMobile")
     public ApiResponse<LoginResponse> login(@Valid @RequestBody LoginMobileModel loginMobileModel) {
-        LoginModel loginModel = new LoginModel();
-        loginModel.setUsername(loginMobileModel.getPhoneNumber());
-        loginModel.setPassword("1234");
-        return new ApiResponse<>(authenticationService.login(loginModel));
+        return new ApiResponse<>(authenticationService.loginTraveler(loginMobileModel.getPhoneNumber()));
     }
 
     @GetMapping("/user")

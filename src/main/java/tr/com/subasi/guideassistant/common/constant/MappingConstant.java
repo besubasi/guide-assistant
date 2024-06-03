@@ -17,5 +17,6 @@ public interface MappingConstant {
     String MAPPING_UPDATE_CONTENT = "/updateContent";
     String MAPPING_GET_LIST_BY_TOUR_ID = "/getListByTourId/{tourId}";
     String MAPPING_GET_LIST_BY_ACTIVITY_ID = "/getListByActivityId/{activityId}";
+    String MAPPING_JOIN = "/join";
 
 }
