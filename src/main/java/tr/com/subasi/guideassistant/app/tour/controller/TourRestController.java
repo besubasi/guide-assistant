@@ -2,10 +2,12 @@ package tr.com.subasi.guideassistant.app.tour.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import tr.com.subasi.guideassistant.app.activity.model.ActivityModel;
 import tr.com.subasi.guideassistant.app.tour.model.TourModel;
 import tr.com.subasi.guideassistant.app.tour.model.TourSaveModel;
 import tr.com.subasi.guideassistant.app.tour.model.TourSearchModel;
 import tr.com.subasi.guideassistant.app.tour.service.TourService;
+import tr.com.subasi.guideassistant.app.touractivityrel.model.TourActivityDetailRequest;
 import tr.com.subasi.guideassistant.common.model.ApiResponse;
 import tr.com.subasi.guideassistant.common.model.Page;
 
@@ -43,4 +45,8 @@ public class TourRestController implements TourRestService {
         return new ApiResponse<>(service.getPage(searchModel));
     }
 
+    @Override
+    public ApiResponse<List<ActivityModel>> getActivityList(TourActivityDetailRequest tourActivityDetailRequest) {
+        return new ApiResponse<>(service.getActivityList(tourActivityDetailRequest));
+    }
 }

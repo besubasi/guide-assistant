@@ -9,7 +9,6 @@ import tr.com.subasi.guideassistant.app.activity.entity.ActivityEntity;
 import tr.com.subasi.guideassistant.app.activity.model.ActivityModel;
 import tr.com.subasi.guideassistant.app.activitygallery.converter.ActivityGalleryConverter;
 import tr.com.subasi.guideassistant.app.activitygallery.entity.ActivityGalleryEntity;
-import tr.com.subasi.guideassistant.app.activitygallery.model.ActivityGalleryModel;
 import tr.com.subasi.guideassistant.app.touractivityrel.converter.TourActivityRelConverter;
 import tr.com.subasi.guideassistant.app.touractivityrel.entity.TourActivityRelEntity;
 import tr.com.subasi.guideassistant.app.touractivityrel.model.*;
@@ -45,18 +44,23 @@ public class TourActivityRelServiceImpl extends BaseServiceImpl2<TourActivityRel
         List<ActivityGalleryEntity> activityGalleryList = repository.getActivityGalleryList(request);
 
         List<ActivityModel> activityModelList = activityConverter.convertToModelList(activityEntityList);
-        List<ActivityGalleryModel> activityGalleryModelList = activityGalleryConverter.convertToModelList(activityGalleryList);
+        //List<ActivityGalleryModel> activityGalleryModelList = activityGalleryConverter.convertToModelList(activityGalleryList);
 
         List<TourActivityDetailResponse> detailList = new ArrayList<>();
         CollectionUtils.emptyIfNull(activityModelList).forEach(activity -> {
-            List<ActivityGalleryModel> galleryList = CollectionUtils.emptyIfNull(activityGalleryModelList).stream().filter(x -> x.getActivityId().equals(activity.getId())).toList();
+            //List<ActivityGalleryModel> galleryList = CollectionUtils.emptyIfNull(activityGalleryModelList).stream().filter(x -> x.getActivityId().equals(activity.getId())).toList();
             TourActivityDetailResponse detail = new TourActivityDetailResponse();
             detail.setActivity(activity);
-            detail.setActivityGalleryList(galleryList);
+            //detail.setActivityGalleryList(galleryList);
             detailList.add(detail);
         });
 
         return detailList;
+    }
+
+    @Override
+    public List<ActivityModel> getActivityList(TourActivityDetailRequest tourActivityDetailRequest) {
+        return activityConverter.convertToModelList(repository.getActivityList(tourActivityDetailRequest));
     }
 
     private List<TourActivityRelModel> convertToModel(List<Tuple> tupleList) {

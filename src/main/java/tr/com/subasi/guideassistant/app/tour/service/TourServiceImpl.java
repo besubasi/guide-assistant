@@ -3,6 +3,7 @@ package tr.com.subasi.guideassistant.app.tour.service;
 import jakarta.persistence.Tuple;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
+import tr.com.subasi.guideassistant.app.activity.model.ActivityModel;
 import tr.com.subasi.guideassistant.app.tour.converter.TourConverter;
 import tr.com.subasi.guideassistant.app.tour.entity.TourEntity;
 import tr.com.subasi.guideassistant.app.tour.model.TourModel;
@@ -10,6 +11,8 @@ import tr.com.subasi.guideassistant.app.tour.model.TourSaveModel;
 import tr.com.subasi.guideassistant.app.tour.model.TourSearchModel;
 import tr.com.subasi.guideassistant.app.tour.repository.TourRepository;
 import tr.com.subasi.guideassistant.app.tour.repository.TourRepositoryImpl;
+import tr.com.subasi.guideassistant.app.touractivityrel.model.TourActivityDetailRequest;
+import tr.com.subasi.guideassistant.app.touractivityrel.service.TourActivityRelService;
 import tr.com.subasi.guideassistant.common.model.Page;
 import tr.com.subasi.guideassistant.common.util.SortUtil;
 
@@ -21,10 +24,12 @@ public class TourServiceImpl implements TourService {
 
     private final TourRepository repository;
     private final TourConverter converter;
+    private final TourActivityRelService tourActivityRelService;
 
-    public TourServiceImpl(TourRepositoryImpl repository, TourConverter converter) {
+    public TourServiceImpl(TourRepositoryImpl repository, TourConverter converter, TourActivityRelService tourActivityRelService) {
         this.repository = repository;
         this.converter = converter;
+        this.tourActivityRelService = tourActivityRelService;
     }
 
     @Override
@@ -51,6 +56,11 @@ public class TourServiceImpl implements TourService {
     public Page<TourModel> getPage(TourSearchModel searchModel) {
         org.springframework.data.domain.Page<TourEntity> page = repository.findAll(SortUtil.convertToPageRequest(searchModel.getPageable()));
         return new Page<>(converter.convertToModelList(page.getContent()), page.getTotalElements(), page.getTotalPages(), searchModel.getPageable());
+    }
+
+    @Override
+    public List<ActivityModel> getActivityList(TourActivityDetailRequest tourActivityDetailRequest) {
+        return tourActivityRelService.getActivityList(tourActivityDetailRequest);
     }
 
     private List<TourModel> convertToModel(List<Tuple> tupleList) {

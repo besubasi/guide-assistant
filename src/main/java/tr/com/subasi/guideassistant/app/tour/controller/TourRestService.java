@@ -5,9 +5,11 @@ import jakarta.validation.constraints.NotNull;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import tr.com.subasi.guideassistant.app.activity.model.ActivityModel;
 import tr.com.subasi.guideassistant.app.tour.model.TourModel;
 import tr.com.subasi.guideassistant.app.tour.model.TourSaveModel;
 import tr.com.subasi.guideassistant.app.tour.model.TourSearchModel;
+import tr.com.subasi.guideassistant.app.touractivityrel.model.TourActivityDetailRequest;
 import tr.com.subasi.guideassistant.common.model.ApiResponse;
 import tr.com.subasi.guideassistant.common.model.Page;
 
@@ -32,5 +34,9 @@ public interface TourRestService {
 
     @PostMapping(value = MAPPING_GET_PAGE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     ApiResponse<Page<TourModel>> getPage(@Valid @RequestBody TourSearchModel searchModel);
+
+    @PostMapping(value = MAPPING_GET_ACTIVITY_LIST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    ApiResponse<List<ActivityModel>> getActivityList(@Valid @RequestBody TourActivityDetailRequest request);
+
 
 }
