@@ -35,5 +35,8 @@ public interface TripRestService {
     @PostMapping(value = MAPPING_JOIN, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     ApiResponse<LoginResponse> joinTrip(@Valid @RequestBody JoinTripRequest joinTripRequest);
 
+    @GetMapping(value = MAPPING_GET_COMPLETION_RATE, produces = MediaType.APPLICATION_JSON_VALUE)
+    ApiResponse<TripCompletionModel> getCompletionRate(@Valid @NotNull @PathVariable("id") Long id);
+
 
 }

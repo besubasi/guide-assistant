@@ -18,5 +18,6 @@ public interface MappingConstant {
     String MAPPING_GET_LIST_BY_TOUR_ID = "/getListByTourId/{tourId}";
     String MAPPING_GET_LIST_BY_ACTIVITY_ID = "/getListByActivityId/{activityId}";
     String MAPPING_JOIN = "/join";
+    String MAPPING_GET_COMPLETION_RATE = "/getCompletionRate/{id}";
 
 }

@@ -24,6 +24,8 @@ import tr.com.subasi.guideassistant.common.session.model.LoginResponse;
 import tr.com.subasi.guideassistant.common.session.service.AuthenticationService;
 import tr.com.subasi.guideassistant.common.util.SortUtil;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -140,6 +142,29 @@ public class TripServiceImpl implements TripService {
         }
 
         return authenticationService.loginTraveler(phoneNumber);
+    }
+
+    @Override
+    public TripCompletionModel getCompletionRate(Long id) {
+        TripEntity trip = repository.getReferenceById(id);
+        List<TripActivityEntity> tripActivityList = tripActivityRepository.getByTripId(id);
+
+        long dayNumber = ChronoUnit.DAYS.between(trip.getStartDate(), LocalDate.now()) + 1;
+        List<Long> completedActivityIdList = CollectionUtils.emptyIfNull(tripActivityList).stream().filter(x -> x.getDayNumber().longValue() < dayNumber).map(TripActivityEntity::getActivityId).toList();
+        List<Long> continuedActivityIdList = CollectionUtils.emptyIfNull(tripActivityList).stream().filter(x -> x.getDayNumber().longValue() == dayNumber).map(TripActivityEntity::getActivityId).toList();
+        List<Long> futureActivityIdList = CollectionUtils.emptyIfNull(tripActivityList).stream().filter(x -> x.getDayNumber().longValue() > dayNumber).map(TripActivityEntity::getActivityId).toList();
+
+        TripCompletionModel tripCompletionModel = new TripCompletionModel();
+        tripCompletionModel.setCompletedActivityCount(completedActivityIdList.size());
+        tripCompletionModel.setContinuedActivityCount(continuedActivityIdList.size());
+        tripCompletionModel.setFutureActivityCount(futureActivityIdList.size());
+        tripCompletionModel.setCompletedActivityIdList(completedActivityIdList);
+        tripCompletionModel.setContinuedActivityIdList(continuedActivityIdList);
+        tripCompletionModel.setFutureActivityIdList(futureActivityIdList);
+        int completionRate = (int) ((double) tripCompletionModel.getCompletedActivityCount() / tripActivityList.size() * 100);
+        tripCompletionModel.setCompletionRate(completionRate);
+
+        return tripCompletionModel;
     }
 
     private String generateActivationCode() {

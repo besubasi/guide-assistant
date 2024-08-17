@@ -53,4 +53,9 @@ public class TripRestController implements TripRestService {
 
         return new ApiResponse<>(Collections.singletonList(new MessageModel(EnumMessageType.ERROR, "Belirtlen bilgilere uygun seyahat bulunamamıştır")));
     }
+
+    @Override
+    public ApiResponse<TripCompletionModel> getCompletionRate(Long id) {
+        return new ApiResponse<>(service.getCompletionRate(id));
+    }
 }
